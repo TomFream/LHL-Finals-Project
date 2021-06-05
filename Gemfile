@@ -9,6 +9,7 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 # gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 
 # Use postgres as the database for Active Record
+# gem 'sqlite3', '~> 1.4'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -46,7 +47,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # gem "dotenv-rails"
 end
-
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

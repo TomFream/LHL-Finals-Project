@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  resources :playlists
-  resources :answers
-  resources :questions
-  resources :categories
-  resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :api do # /api/data
     get '/data', to: 'tests#index'
     resources :dogs
+
+    resources :playlists
+    resources :answers
+    resources :questions
+    resources :categories
+    resources :users
   end
 
   

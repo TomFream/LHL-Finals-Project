@@ -8,6 +8,8 @@ import {
   // Redirect,
 } from "react-router-dom";
 import Show from "./components/Show";
+import Quiz from "./components/Quiz";
+import User from "./components/User";
 
 const App = () => {
   const [message, setMessage] = useState("Click the button to load data!");
@@ -32,6 +34,8 @@ const App = () => {
             path="/quiz"
             render={() => (
               <h1>
+                <User />
+                {/* <Quiz /> */}
                 "Quiz 1" <h1>{message}</h1>
                 <button onClick={fetchData}>Fetch Data</button>{" "}
               </h1>

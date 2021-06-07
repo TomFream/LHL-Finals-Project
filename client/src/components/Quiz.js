@@ -4,9 +4,7 @@ import axios from "axios";
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const Quiz = () => {
-  //const test = [];
-
-  const [test, setTest] = useState([])
+  const [test, setTest] = useState([]);
 
   useEffect(() => {
     axios
@@ -15,20 +13,15 @@ const Quiz = () => {
       )
       .then((result) => {
         console.log("Quiz API", result.data);
-        // test.push(result.data);
         const testNew = result.data;
         setTest(() => ({
-          testNew
+          testNew,
         }));
       });
   }, []);
 
-  // const v = test.updated.map(e => e.id);
-
   console.log("test", test);
   console.log("type", typeof test);
-
-  // const  eachTest = test.map
 
   return (
     <>

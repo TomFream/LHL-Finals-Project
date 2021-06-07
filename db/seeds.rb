@@ -13,4 +13,37 @@ nally = User.create(name: "nally", email: "nally@quizapp.com" )
 Category.create(name: "JavaScript")
 Category.create(name: "HTML")
 
-Question.create(question: "Inside which HTML element do we put the JavaScript?")
+Question.create(question: "Inside which HTML element do we put the JavaScript?", category_id: 1)
+
+Question.create(question: "What is the correct HTML for making a hyperlink?", category_id: 2)
+
+AnswerOption.create(question_id: 1, answer_option: 'testing string', is_correct: false)
+
+#   {
+#   "id": 519,
+#   "question": "What is the correct HTML for making a hyperlink?",
+#   "description": null,
+#   "answers": {
+#     "answer_a": "<a href=\"http://mcqsets.com\">MCQ Sets Quiz</a>",
+#     "answer_b": "<http://mcqsets.com</a>",
+#     "answer_c": "<a name=\"http://mcqsets.com\">MCQ Sets Quiz</a>",
+#     "answer_d": "url=\"http://mcqsets.com\">MCQ Sets Quiz",
+#     "answer_e": null,
+#     "answer_f": null
+#   },
+#   "multiple_correct_answers": "false",
+#   "correct_answers": {
+#     "answer_a_correct": "true",
+#     "answer_b_correct": "false",
+#     "answer_c_correct": "false",
+#     "answer_d_correct": "false",
+#     "answer_e_correct": "false",
+#     "answer_f_correct": "false"
+#   },
+#   "correct_answer": "answer_a",
+#   "explanation": null,
+#   "tip": null,
+#   "tags": [{ "name": "HTML" }],
+#   "category": "Code",
+#   "difficulty": "Medium"
+# }

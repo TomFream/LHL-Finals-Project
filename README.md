@@ -8,7 +8,7 @@ A boilerplate project for anyone interested in making a project that uses React 
 
 Note! This boilerplate has _no fluff_! That means that there's nothing set up for you to do authentication stuff, there's no Redux stuff, and there's no React Router stuff.
 
-The main important bit is that the React project has `proxy` set to `localhost:3001` in the `package.json` file. Take a look!
+The main important bit is that the React project has `proxy` set to `localhost:8080` in the `package.json` file. Take a look!
 
 ## Hall of Fame
 

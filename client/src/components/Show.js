@@ -31,6 +31,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
+    
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,

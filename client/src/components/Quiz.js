@@ -16,9 +16,9 @@ const Quiz = () => {
       .then((result) => {
         console.log("Quiz API", result.data);
         // test.push(result.data);
-        const updated = result.data;
+        const testNew = result.data;
         setTest(() => ({
-          // result.data
+          testNew
         }));
       });
   }, []);
@@ -26,12 +26,13 @@ const Quiz = () => {
   // const v = test.updated.map(e => e.id);
 
   console.log("test", test);
-
   console.log("type", typeof test);
+
+  // const  eachTest = test.map
 
   return (
     <>
-      {/* <h1>{test.result.data[0].id}</h1> */}
+      <h1>{JSON.stringify(test)}</h1>
     </>
   );
 };

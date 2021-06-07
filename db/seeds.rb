@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+goku = User.create(name: "goku", email: "goku@dragonballz.com" )
+andy = User.create(name: "andy", email: "andy@quizapp.com" )
+nally = User.create(name: "nally", email: "nally@quizapp.com" )
+
+Category.create(name: "JavaScript")
+Category.create(name: "HTML")
+
+Question.create(question: "Inside which HTML element do we put the JavaScript?")

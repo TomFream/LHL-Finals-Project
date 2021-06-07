@@ -1,3 +1,3 @@
 class PlaylistQuestion < ApplicationRecord
-  belongs_to :Playlist
+  belongs_to :playlist
 end

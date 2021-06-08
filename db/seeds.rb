@@ -21,50 +21,56 @@ Question.create(question: "What is the correct HTML for making a hyperlink?", ca
 
 AnswerOption.create(question_id: 1, answer_option: 'testing string', is_correct: false)
 
-# htmlFile = File.open("./htmlData.json")
-# htmlData = file.read
-# html_seed_data = JSON.parse() 
+# HTML category seed data
+htmlFile = File.open("/Users/tom/Documents/lighthouse/final/LHL-Finals-Project/db/htmlData.json")
+htmlData = htmlFile.read
+html_seed_data = JSON.parse(htmlData) 
 
-# q1 = JSON.parse('{"id":140,"question":"What is the correct HTML for making a text area?","description":null,"answers":{"answer_a":"<input type=\"textbox\">","answer_b":"<textarea>","answer_c":"<input type=\"textarea\">","answer_d":"<textbox>","answer_e":null,"answer_f":null}')
+html_seed_data.each do |d|
+  cat = d["tags"][0]["name"]
+  c1 = Category.select(:id).where(name: cat)
+  newQuestion = Question.create(question: d["question"], category_id: c1.ids[0])
 
-# html_seed_data.each do |d|
-#   cat = d["tags"][0]["name"]
-#   c1 = Category.select(:id).where(name: cat)
-#   Question.create(question: d["question"], category_id: c1.ids[0])
-# end
-# cat = q1["tags"][0]["name"]
-# c1 = Category.select(:id).where(name: cat)
-# Question.create(question: q1["question"], category_id: c1.ids[0])
-  
+  d["answers"].each do |x|
+    unless x[1] == nil
+      correct = x[0].to_s == d["correct_answer"].to_s ? true : false
+      AnswerOption.create(question_id: newQuestion.id, answer_option: x[1], is_correct: correct)
+    end
+  end
+end
 
-  # c1 = Category.select(:id).where(name: "JavaScript")
-  # Question.create(question: "What JS values are truthy" , category_id: c1.ids[0])
+# JavaScript category seed data
+jsFile = File.open("/Users/tom/Documents/lighthouse/final/LHL-Finals-Project/db/jsData.json")
+jsData = jsFile.read
+js_seed_data = JSON.parse(jsData) 
 
-#   {
-#   "id": 519,
-#   "question": "What is the correct HTML for making a hyperlink?",
-#   "description": null,
-#   "answers": {
-#     "answer_a": "<a href=\"http://mcqsets.com\">MCQ Sets Quiz</a>",
-#     "answer_b": "<http://mcqsets.com</a>",
-#     "answer_c": "<a name=\"http://mcqsets.com\">MCQ Sets Quiz</a>",
-#     "answer_d": "url=\"http://mcqsets.com\">MCQ Sets Quiz",
-#     "answer_e": null,
-#     "answer_f": null
-#   },
-#   "multiple_correct_answers": "false",
-#   "correct_answers": {
-#     "answer_a_correct": "true",
-#     "answer_b_correct": "false",
-#     "answer_c_correct": "false",
-#     "answer_d_correct": "false",
-#     "answer_e_correct": "false",
-#     "answer_f_correct": "false"
-#   },
-#   "correct_answer": "answer_a",
-#   "explanation": null,
-#   "tip": null,
-#   "tags": [{ "name": "HTML" }],
-#   "category": "Code",
-#   "difficulty": "Medium"
-# }
+js_seed_data.each do |d|
+  cat = d["tags"][0]["name"]
+  c1 = Category.select(:id).where(name: cat)
+  newQuestion = Question.create(question: d["question"], category_id: c1.ids[0])
+
+  d["answers"].each do |x|
+    unless x[1] == nil
+      correct = x[0].to_s == d["correct_answer"].to_s ? true : false
+      AnswerOption.create(question_id: newQuestion.id, answer_option: x[1], is_correct: correct)
+    end
+  end
+end
+
+# SQL category seed data
+sqlFile = File.open("/Users/tom/Documents/lighthouse/final/LHL-Finals-Project/db/sqlData.json")
+sqlData = sqlFile.read
+sql_seed_data = JSON.parse(sqlData) 
+
+sql_seed_data.each do |d|
+  cat = d["tags"][0]["name"]
+  c1 = Category.select(:id).where(name: cat)
+  newQuestion = Question.create(question: d["question"], category_id: c1.ids[0])
+
+  d["answers"].each do |x|
+    unless x[1] == nil
+      correct = x[0].to_s == d["correct_answer"].to_s ? true : false
+      AnswerOption.create(question_id: newQuestion.id, answer_option: x[1], is_correct: correct)
+    end
+  end
+end

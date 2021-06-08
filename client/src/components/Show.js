@@ -19,8 +19,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="https://quizapp.com/">
+        Quiz App
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -31,7 +31,6 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
-    
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
@@ -39,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
   heroButtons: {
     marginTop: theme.spacing(4),
+    backgroundColor: "white",
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -46,14 +46,27 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     height: "100%",
+    // width: "350px",
     display: "flex",
     flexDirection: "column",
+    backgroundColor: "orange",
+    transition: "transform .2s" /* Animation */,
+    borderRadius: "18px",
+    "&:hover": {
+      opacity: 0.8,
+      transform: "scale(1.03)",
+      background: "#C9A1BE",
+    },
   },
+
   cardMedia: {
     paddingTop: "56.25%", // 16:9
   },
   cardContent: {
-    flexGrow: 1,
+    flexGrow: 10,
+    height: "60px",
+    color: "lavender",
+    backgroundColor: "#4682B4",
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -61,7 +74,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [
+  { name: "JavaScript", image: "../../js2.png" },
+  { name: "React", image: "../../react.png" },
+  { name: "SQL", image: "../../sql.png" },
+  { name: "HTML", image: "../../html.png" },
+];
 
 export default function QuizApp() {
   const classes = useStyles();
@@ -69,7 +87,7 @@ export default function QuizApp() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="relative">
+      <AppBar position="relative" style={{ background: "#2B2C3B" }}>
         <Toolbar>
           <CameraIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
@@ -101,16 +119,19 @@ export default function QuizApp() {
               short so folks don&apos;t simply skip over it entirely.
             </Typography>
             <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
+              <Grid container spacing={4} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary">
-                    TRY IT YOURSELF
+                  <Button variant="outlined" color="primary">
+                    SIGN UP
                   </Button>
                 </Grid>
                 <Grid item>
                   {/* Quiz Link */}
-                  <Link to="/quiz" style={{textDecoration: "none", color: "blue"}}>
-                    <Button variant="outlined" color="primary">
+                  <Link
+                    to="/quiz"
+                    style={{ textDecoration: "none", color: "blue" }}
+                  >
+                    <Button variant="outlined" color="secondary">
                       QUIZ GAME
                     </Button>
                   </Link>
@@ -121,30 +142,30 @@ export default function QuizApp() {
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
-          <Grid container spacing={4}>
+          <Grid container spacing={6}>
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+              <Grid item key={card} xs={12} sm={6} md={6}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
+                    image={card.image}
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {card.name}
                     </Typography>
-                    <Typography>
+                    {/* <Typography>
                       This is a media card. You can use this section to describe
                       the content.
-                    </Typography>
+                    </Typography> */}
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                    <Button size="md" color={"white"}>
+                      Share
                     </Button>
-                    <Button size="small" color="primary">
-                      Edit
+                    <Button size="md" color={"white"}>
+                      Start Quiz
                     </Button>
                   </CardActions>
                 </Card>

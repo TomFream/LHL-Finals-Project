@@ -13,7 +13,7 @@ nally = User.create(name: "nally", email: "nally@quizapp.com" )
 
 Category.create(name: "JavaScript")
 Category.create(name: "HTML")
-Category.create(name: "SQL")
+Category.create(name: "MySQL")
 
 Question.create(question: "Inside which HTML element do we put the JavaScript?", category_id: 1)
 

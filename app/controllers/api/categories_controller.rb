@@ -1,11 +1,13 @@
 class Api::CategoriesController < ApplicationController
-def index
-  @categories = Category.all
-end
+  before_action :set_question, only: [:show, :update, :destroy]
+  
+  def index
+    @categories = Category.all
+  end
 
-def show
-  render json: @category
-end
+  def show
+    render json: @category
+  end
  # POST /categories
  def create
   @category = Category.new(category_params)

@@ -31,7 +31,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route
-            path="/quiz"
+            path="/api/categories#index"
             render={() => (
               <h1>
                 <User />

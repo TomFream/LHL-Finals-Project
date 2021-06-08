@@ -1,9 +1,8 @@
 class Api::QuestionsController < ApplicationController
-  def index
-    @questions = Question.all
+def index
+  @questions = Question.all
 
-    render json: @questions
-  end
+  render json: @questions
 end
 # GET /questions/1
 def show

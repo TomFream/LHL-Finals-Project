@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :playlists
     # resources :answers
     resources :questions, except: [:destroy, :create, :update]
-    resources :categories
+    resources :categories, except: [:destroy, :create, :update]
     resources :users
   end
 

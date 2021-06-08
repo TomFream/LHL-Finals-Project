@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
     resources :playlists
     # resources :answers
-    resources :quizs   #related model??//TODO
+    resources :questions   #related model??//TODO
     resources :categories
     resources :users
   end

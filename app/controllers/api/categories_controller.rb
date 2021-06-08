@@ -1,6 +1,6 @@
 class Api::CategoriesController < ApplicationController
-  before_action :set_question, only: [:show, :update, :destroy]
-  
+  before_action :set_category, only: [:show, :update, :destroy]
+
   def index
     @categories = Category.all
   end

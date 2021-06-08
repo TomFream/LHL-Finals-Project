@@ -28,4 +28,4 @@ const Category = () => {
   );
 };
 
-export default Quiz;
+export default Category;

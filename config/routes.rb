@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
     resources :playlists
     # resources :answers
-    resources :questions   #related model??//TODO
+    resources :questions, except: [:destroy, :create, :update]
     resources :categories
     resources :users
   end

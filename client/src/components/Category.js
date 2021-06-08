@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Category = () => {
@@ -7,7 +7,7 @@ const Category = () => {
   useEffect(() => {
     axios
       .get(
-        `/api/category${props.}`
+        `/api/category/${props.id}`
       )
       .then((result) => {
         console.log("Quiz API", result.data);

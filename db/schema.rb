@@ -31,15 +31,20 @@ ActiveRecord::Schema.define(version: 2021_06_07_194509) do
   end
 
   create_table "playlist_questions", force: :cascade do |t|
-    t.bigint "questions_id"
+    t.bigint "question_id", null: false
+    t.bigint "playlist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["questions_id"], name: "index_playlist_questions_on_questions_id"
+    t.index ["playlist_id"], name: "index_playlist_questions_on_playlist_id"
+    t.index ["question_id"], name: "index_playlist_questions_on_question_id"
   end
 
   create_table "playlists", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|

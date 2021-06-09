@@ -15,12 +15,6 @@ Category.create(name: "JavaScript")
 Category.create(name: "HTML")
 Category.create(name: "MySQL")
 
-Question.create(question: "Inside which HTML element do we put the JavaScript?", category_id: 1)
-
-Question.create(question: "What is the correct HTML for making a hyperlink?", category_id: 2)
-
-AnswerOption.create(question_id: 1, answer_option: 'testing string', is_correct: false)
-
 # HTML category seed data
 htmlFile = File.open(File.join(Rails.root, 'db', 'htmlData.json'))
 # htmlFile = File.open("/Users/tom/Documents/lighthouse/final/LHL-Finals-Project/db/htmlData.json")

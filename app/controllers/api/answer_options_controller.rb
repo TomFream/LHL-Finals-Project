@@ -1,48 +1,48 @@
 class Api::AnswerOptionsController < ApplicationController
   before_action :set_answer_option, only: [:show, :update, :destroy]
   def index
-    @questions = Question.all
+    @answer_options = AnswerOption.all
   
-    render json: @questions
+    render json: @answer_options
   end
-  # GET /questions/1
+  # GET /answer_options/1
   def show
-    render json: @question
+    render json: @answer_option
   end
   
-  # POST /questions
+  # POST /answer_options
   def create
-    @question = Question.new(question_params)
+    @answer_option = AnswerOption.new(question_params)
   
-    if @question.save
-      render json: @question, status: :created, location: @question
+    if @answer_option.save
+      render json: @answer_option, status: :created, location: @answer_option
     else
-      render json: @question.errors, status: :unprocessable_entity
+      render json: @answer_option.errors, status: :unprocessable_entity
     end
   end
   
-  # PATCH/PUT /questions/1
+  # PATCH/PUT /answer_options/1
   def update
-    if @question.update(question_params)
-      render json: @question
+    if @answer_option.update(question_params)
+      render json: @answer_option
     else
-      render json: @question.errors, status: :unprocessable_entity
+      render json: @answer_option.errors, status: :unprocessable_entity
     end
   end
   
-  # DELETE /questions/1
+  # DELETE /answer_options/1
   def destroy
-    @question.destroy
+    @answer_option.destroy
   end
   
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
-      @question = Question.find(params[:id])
+      @answer_option = AnswerOption.find(params[:id])
     end
   
     # Only allow a list of trusted parameters through.
     def question_params
-      params.fetch(:question, {})
+      params.fetch(:answer_option, {})
     end
 end

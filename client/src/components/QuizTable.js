@@ -154,8 +154,9 @@ export default function ErrorRadios() {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <form className={classes.form} onSubmit={handleSubmit}>     {/*Show Error Msgs*/}
+        <form className={classes.form} onSubmit={handleSubmit}>
           {" "}
+          {/*Show Error Msgs*/}{" "}
           <FormControl
             component="fieldset"
             error={error}
@@ -189,7 +190,9 @@ export default function ErrorRadios() {
                 />
               ))} */}
             </RadioGroup>
-            <FormHelperText style={{ fontSize: "15px" }}>{helperText}</FormHelperText>
+            <FormHelperText style={{ fontSize: "15px" }}>
+              {helperText}
+            </FormHelperText>
 
             <Button
               type="submit"
@@ -201,24 +204,37 @@ export default function ErrorRadios() {
             </Button>
 
             <MobileStepper
-        steps={numQuestions}
-        position="static"
-        variant="text"
-        activeQuestion={activeQuestion}
-
-        nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeQuestion === numQuestions - 1}>
-            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-          </Button>
-        }
-        
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeQuestion === 0}>
-            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-          </Button>
-        }
-      />
-
+              steps={numQuestions}
+              position="static"
+              variant="text"
+              activeQuestion={activeQuestion}
+              nextButton={
+                <Button
+                  size="small"
+                  onClick={handleNext}
+                  disabled={activeQuestion === numQuestions - 1}
+                >
+                  {theme.direction === "rtl" ? (
+                    <KeyboardArrowLeft />
+                  ) : (
+                    <KeyboardArrowRight />
+                  )}
+                </Button>
+              }
+              backButton={
+                <Button
+                  size="small"
+                  onClick={handleBack}
+                  disabled={activeQuestion === 0}
+                >
+                  {theme.direction === "rtl" ? (
+                    <KeyboardArrowRight />
+                  ) : (
+                    <KeyboardArrowLeft />
+                  )}
+                </Button>
+              }
+            />
 
             {/* <Switch
         checked={shuffle.checkedA}

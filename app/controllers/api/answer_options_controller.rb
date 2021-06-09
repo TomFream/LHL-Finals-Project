@@ -37,7 +37,7 @@ class Api::AnswerOptionsController < ApplicationController
   
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_question
+    def set_answer_option
       @answer_option = AnswerOption.find(params[:id])
     end
   

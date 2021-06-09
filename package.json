@@ -26,8 +26,5 @@
     "url": "https://github.com/NimaBoscarino/stigma/issues"
   },
   "homepage": "https://github.com/NimaBoscarino/stigma#readme",
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-router-dom": "^5.2.0"
-  }
+  "dependencies": {}
 }

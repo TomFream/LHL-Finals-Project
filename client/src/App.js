@@ -7,9 +7,11 @@ import {
   Switch,
   // Redirect,
 } from "react-router-dom";
-import Show from "./components/Show";
-import Quiz from "./components/Quiz";
+import Main from "./components/Main";
+// import Quiz from "./components/QuizAPIFetch(OLD)";
 import User from "./components/User";
+import Quiz from "./components/Quiz";
+import NavBar from "./components/NavBar";
 
 const App = () => {
   const [message, setMessage] = useState("Click the button to load data!");
@@ -29,19 +31,24 @@ const App = () => {
   return (
     <div className="App">
       <Router>
+        <NavBar/>
         <Switch>
           <Route
             path="/quiz"
             render={() => (
-              <h1>
-                <User />
-                {/* <Quiz /> */}
-                "Quiz 1" <h1>{message}</h1>
+               <div style={{
+              display: 'flex',
+               flexDirection: 'column',
+               alignItems: 'center'}}>
+                <Quiz />
+                {/* <Quiz />  //Frontend Quiz Fetch// OUTDATED// */} 
+                <h1>{message}</h1>
                 <button onClick={fetchData}>Fetch Data</button>{" "}
-              </h1>
+                <User />
+             </div>
             )}
           />
-          <Route path="/" exact render={() => <Show />} />
+          <Route path="/" exact render={() => <Main />} />
         </Switch>
       </Router>
     </div>

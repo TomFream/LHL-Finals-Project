@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :questions, except: [:destroy, :create, :update]
     resources :categories, except: [:destroy, :create, :update]
     resources :users
+    resources :answer_option, except: [:destroy, :create, :update]
   end
 
   

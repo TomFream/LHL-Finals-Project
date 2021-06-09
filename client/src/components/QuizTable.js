@@ -190,6 +190,7 @@ export default function ErrorRadios() {
               ))} */}
             </RadioGroup>
             <FormHelperText style={{ fontSize: "15px" }}>{helperText}</FormHelperText>
+
             <Button
               type="submit"
               variant="outlined"
@@ -198,6 +199,27 @@ export default function ErrorRadios() {
             >
               Check Answer
             </Button>
+
+            <MobileStepper
+        steps={numQuestions}
+        position="static"
+        variant="text"
+        activeQuestion={activeQuestion}
+
+        nextButton={
+          <Button size="small" onClick={handleNext} disabled={activeQuestion === numQuestions - 1}>
+            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+          </Button>
+        }
+        
+        backButton={
+          <Button size="small" onClick={handleBack} disabled={activeQuestion === 0}>
+            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+          </Button>
+        }
+      />
+
+
             {/* <Switch
         checked={shuffle.checkedA}
         onChange={handleShuffleChange}

@@ -189,7 +189,7 @@ export default function ErrorRadios() {
                 />
               ))} */}
             </RadioGroup>
-            <FormHelperText>{helperText}</FormHelperText>
+            <FormHelperText style={{ fontSize: "15px" }}>{helperText}</FormHelperText>
             <Button
               type="submit"
               variant="outlined"

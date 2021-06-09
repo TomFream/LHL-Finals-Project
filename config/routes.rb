@@ -3,13 +3,13 @@ Rails.application.routes.draw do
 
   namespace :api do # /api/data
     get '/data', to: 'tests#index'   #call test controller index method
-    resources :dogs
 
     resources :playlists
     # resources :answers
-    resources :quizs   #related model??//TODO
-    resources :categories
+    resources :questions, except: [:destroy, :create, :update]
+    resources :categories, except: [:destroy, :create, :update]
     resources :users
+    resources :answer_options, except: [:destroy, :create, :update]
   end
 
   

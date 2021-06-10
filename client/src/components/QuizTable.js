@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {useParams} from 'react-router-dom';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -8,7 +9,6 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormLabel from "@material-ui/core/FormLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-//card
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -19,7 +19,7 @@ import MobileStepper from "@material-ui/core/MobileStepper";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import Axios from "axios";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,6 +60,23 @@ export default function ErrorRadios(props) {
   //   // random(answersArr);
   // };
 
+  const [questions, setQuestions] = useState("Initial")
+  const [answers, setAnswers] = useState()
+  
+  const params = useParams()
+  useEffect(() => {
+    axios
+    .get(`/api/data/${params.id}`) // You can simply make your requests to "/api/whatever you want"
+    .then((response) => {
+      setQuestions(response.data.questions)
+      setAnswers(response.data.answers)
+      console.log("API response: ", response)
+    })
+    .catch((error) => {
+      console.log("ERROR: ", error)
+    });
+  }, [])
+
   const handleRadioChange = (event) => {
     setValue(event.target.value);
     setHelperText(" ");
@@ -87,9 +104,8 @@ export default function ErrorRadios(props) {
     }
   };
   
-  console.log("Questions test: ", props.questions)
-  console.log("Answers test: ", props.answers)
-  const questions = props.questions;
+  // const questions = props.questions;
+  
   
 
   const answer_options = [

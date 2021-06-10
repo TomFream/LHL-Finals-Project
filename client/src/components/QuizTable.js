@@ -24,13 +24,16 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "lavender",
     width: "100%",
     maxWidth: 800,
-    flexGrow: 10,
+    flexGrow: 5,
   },
   formControl: {
     margin: theme.spacing(3),
   },
   button: {
     margin: theme.spacing(1, 1, 0, 0),
+    width: "200px",
+    justifyContent: "center",
+    alignItems: "center",
   },
   form: {
     borderStyle: "solid",
@@ -55,9 +58,9 @@ export default function QuizTable(props) {
     setError(false);
   };
 
-  console.log("Questions test: ", props.questions); //
-  console.log("Answers test: ", props.answers); //
-  // console.log("Answer[0]: ", props.answers[0]); //
+  // console.log("Questions test: ", props.questions); 
+  // console.log("Answers test: ", props.answers); 
+  // console.log("Answer[0]: ", props.answers[0]);
 
   const questions = props.questions;
   const answerOptions = props.answers;
@@ -67,8 +70,6 @@ export default function QuizTable(props) {
   const [activeQuestion, setActiveQuestion] = React.useState(0);
 
   const numQuestions = questions.length;
-
-  // {answerOptions[activeQuestion].map((answer) => (
 
   const correctOptionObj = answerOptions[activeQuestion].find((option) => {
     if (option.is_correct === true) {
@@ -82,7 +83,7 @@ export default function QuizTable(props) {
     event.preventDefault();
 
     if (!value) {
-      setHelperText("Please select an option.");
+      setHelperText("Please select an answer.");
       setError(true);
     }
 
@@ -144,17 +145,22 @@ export default function QuizTable(props) {
             <FormHelperText style={{ fontSize: "15px" }}>
               {helperText}
             </FormHelperText>
-
-            <Button
-              type="submit"
-              variant="outlined"
-              color="primary"
-              className={classes.button}
-            >
-              Check Answer
-            </Button>
-
+            <div>
+              <Button
+                type="submit"
+                variant="outlined"
+                color="primary"
+                className={classes.button}
+              >
+                Check Answer
+              </Button>
+            </div>
             <MobileStepper
+              style={{
+                backgroundColor: "lavender",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
               steps={numQuestions}
               position="static"
               variant="text"

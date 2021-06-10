@@ -13,13 +13,11 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import IconButton from "@material-ui/core/IconButton";
-// import ShuffleOnOutlinedIcon from '@material-ui/icons/ShuffleOnOutlined';
 import Switch from "@material-ui/core/Switch";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import Axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,27 +42,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ErrorRadios(props) {
+export default function QuizTable(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState("");
-  // const [shuffle, setShuffle] = React.useState({
-  //   checkedA: true,
-  //   checkedB: true,
-  // });
-
-  // const handleShuffleChange = (event) => {
-  //   setShuffle({ ...shuffle, [event.target.name]: event.target.checked });
-  //   // random(answersArr);
-  // };
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
     setHelperText(" ");
     setError(false);
   };
+
+  console.log("Questions test: ", props.questions); //
+  console.log("Answers test: ", props.answers); //
+  // console.log("Answer[0]: ", props.answers[0]); //
+
+  const questions = props.questions;
+  const answerOptions = props.answers;
+  // console.log("activeQuestion", activeQuestion);
+  // console.log(answerOptions[activeQuestion]);
+
+  const [activeQuestion, setActiveQuestion] = React.useState(0);
+
+  const numQuestions = questions.length;
+
+  // {answerOptions[activeQuestion].map((answer) => (
+
+  const correctOptionObj = answerOptions[activeQuestion].find((option) => {
+    if (option.is_correct === true) {
+      return option;
+    }
+  });
+
+  console.log("correctAnswer", correctOptionObj.answer_option);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -74,56 +86,21 @@ export default function ErrorRadios(props) {
       setError(true);
     }
 
-    if (value === "Answer_Option1") {
-      //CORRECT ANSWER GOES HERE
+    // console.log("value", typeof value);
+    // console.log("--------",typeof correctOptionObj.answer_option);
+    // console.log("value", value);
+    // console.log("--------", correctOptionObj.answer_option);
+
+    if (value === correctOptionObj.answer_option) {
       setHelperText("You got it!");
       setError(false);
     }
 
-    if (value && value !== "Answer_Option1") {
-      //Update this as well
+    if (value && value !== correctOptionObj.answer_option) {
       setHelperText("Sorry, wrong answer!");
       setError(true);
     }
   };
-  
-  console.log("Questions test: ", props.questions)
-  console.log("Answers test: ", props.answers)
-  const questions = props.questions;
-  
-
-  const answer_options = [
-    "Answer_Option1",
-    "Answer_Option2, long long answer long.... testing",
-    "Answer_Option3",
-    "Answer_Option4",
-  ];
-
-  const answersArr = [
-    "Answer_Option1",
-    "Answer_Option2, long long answer long.... testing",
-    "Answer_Option3",
-    "Answer_Option4",
-  ];
-
-  // const answersRandom = answersArr.sort(() => Math.random() - 0.5);
-
-  // let answers;
-  // if (shuffle.checkedA) {
-  //   answers = answersRandom
-  // } else {
-  //   answers = answersArr
-  // }
-  // const shuffleToggle = (answersRandom, answersArr) => {
-  //   if (shuffle.checkedA) {
-  //     return answersRandom;
-  //   } else {
-  //     return answersArr;
-  //   }
-  // }
-
-  const [activeQuestion, setActiveQuestion] = React.useState(0);
-  const numQuestions = questions.length;
 
   const handleNext = () => {
     setActiveQuestion((preActiveQuestion) => preActiveQuestion + 1);
@@ -155,22 +132,14 @@ export default function ErrorRadios(props) {
               value={value}
               onChange={handleRadioChange}
             >
-              {answersArr.map((answer) => (
+              {answerOptions[activeQuestion].map((answer) => (
                 <FormControlLabel
                   className={classes.label}
-                  value={`${answer}`}
+                  value={`${answer.answer_option}`}
                   control={<Radio />}
-                  label={`${answer}`}
+                  label={`${answer.answer_option}`}
                 />
               ))}
-              {/* {shuffle.checkedA === false && answersArr.map((answer) => (
-                <FormControlLabel
-                  className={classes.label}
-                  value={`${answer}`}
-                  control={<Radio />}
-                  label={`${answer}`}
-                />
-              ))} */}
             </RadioGroup>
             <FormHelperText style={{ fontSize: "15px" }}>
               {helperText}
@@ -217,18 +186,6 @@ export default function ErrorRadios(props) {
                 </Button>
               }
             />
-
-            {/* <Switch
-        checked={shuffle.checkedA}
-        onChange={handleShuffleChange}
-        name="checkedA"
-        inputProps={{ 'aria-label': 'secondary checkbox' }}
-      />{`${shuffle.checkedA}`} */}
-            {/* <IconButton
-              color="primary"
-              aria-label="upload picture"
-              component="span"
-            ></IconButton> */}
           </FormControl>
         </form>
       </CardContent>

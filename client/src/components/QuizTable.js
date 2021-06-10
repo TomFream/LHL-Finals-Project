@@ -67,17 +67,25 @@ export default function QuizTable(props) {
   // console.log("activeQuestion", activeQuestion);
   // console.log(answerOptions[activeQuestion]);
 
-  const [activeQuestion, setActiveQuestion] = React.useState(0);
+  const [activeStep, setActiveStep] = React.useState(0);
 
   const numQuestions = questions.length;
 
-  const correctOptionObj = answerOptions[activeQuestion].find((option) => {
+  const correctOptionObj = answerOptions[activeStep].find((option) => {
     if (option.is_correct === true) {
       return option;
     }
   });
 
   console.log("correctAnswer", correctOptionObj.answer_option);
+
+  const handleNext = () => {
+    setActiveStep((preActiveStep) => preActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((preActiveStep) => preActiveStep - 1);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -103,13 +111,6 @@ export default function QuizTable(props) {
     }
   };
 
-  const handleNext = () => {
-    setActiveQuestion((preActiveQuestion) => preActiveQuestion + 1);
-  };
-
-  const handleBack = () => {
-    setActiveQuestion((preActiveQuestion) => preActiveQuestion - 1);
-  };
 
   return (
     <Card className={classes.root}>
@@ -124,7 +125,7 @@ export default function QuizTable(props) {
           >
             <FormLabel className={classes.label}>
               <Typography align="left" style={{ fontSize: "20px" }}>
-                {questions[activeQuestion].question}
+                {questions[activeStep].question}
               </Typography>
             </FormLabel>
             <RadioGroup
@@ -133,7 +134,7 @@ export default function QuizTable(props) {
               value={value}
               onChange={handleRadioChange}
             >
-              {answerOptions[activeQuestion].map((answer) => (
+              {answerOptions[activeStep].map((answer) => (
                 <FormControlLabel
                   className={classes.label}
                   value={`${answer.answer_option}`}
@@ -164,12 +165,12 @@ export default function QuizTable(props) {
               steps={numQuestions}
               position="static"
               variant="text"
-              activeQuestion={activeQuestion}
+              activeStep={activeStep}
               nextButton={
                 <Button
                   size="small"
                   onClick={handleNext}
-                  disabled={activeQuestion === numQuestions - 1}
+                  disabled={activeStep === numQuestions - 1}
                 >
                   {theme.direction === "rtl" ? (
                     <KeyboardArrowLeft />
@@ -182,7 +183,7 @@ export default function QuizTable(props) {
                 <Button
                   size="small"
                   onClick={handleBack}
-                  disabled={activeQuestion === 0}
+                  disabled={activeStep === 0}
                 >
                   {theme.direction === "rtl" ? (
                     <KeyboardArrowRight />

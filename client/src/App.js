@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useState } from "react";
-// import axios from "axios";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -15,6 +15,8 @@ import NavBar from "./components/NavBar";
 
 const App = () => {
   const [message, setMessage] = useState("Click the button to load data!");
+
+  console.log("answers & questions", answers, questions);
 
   return (
     <div className="App">

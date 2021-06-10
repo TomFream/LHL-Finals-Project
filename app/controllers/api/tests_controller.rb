@@ -8,7 +8,7 @@ class Api::TestsController < ApplicationController
       AnswerOption.where(question_id: question.id).each do |a|
         answerArr.push(a)
       end
-      answerArr
+      answerArr.shuffle
     }
     
     render :json => {

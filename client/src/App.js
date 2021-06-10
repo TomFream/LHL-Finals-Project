@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import {
@@ -15,18 +15,16 @@ import NavBar from "./components/NavBar";
 
 const App = () => {
   const [message, setMessage] = useState("Click the button to load data!");
-
-  const fetchData = () => {
+  const [questions, setQuestions] = useState(null)
+  const [answers, setAnswers] = useState(null)
+  useEffect(() => {
     axios
       .get("/api/data") // You can simply make your requests to "/api/whatever you want"
       .then((response) => {
-        // handle success
-        console.log(response.data); // The entire response from the Rails API
-
-        console.log(response.data.message); // Just the message
-        setMessage(response.data.message);
+        setQuestions(response.data.questions)
+        setAnswers(response.data.answers)
       });
-  };
+  }, [])
 
   return (
     <div className="App">
@@ -34,16 +32,16 @@ const App = () => {
         <NavBar/>
         <Switch>
           <Route
-            path="/quiz"
+            path="/quiz/:id"
             render={() => (
                <div style={{
               display: 'flex',
                flexDirection: 'column',
                alignItems: 'center'}}>
-                <Quiz />
+                <Quiz questions={questions} answers={answers}/>
                 {/* <Quiz />  //Frontend Quiz Fetch// OUTDATED// */} 
                 <h1>{message}</h1>
-                <button onClick={fetchData}>Fetch Data</button>{" "}
+                <button >Fetch Data</button>{" "}
                 <User />
              </div>
             )}

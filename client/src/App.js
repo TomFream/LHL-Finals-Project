@@ -17,7 +17,14 @@ const App = () => {
   const [message, setMessage] = useState("Click the button to load data!");
   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
   const [ user, setUser ] = useState({});
-  // console.log("answers & questions", answers, questions);
+  const handleLogin = (data) => {
+    setUser({ user: data });
+    setIsLoggedIn(true);
+  }
+  const handleLogout = () => {
+    setUser({});
+    setIsLoggedIn(false);
+  }
 
   return (
     <div className="App">
@@ -25,7 +32,7 @@ const App = () => {
         <NavBar/>
         <Switch>
           <Route path="api/login" />
-          
+          <Route path="api/logout" />
           <Route
             path="/quiz/:id"
             render={() => (

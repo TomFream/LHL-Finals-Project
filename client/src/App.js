@@ -12,6 +12,8 @@ import Main from "./components/Main";
 import User from "./components/User";
 import Quiz from "./components/Quiz";
 import NavBar from "./components/NavBar";
+import SideBar from "./components/SideBar";
+
 
 const App = () => {
   const [message, setMessage] = useState("Click the button to load data!");

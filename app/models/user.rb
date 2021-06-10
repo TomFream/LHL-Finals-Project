@@ -4,4 +4,5 @@ class User < ApplicationRecord
   #add validation
   validates_presence_of :name
   validates_uniqueness_of :name
+  validates :name, length: { minimum: 4 }
 end

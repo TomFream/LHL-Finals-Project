@@ -17,6 +17,7 @@ const App = () => {
   const [message, setMessage] = useState("Click the button to load data!");
   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
   const [ user, setUser ] = useState({});
+  
   const handleLogin = (data) => {
     setUser({ user: data });
     setIsLoggedIn(true);

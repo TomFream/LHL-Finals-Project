@@ -58,8 +58,8 @@ export default function QuizTable(props) {
     setError(false);
   };
 
-  // console.log("Questions test: ", props.questions); 
-  // console.log("Answers test: ", props.answers); 
+  // console.log("Questions test: ", props.questions);
+  // console.log("Answers test: ", props.answers);
   // console.log("Answer[0]: ", props.answers[0]);
 
   const questions = props.questions;
@@ -81,10 +81,14 @@ export default function QuizTable(props) {
 
   const handleNext = () => {
     setActiveStep((preActiveStep) => preActiveStep + 1);
+    setHelperText("");
+    setError(false);
   };
 
   const handleBack = () => {
     setActiveStep((preActiveStep) => preActiveStep - 1);
+    setHelperText("");
+    setError(false);
   };
 
   const handleSubmit = (event) => {
@@ -110,7 +114,6 @@ export default function QuizTable(props) {
       setError(true);
     }
   };
-
 
   return (
     <Card className={classes.root}>

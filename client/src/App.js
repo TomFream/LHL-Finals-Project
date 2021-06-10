@@ -15,7 +15,8 @@ import NavBar from "./components/NavBar";
 
 const App = () => {
   const [message, setMessage] = useState("Click the button to load data!");
-
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+  const [ user, setUser ] = useState({});
   // console.log("answers & questions", answers, questions);
 
   return (
@@ -23,6 +24,8 @@ const App = () => {
       <Router>
         <NavBar/>
         <Switch>
+          <Route path="api/login" />
+          
           <Route
             path="/quiz/:id"
             render={() => (

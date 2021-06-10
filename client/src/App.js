@@ -17,18 +17,8 @@ import SideBar from "./components/SideBar";
 
 const App = () => {
   const [message, setMessage] = useState("Click the button to load data!");
-  const [questions, setQuestions] = useState(null)
-  const [answers, setAnswers] = useState(null)
-  useEffect(() => {
-    axios
-      .get("/api/data")
-      .then((response) => {
-        setQuestions(response.data.questions)
-        setAnswers(response.data.answers)
-      });
-  }, [])
 
-  console.log("answers & questions", answers, questions);
+  // console.log("answers & questions", answers, questions);
 
   return (
     <div className="App">
@@ -42,7 +32,7 @@ const App = () => {
               display: 'flex',
                flexDirection: 'column',
                alignItems: 'center'}}>
-                <Quiz questions={questions} answers={answers}/>
+                <Quiz />
                 {/* <Quiz />  //Frontend Quiz Fetch// OUTDATED// */} 
                 <h1>{message}</h1>
                 <button >Fetch Data</button>{" "}

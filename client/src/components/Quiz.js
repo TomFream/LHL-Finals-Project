@@ -1,12 +1,16 @@
-import React from "react";
+import React from 'react';
 import QuizTable from "./QuizTable";
+import useQuizData from "./hooks/useQuizData";
 
-export default function Quiz(props) {
-  console.log("quiz",props);
+export default function Quiz() {
+ const {questions, answers } = useQuizData();
 
   return (
     <>
-    <QuizTable questions={props.questions} answers={props.answers}/>
+      {(questions && answers) && (
+        <QuizTable questions={questions} answers={answers}/>
+      )}
     </> 
   );
 }
+

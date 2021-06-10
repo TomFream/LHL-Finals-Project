@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {useParams} from 'react-router-dom';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -8,7 +9,6 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormLabel from "@material-ui/core/FormLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-//card
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -18,6 +18,7 @@ import MobileStepper from "@material-ui/core/MobileStepper";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,14 +59,8 @@ export default function QuizTable(props) {
     setError(false);
   };
 
-  // console.log("Questions test: ", props.questions);
-  // console.log("Answers test: ", props.answers);
-  // console.log("Answer[0]: ", props.answers[0]);
-
   const questions = props.questions;
   const answerOptions = props.answers;
-  // console.log("activeQuestion", activeQuestion);
-  // console.log(answerOptions[activeQuestion]);
 
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -98,11 +93,6 @@ export default function QuizTable(props) {
       setHelperText("Please select an answer.");
       setError(true);
     }
-
-    // console.log("value", typeof value);
-    // console.log("--------",typeof correctOptionObj.answer_option);
-    // console.log("value", value);
-    // console.log("--------", correctOptionObj.answer_option);
 
     if (value === correctOptionObj.answer_option) {
       setHelperText("You got it!");

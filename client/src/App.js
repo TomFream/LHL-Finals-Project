@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import {
@@ -19,12 +19,14 @@ const App = () => {
   const [answers, setAnswers] = useState(null)
   useEffect(() => {
     axios
-      .get("/api/data") // You can simply make your requests to "/api/whatever you want"
+      .get("/api/data")
       .then((response) => {
         setQuestions(response.data.questions)
         setAnswers(response.data.answers)
       });
   }, [])
+
+  console.log("answers & questions", answers, questions);
 
   return (
     <div className="App">

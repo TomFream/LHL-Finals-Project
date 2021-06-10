@@ -76,10 +76,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const cards = [
-  { name: "JavaScript", image: "../../js2.png" },
+  { name: "JavaScript", id: 1, image: "../../js2.png" },
   { name: "React", image: "../../react.png" },
-  { name: "SQL", image: "../../sql.png" },
-  { name: "HTML", image: "../../html.png" },
+  { name: "SQL", id: 3, image: "../../sql.png" },
+  { name: "HTML", id: 2, image: "../../html.png" },
 ];
 
 export default function QuizApp() {
@@ -138,31 +138,33 @@ export default function QuizApp() {
           {/* End hero unit */}
           <Grid container spacing={6}>
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={6}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={card.image}
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {card.name}
-                    </Typography>
-                    {/* <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
-                    </Typography> */}
-                  </CardContent>
-                  <CardActions>
-                    <Button size="md" color={"white"}>
-                      Share
-                    </Button>
-                    <Button size="md" color={"white"}>
-                      Start Quiz
-                    </Button>
-                  </CardActions>
-                </Card>
+              <Grid item key={card} xs={12} sm={6} md={6} onClick={() => console.log("Clicked!", card.name)}>
+                <Link to={`/quiz/${card.id}`}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={card.image}
+                      title="Image title"
+                    />
+                    <CardContent className={classes.cardContent}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {card.name}
+                      </Typography>
+                      {/* <Typography>
+                        This is a media card. You can use this section to describe
+                        the content.
+                      </Typography> */}
+                    </CardContent>
+                    <CardActions>
+                      <Button size="md" color={"white"}>
+                        Share
+                      </Button>
+                      <Button size="md" color={"white"}>
+                        Start Quiz
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Link>
               </Grid>
             ))}
           </Grid>

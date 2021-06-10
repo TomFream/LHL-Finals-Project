@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -19,6 +19,7 @@ import MobileStepper from "@material-ui/core/MobileStepper";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import Axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ErrorRadios() {
+export default function ErrorRadios(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState("");
@@ -85,30 +86,11 @@ export default function ErrorRadios() {
       setError(true);
     }
   };
-
-  const questions = [
-    {
-      id: 1,
-      question: "Inside which HTML element do we put the JavaScript?",
-      category_id: 1,
-      created_at: "2021-06-08T02:35:20.692Z",
-      updated_at: "2021-06-08T02:35:20.692Z",
-    },
-    {
-      id: 2,
-      question: "What is the correct HTML for making a hyperlink?",
-      category_id: 2,
-      created_at: "2021-06-08T02:35:20.701Z",
-      updated_at: "2021-06-08T02:35:20.701Z",
-    },
-    {
-      id: 3,
-      question: "What is the correct HTML for making a text area?",
-      category_id: 2,
-      created_at: "2021-06-08T02:35:20.748Z",
-      updated_at: "2021-06-08T02:35:20.748Z",
-    },
-  ];
+  
+  console.log("Questions test: ", props.questions)
+  console.log("Answers test: ", props.answers)
+  const questions = props.questions;
+  
 
   const answer_options = [
     "Answer_Option1",

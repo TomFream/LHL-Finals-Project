@@ -1,11 +1,11 @@
 import React from "react";
 import QuizTable from "./QuizTable";
 
-export default function Quiz() {
+export default function Quiz(props) {
 
   return (
     <>
-    <QuizTable />
+    <QuizTable questions={props.questions} answers={props.answers}/>
     </> 
   );
 }

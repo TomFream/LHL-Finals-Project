@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do # /api/data
-    get '/data', to: 'tests#index'   #call test controller index method
+    get '/data/:id', to: 'tests#index'   #call test controller index method
 
     resources :playlists
     # resources :answers

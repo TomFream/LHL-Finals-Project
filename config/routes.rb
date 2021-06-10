@@ -8,10 +8,16 @@ Rails.application.routes.draw do
     resources :quiz   #related model??//TODO
     resources :questions, except: [:destroy, :create, :update]
     resources :categories, except: [:destroy, :create, :update]
-    resources :users
+    resources :users, only: [:new, :create, :edit, :update, :show, :destroy]
     resources :answer_options, except: [:destroy, :create, :update]
-  end
 
+    get '/login', to: 'session#login'
+    post '/login', to: 'session#create'
+    post '/logout', to: 'session#destroy'
+    get '/logout', to: 'session#destroy'
+    
+  end
+  
   
   get '*path', to: "static_pages#fallback_index_html", constraints: ->(request) do
     !request.xhr? && request.format.html?

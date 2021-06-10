@@ -16,7 +16,7 @@ import NavBar from "./components/NavBar";
 const App = () => {
   const [message, setMessage] = useState("Click the button to load data!");
 
-  console.log("answers & questions", answers, questions);
+  // console.log("answers & questions", answers, questions);
 
   return (
     <div className="App">

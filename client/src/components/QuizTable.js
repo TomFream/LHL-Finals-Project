@@ -18,10 +18,7 @@ import MobileStepper from "@material-ui/core/MobileStepper";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-<<<<<<< HEAD
-import axios from "axios";
-=======
->>>>>>> master
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,37 +53,14 @@ export default function QuizTable(props) {
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState("");
 
-  const [questions, setQuestions] = useState("Initial")
-  const [answers, setAnswers] = useState()
-  
-  const params = useParams()
-  useEffect(() => {
-    axios
-    .get(`/api/data/${params.id}`) // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      setQuestions(response.data.questions)
-      setAnswers(response.data.answers)
-      console.log("API response: ", response)
-    })
-    .catch((error) => {
-      console.log("ERROR: ", error)
-    });
-  }, [])
-
   const handleRadioChange = (event) => {
     setValue(event.target.value);
     setHelperText(" ");
     setError(false);
   };
 
-  // console.log("Questions test: ", props.questions);
-  // console.log("Answers test: ", props.answers);
-  // console.log("Answer[0]: ", props.answers[0]);
-
   const questions = props.questions;
   const answerOptions = props.answers;
-  // console.log("activeQuestion", activeQuestion);
-  // console.log(answerOptions[activeQuestion]);
 
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -120,11 +94,6 @@ export default function QuizTable(props) {
       setError(true);
     }
 
-    // console.log("value", typeof value);
-    // console.log("--------",typeof correctOptionObj.answer_option);
-    // console.log("value", value);
-    // console.log("--------", correctOptionObj.answer_option);
-
     if (value === correctOptionObj.answer_option) {
       setHelperText("You got it!");
       setError(false);
@@ -135,54 +104,6 @@ export default function QuizTable(props) {
       setError(true);
     }
   };
-<<<<<<< HEAD
-  
-  // const questions = props.questions;
-  
-  
-
-  const answer_options = [
-    "Answer_Option1",
-    "Answer_Option2, long long answer long.... testing",
-    "Answer_Option3",
-    "Answer_Option4",
-  ];
-
-  const answersArr = [
-    "Answer_Option1",
-    "Answer_Option2, long long answer long.... testing",
-    "Answer_Option3",
-    "Answer_Option4",
-  ];
-
-  // const answersRandom = answersArr.sort(() => Math.random() - 0.5);
-
-  // let answers;
-  // if (shuffle.checkedA) {
-  //   answers = answersRandom
-  // } else {
-  //   answers = answersArr
-  // }
-  // const shuffleToggle = (answersRandom, answersArr) => {
-  //   if (shuffle.checkedA) {
-  //     return answersRandom;
-  //   } else {
-  //     return answersArr;
-  //   }
-  // }
-
-  const [activeQuestion, setActiveQuestion] = React.useState(0);
-  const numQuestions = questions.length;
-
-  const handleNext = () => {
-    setActiveQuestion((preActiveQuestion) => preActiveQuestion + 1);
-  };
-
-  const handleBack = () => {
-    setActiveQuestion((preActiveQuestion) => preActiveQuestion - 1);
-  };
-=======
->>>>>>> master
 
   return (
     <Card className={classes.root}>

@@ -5,7 +5,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-
 import clsx from "clsx";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
@@ -21,6 +20,11 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./MenuBarList";
 import Main from "./Main";
+
+
+
+//NOTE: Main's parent --> NavBar  --> App.js
+
 
 const drawerWidth = 240;
 

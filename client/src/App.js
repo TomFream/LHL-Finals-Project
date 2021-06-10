@@ -14,7 +14,7 @@ import Quiz from "./components/Quiz";
 import NavBar from "./components/NavBar";
 
 const App = () => {
-  const [message, setMessage] = useState("Click the button to load data!");
+  const [ message, setMessage ] = useState("Click the button to load data!");
   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
   const [ user, setUser ] = useState({});
   
@@ -26,6 +26,18 @@ const App = () => {
     setUser({});
     setIsLoggedIn(false);
   }
+
+  const loginStatus = () => {
+    axios.get('http://localhost:3001/logged_in', {withCredentials: true})    
+      .then(response => {
+        if (response.data.logged_in) {
+          this.handleLogin(response)
+        } else {
+          this.handleLogout()
+        }
+      })
+    .catch(error => console.log('api errors:', error))
+  };
 
   return (
     <div className="App">

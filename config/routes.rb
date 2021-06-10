@@ -8,13 +8,16 @@ Rails.application.routes.draw do
     resources :quiz   #related model??//TODO
     resources :questions, except: [:destroy, :create, :update]
     resources :categories, except: [:destroy, :create, :update]
-    resources :users, only: [:new, :create, :edit, :update, :show, :destroy]
     resources :answer_options, except: [:destroy, :create, :update]
-
+    
     get '/login', to: 'session#login'
     post '/login', to: 'session#create'
     post '/logout', to: 'session#destroy'
+    get '/logged_in', to: 'session#is_logged_in?'
     get '/logout', to: 'session#destroy'
+
+    resources :users, only: [:new, :edit, :update]
+    resources :items, only: [:create, :show, :index, :destroy]
     
   end
   

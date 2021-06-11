@@ -1,31 +1,36 @@
 import React, { useState } from 'react';
-// import TextField from '@material-ui/core/TextField';
-// import Button from '@material-ui/core/Button';
-import { FormControl, Button, TextField } from '@material-ui/core';
-import { ThemeProvider, useTheme } from '@material-ui/styles';
-// import { createMuiTheme } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 
 const LoginForm = () => {
 
-  useState({
-    name: '',
-    email: ''
-  })
+  // const [name, setName] = useState('');
+  // const [password, setPassword] = useState('');
 
-  const theme = useTheme({
-    spacing: '10px',
-    background: 'white',
-    color: 'black'
+  const [ state, setState ] = useState({
+    name: "",
+    password: ""
   });
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+  }
+
+  function handleChange(event) {
+    const value = event.target.value;
+    setState({
+      ...state,
+      [event.target.name]: value
+    });
+  }
+  console.log("This is the name state:", state.name);
+  console.log("This is the password state:", state.password);
   return (
-    <ThemeProvider theme={theme}>
-      <FormControl>
-        <TextField id="nameField" label="Name" variant="outlined" />
-        <TextField id="passwordField" label="Password" variant="outlined" />
-        <Button type="submit" variant="contained" color="primary">Submit</Button>
-      </FormControl>
-    </ThemeProvider>
+    <form onSubmit={handleSubmit}>
+      <TextField id="nameField" label="Name" variant="outlined" margin="dense" name="name" value={state.name} onChange={handleChange} />
+      <TextField type="password" id="passwordField" label="Password" variant="outlined" margin="dense" name="password" value={state.password} onChange={handleChange} />
+      <Button type="submit" variant="contained" color="secondary">Sign In</Button>
+    </form>
   );
 }
 

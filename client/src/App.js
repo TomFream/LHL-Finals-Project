@@ -14,6 +14,7 @@ import Quiz from "./components/Quiz";
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Signup from "./components/SignUp";
+import Main from "./components/Main";
 
 
 const App = () => {

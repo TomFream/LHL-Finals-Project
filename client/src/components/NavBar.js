@@ -22,6 +22,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./MenuBarList";
 import { useStyles } from './Component_Style/NavBar';
 
+import LoginForm from "./LoginForm";
 
 export default function NavBar() {
   const classes = useStyles();
@@ -65,7 +66,7 @@ export default function NavBar() {
           >
             QuizApp
           </Typography>
-
+          <LoginForm />
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />

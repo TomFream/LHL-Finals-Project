@@ -19,6 +19,7 @@ import Paper from "@material-ui/core/Paper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 //Note: QuizTable + Score --> Quiz --> NavBar --> App.js
 
@@ -54,9 +55,13 @@ const useStyles = makeStyles((theme) => ({
 export default function QuizTable(props) {
   const classes = useStyles();
   const theme = useTheme();
+
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState("");
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [score, setScore] = React.useState(0);
+  const [incorrectAnswers, setIncorrectAnswers] = React.useState({});
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
@@ -67,7 +72,6 @@ export default function QuizTable(props) {
   const questions = props.questions;
   const answerOptions = props.answers;
 
-  const [activeStep, setActiveStep] = React.useState(0);
 
   const numQuestions = questions.length;
 
@@ -102,13 +106,22 @@ export default function QuizTable(props) {
     if (value === correctOptionObj.answer_option) {
       setHelperText("You got it!");
       setError(false);
-      console.log("Value: ", value)
-      console.log("Step: ", activeStep)
+      let newScore = score;
+      setScore(newScore += 1);
     }
 
     if (value && value !== correctOptionObj.answer_option) {
       setHelperText("Sorry, wrong answer!");
       setError(true);
+
+      const question_id = questions[activeStep].id;
+    
+      setIncorrectAnswers((prev) => ({ 
+        ...prev,
+        [question_id]: value
+      }));
+
+      console.log("incorrectAnswers object: ", incorrectAnswers)
     }
   };
 
@@ -193,6 +206,15 @@ export default function QuizTable(props) {
                 </Button>
               }
             />
+            <Link to={{
+              pathname:'/results',
+              state:{
+                questions: questions,
+                answers: answerOptions,
+                score: `${score}/${questions.length}`,
+                incorrectAnswers: incorrectAnswers
+              }
+              }}>Results</Link>
           </FormControl>
         </form>
       </CardContent>

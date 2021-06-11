@@ -37,7 +37,7 @@ export default function Score() {
           </Typography>
       {/* <ADD COMPONENT WE WANT /> */}
       {/* number of questions answered correctly / total number of questions*/}
-      <BorderLinearProgress variant="determinate" value={50} />
+      <BorderLinearProgress variant="determinate" value={90} />
     </div>
   );
 }

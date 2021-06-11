@@ -30,6 +30,7 @@ import {
 import User from "./User";
 import Quiz from "./Quiz";
 import UserAccount from "./UserAccount";
+import Results from "./results";
 
 export default function NavBar() {
 
@@ -117,6 +118,7 @@ export default function NavBar() {
                     </div>
                   )}
                 />
+                <Route path="/results" render={() => <Results />} />
                 <Route path="/user/:id" render={() => <UserAccount />} />
                 <Route path="/" exact render={() => <Main />} />
               </Switch>

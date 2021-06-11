@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import QuizTable from "./QuizTable";
 import useQuizData from "./hooks/useQuizData";
 import clsx from "clsx";
@@ -21,23 +21,23 @@ import Link from "@material-ui/core/Link";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./MenuBarList";
-import { useStyles } from './Component_Style/NavBar';
-
+import { useStyles } from "./Component_Style/NavBar";
+import Score from "./Score";
 
 //Note: QuizTable --> Quiz --> App.js
 
 export default function Quiz() {
- const {questions, answers } = useQuizData();
+  const { questions, answers } = useQuizData();
 
- const classes = useStyles();
- const [open, setOpen] = React.useState(true);
- const handleDrawerOpen = () => {
-   setOpen(true);
- };
- const handleDrawerClose = () => {
-   setOpen(false);
- };
- const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>
@@ -100,20 +100,28 @@ export default function Quiz() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
 
-        <Grid item xs={12}>
-    
-      {(questions && answers) && (
-        <QuizTable questions={questions} answers={answers}/>
-      )}
+        <Grid container spacing={3}>
+            <Grid item xs={12} md={8} lg={9}>
+              {/* <Paper className={fixedHeightPaper}> */}
+                {questions && answers && (
+              <QuizTable questions={questions} answers={answers} />
+            )}
+              {/* </Paper> */}
+            </Grid>
+            {/*Score*/}
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}><Score /></Paper>
+            </Grid>
 
-    </Grid>
-        
-        <Box pt={4}></Box>
-      </Container>
-    </main>
-  </div>
+            {/* Extra Component TBD */}
+          <Grid item xs={12}>
+          </Grid>
+            {/* Extra Component TBD */}
+          </Grid>
 
-
+          <Box pt={4}>{/* QuizApp@2021 */}</Box>
+        </Container>
+      </main>
+    </div>
   );
 }
-

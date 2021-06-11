@@ -23,7 +23,7 @@ import { mainListItems, secondaryListItems } from "./MenuBarList";
 import { useStyles } from './Component_Style/NavBar';
 
 
-export default function NavBar() {
+export default function NavBar(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -96,7 +96,7 @@ export default function NavBar() {
         <Container maxWidth="lg" className={classes.container}>
 
             <Grid item xs={12}>
-              <Paper className={classes.paper}><Main /></Paper>
+              <Paper className={classes.paper}><Main loginHelper={props.helperFunction1} logoutHelper={props.helperFunction2} /></Paper>
             </Grid>
         
           <Box pt={4}></Box>

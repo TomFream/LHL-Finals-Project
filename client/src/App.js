@@ -52,10 +52,11 @@ const App = () => {
             <Login />
           </Route>
           <Route exact path="api/logout">
-            <Main />
+            {/* <Main /> */}
           </Route>
           <Route exact path="api/signup">
-            <Signup />
+            <Login />
+            
           </Route>
           <Route
             path="/quiz/:id"
@@ -72,7 +73,7 @@ const App = () => {
              </div>
             )}
           />
-          <Route path="/" exact render={() => <NavBar />} />
+          <Route path="/" exact render={() => <NavBar helperFunction1={handleLogin} helperFunction2={handleLogout} />} />
         </Switch>
       </Router>
     </div>

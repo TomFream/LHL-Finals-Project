@@ -97,6 +97,8 @@ export default function QuizTable(props) {
     if (value === correctOptionObj.answer_option) {
       setHelperText("You got it!");
       setError(false);
+      console.log("Value: ", value)
+      console.log("Step: ", activeStep)
     }
 
     if (value && value !== correctOptionObj.answer_option) {

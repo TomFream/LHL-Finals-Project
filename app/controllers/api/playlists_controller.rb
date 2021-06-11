@@ -3,9 +3,18 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists
   def index
-    @playlists = Playlist.all
+    @playlist = Playlist.find_by(name: params[:playlist_name]).playlsit_questions
+    
+    @questions_ids = [] 
+    @playlist.each do |q|
+      @question_ids.push(p.question_id)
+    }
 
-    render json: @playlists
+    @questions = Question.where(id: => @question_ids)
+
+    render json {
+      questions: @questions
+    }
   end
 
   # GET /playlists/1

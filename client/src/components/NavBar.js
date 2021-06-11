@@ -32,9 +32,11 @@ import Quiz from "./Quiz";
 import UserAccount from "./UserAccount";
 import Results from "./results";
 
+//NOTE: Main --> NavBar  --> App.js
+//Note: QuizTable + Score --> Quiz --> NavBar --> App.js
+//Note: QuizTable + Score + Playlist --> UserAccount --> NavBar --> App.js
+
 export default function NavBar() {
-
-
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {

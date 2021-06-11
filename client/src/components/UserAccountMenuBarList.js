@@ -9,6 +9,8 @@ import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import AccountBoxOutlinedIcon from '@material-ui/icons/AccountBoxOutlined';
+import FiberNewIcon from '@material-ui/icons/FiberNew';
 // import BookmarksOutlinedIcon from '@material-ui/icons/BookmarksOutlined';
 // import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined'; //liked
 

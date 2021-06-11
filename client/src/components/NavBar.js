@@ -81,7 +81,7 @@ export default function NavBar() {
             QuizApp
           </Typography>
           <userContext.Consumer>
-            { (user) => (user) ? <p>{user.name}</p> : <LoginForm user={user} /> }
+            { (value) => (value) ? <p style={{color: 'white'}}>{value.name}</p> : <LoginForm user={value} /> }
           </userContext.Consumer>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">

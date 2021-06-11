@@ -23,7 +23,7 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        <userContext.Provider user={user}>
+        <userContext.Provider value={user}>
           <NavBar /> {/* Moved Route Logic Into NavBar Component */}
         </userContext.Provider>
         {/* <Switch>

@@ -9,7 +9,7 @@ const LoginForm = () => {
     password: ""
   });
 
-  const [ user, setUser ] = useState({});
+  // const [ user, setUser ] = useState({});
 
   // useEffect(() => {
   //   axios.get(`http://localhost:8080/valid-user/${{name: state.name}}`)
@@ -25,7 +25,7 @@ const LoginForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setUser({ name: state.name });
+    // setUser({ name: state.name });
   }
 
   const handleChange = (event) => {

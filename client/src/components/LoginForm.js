@@ -1,33 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import axios from 'axios';
 
 const LoginForm = () => {
-
-  const loginStatus = () => {
-    axios.post('http://localhost:3002/api/login', {...state})
-    .then(response => {
-      if (response.data) {
-        // props.handleLogin(response.data)
-        // this.redirect()
-      } else {
-        // this.setState({
-        //   errors: response.data.errors
-        // })
-        // setErrors(response.data.errors);
-      }
-    })
-    .catch(error => console.log('api errors:', error))
-  }
-
+  
   const [ state, setState ] = useState({
-    name: "",
+    name: "Goku",
     password: ""
   });
 
+  const [ user, setUser ] = useState({});
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/valid-user/${{name: state.name}}`)
+    .then(response => {
+      if (response.data) {
+        // this.redirect()
+        console.log(response.data)
+        setUser({...response.data})
+      }
+    })
+    .catch(error => console.log('api errors:', error))
+  }, [])
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
   }
 
   const handleChange = (event) => {

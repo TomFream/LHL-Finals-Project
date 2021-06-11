@@ -13,6 +13,16 @@ class Api::UsersController < ApplicationController
     render json: @user
   end
 
+  def is_a_user
+    @user = User.where(name: params[:name])
+    puts params(:name)
+    if @user.empty?
+      render json: 'empty'
+    else
+      render json: @user
+    end
+  end
+
   # POST /users
   def create
     @user = User.new(user_params)

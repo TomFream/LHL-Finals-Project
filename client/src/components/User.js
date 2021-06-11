@@ -8,7 +8,7 @@ const User = () => {
 
   useEffect(() => {
     axios
-    .get("/api/users")
+    .get("/api/user/:id")
     .then((response) => {
       // handle success
       console.log("user obj", response.data);

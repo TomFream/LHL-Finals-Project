@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import axios from 'axios';
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   
   const [ state, setState ] = useState({
     name: "",
@@ -26,6 +26,8 @@ const LoginForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // setUser({ name: state.name });
+    props.user.name = state.name;
+    console.log(props.user)
   }
 
   const handleChange = (event) => {

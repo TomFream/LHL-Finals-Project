@@ -47,6 +47,8 @@ export default function UserAccount() {
 }
 
 
+
+
 // import React from "react";
 // import QuizTable from "./QuizTable";
 // import useQuizData from "./hooks/useQuizData";
@@ -150,24 +152,24 @@ export default function UserAccount() {
 //         <div className={classes.appBarSpacer} />
 //         <Container maxWidth="lg" className={classes.container}>
 
-//         <Grid container spacing={3}>
-//             <Grid item xs={12} md={8} lg={9}>
-//               {/* <Paper className={fixedHeightPaper}> */}
-//                 {questions && answers && (
-//               <QuizTable questions={questions} answers={answers} />
-//             )}
-//               {/* </Paper> */}
-//             </Grid>
-//             {/*Score*/}
-//             <Grid item xs={12} md={4} lg={3}>
-//               <Paper className={fixedHeightPaper}><Score /></Paper>
-//             </Grid>
+        // <Grid container spacing={3}>
+        //     <Grid item xs={12} md={8} lg={9}>
+        //       {/* <Paper className={fixedHeightPaper}> */}
+        //         {questions && answers && (
+        //       <QuizTable questions={questions} answers={answers} />
+        //     )}
+        //       {/* </Paper> */}
+        //     </Grid>
+        //     {/*Score*/}
+        //     <Grid item xs={12} md={4} lg={3}>
+        //       <Paper className={fixedHeightPaper}><Score /></Paper>
+        //     </Grid>
 
-//             {/* Extra Component TBD */}
-//           <Grid item xs={12}>
-//           </Grid>
-//             {/* Extra Component TBD */}
-//           </Grid>
+        //     {/* Extra Component TBD */}
+        //   <Grid item xs={12}>
+        //   </Grid>
+        //     {/* Extra Component TBD */}
+        //   </Grid>
 
 //           <Box pt={4}>{/* QuizApp@2021 */}</Box>
 //         </Container>

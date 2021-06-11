@@ -23,6 +23,7 @@ import { mainListItems, secondaryListItems } from "./MenuBarList";
 import { useStyles } from './Component_Style/NavBar';
 
 import LoginForm from "./LoginForm";
+import { userContext } from "./hooks/userContext";
 
 import {
   BrowserRouter as Router,
@@ -48,13 +49,14 @@ export default function NavBar() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
+
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="absolute"
         style={{ background: "#2B2C3B" }}
         className={clsx(classes.appBar, open && classes.appBarShift)}
-      >
+        >
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -62,10 +64,10 @@ export default function NavBar() {
             className={clsx(
               classes.menuButton,
               open && classes.menuButtonHidden
-            )}
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-          >
+              )}
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              >
             <MenuIcon />
           </IconButton>
           {/* <Typography variant="h6" color="inherit" noWrap> */}
@@ -75,10 +77,12 @@ export default function NavBar() {
             color="inherit"
             noWrap
             className={classes.title}
-          >
+            >
             QuizApp
           </Typography>
-          <LoginForm />
+          <userContext.Consumer>
+            { (user) => (user) ? <p>{user.name}</p> : <LoginForm user={user} /> }
+          </userContext.Consumer>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />

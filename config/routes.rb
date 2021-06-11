@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do # /api/data
     get '/data/:id', to: 'tests#index'   #call test controller index method
-    get '/valid-user/:name', to: 'users#is_a_user'
+    # get '/valid-user/:name', to: 'users#is_a_user'
     resources :playlists
     # resources :answers
     resources :quiz   #related model??//TODO

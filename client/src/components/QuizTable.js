@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {useParams} from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -18,24 +18,23 @@ import MobileStepper from "@material-ui/core/MobileStepper";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import axios from 'axios';
-
+import axios from "axios";
 
 //Note: QuizTable --> Quiz --> App.js
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "lavender",
-    width: "100%",
-    maxWidth: 800,
+    // width: "1000px",
+    maxWidth: "950px",
+    minHeight: "400px",
     flexGrow: 5,
   },
   formControl: {
-    margin: theme.spacing(3),
+    margin: theme.spacing(5, 5, 0, 5),
   },
   button: {
-    margin: theme.spacing(1, 1, 0, 0),
+    margin: theme.spacing(5, 5, 0, 5),
     width: "200px",
     justifyContent: "center",
     alignItems: "center",
@@ -44,6 +43,8 @@ const useStyles = makeStyles((theme) => ({
     borderStyle: "solid",
     borderWidth: "1px",
     borderColor: "black",
+    maxWidth: "950px",
+    minHeight: "400px",
   },
   label: {
     fontFamily: "Roboto",

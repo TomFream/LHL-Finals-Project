@@ -17,6 +17,8 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
 
+//NOTE: Main's parent --> NavBar  --> App.js
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">

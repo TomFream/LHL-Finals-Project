@@ -7,13 +7,14 @@ import {
   Switch,
   // Redirect,
 } from "react-router-dom";
-import Main from "./components/Main";
+// import Main from "./components/Main";
 // import Quiz from "./components/QuizAPIFetch(OLD)";
 import User from "./components/User";
 import Quiz from "./components/Quiz";
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Signup from "./components/SignUp";
+
 
 const App = () => {
   const [ message, setMessage ] = useState("Click the button to load data!");
@@ -44,7 +45,7 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        <NavBar/>
+        {/* <NavBar/> */}
         <Switch>
           <Route exact path="api/login">
             <Login />
@@ -70,7 +71,7 @@ const App = () => {
              </div>
             )}
           />
-          <Route path="/" exact render={() => <Main />} />
+          <Route path="/" exact render={() => <NavBar />} />
         </Switch>
       </Router>
     </div>

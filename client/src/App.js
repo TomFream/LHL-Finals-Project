@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import {
@@ -12,6 +12,8 @@ import Main from "./components/Main";
 import User from "./components/User";
 import Quiz from "./components/Quiz";
 import NavBar from "./components/NavBar";
+import Login from "./components/Login";
+import Signup from "./components/SignUp";
 
 const App = () => {
   const [ message, setMessage ] = useState("Click the button to load data!");
@@ -44,8 +46,15 @@ const App = () => {
       <Router>
         <NavBar/>
         <Switch>
-          <Route path="api/login" />
-          <Route path="api/logout" />
+          <Route exact path="api/login">
+            <Login />
+          </Route>
+          <Route exact path="api/logout">
+            <Main />
+          </Route>
+          <Route exact path="api/signup">
+            <Signup />
+          </Route>
           <Route
             path="/quiz/:id"
             render={() => (

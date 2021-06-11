@@ -116,9 +116,9 @@ export default function QuizApp() {
             <div className={classes.heroButtons}>
               <Grid container spacing={4} justify="center">
                 <Grid item>
-                  <Button variant="outlined" color="primary">
-                    SIGN UP
-                  </Button>
+                  {/* <Button variant="outlined" color="primary"> */}
+                  <Link to='/api/signup'>Sign Up</Link>
+                  {/* </Button> */}
                 </Grid>
                 <Grid item>
                   {/* Quiz Link */}

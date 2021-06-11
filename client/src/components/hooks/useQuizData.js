@@ -9,7 +9,7 @@ export default function useQuizData() {
   
   useEffect(() => {
     axios
-    .get(`/api/data/${params.id}`)
+    .get(`/api/tests/${params.id}`)
     .then((response) => {
       setQuestions(response.data.questions)
       setAnswers(response.data.answers)
@@ -19,6 +19,17 @@ export default function useQuizData() {
       console.log("ERROR: ", error)
     });
   }, [])
+
+  // useEffect(() => {
+  //   axios
+  //   .get(`/api/data/playlists/test`)
+  //   .then((response) => {
+  //     console.log("API response: ", response)
+  //   })
+  //   .catch((error) => {
+  //     console.log("ERROR: ", error)
+  //   });
+  // }, [])
   
   return {questions, answers}
 }

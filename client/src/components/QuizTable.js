@@ -20,7 +20,7 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import axios from "axios";
 
-//Note: QuizTable --> Quiz --> App.js
+//Note: QuizTable + Score --> Quiz --> NavBar --> App.js
 
 const useStyles = makeStyles((theme) => ({
   root: {

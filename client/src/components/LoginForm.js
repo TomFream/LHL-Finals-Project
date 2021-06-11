@@ -1,10 +1,24 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@material-ui/core';
+import axios from 'axios';
 
 const LoginForm = () => {
 
-  // const [name, setName] = useState('');
-  // const [password, setPassword] = useState('');
+  const loginStatus = () => {
+    axios.post('http://localhost:3002/api/login', {...state})
+    .then(response => {
+      if (response.data) {
+        // props.handleLogin(response.data)
+        // this.redirect()
+      } else {
+        // this.setState({
+        //   errors: response.data.errors
+        // })
+        // setErrors(response.data.errors);
+      }
+    })
+    .catch(error => console.log('api errors:', error))
+  }
 
   const [ state, setState ] = useState({
     name: "",
@@ -16,15 +30,14 @@ const LoginForm = () => {
 
   }
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     const value = event.target.value;
     setState({
       ...state,
       [event.target.name]: value
     });
   }
-  console.log("This is the name state:", state.name);
-  console.log("This is the password state:", state.password);
+
   return (
     <form onSubmit={handleSubmit}>
       <TextField id="nameField" label="Name" variant="outlined" margin="dense" name="name" value={state.name} onChange={handleChange} />

@@ -27,10 +27,7 @@ const App = () => {
           <Route
             path="/quiz/:id"
             render={() => (
-               <div style={{
-              display: 'flex',
-               flexDirection: 'column',
-               alignItems: 'center'}}>
+               <div>
                 <Quiz />
                 {/* <Quiz />  //Frontend Quiz Fetch// OUTDATED// */} 
                 <h1>{message}</h1>

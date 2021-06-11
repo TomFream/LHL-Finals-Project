@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-
 const User = () => {
-  //const user = [];
-
   const [users, setUser] = useState([])
 
   useEffect(() => {
@@ -15,7 +12,6 @@ const User = () => {
       console.log("user obj", response.data);
       setUser(response.data);   
     });
-
   }, []);
 
   console.log("users", users);

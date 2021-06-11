@@ -12,6 +12,7 @@ import {
 import User from "./components/User";
 import Quiz from "./components/Quiz";
 import NavBar from "./components/NavBar";
+import UserAccount from "./components/UserAccount";
 
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
              </div>
             )}
           />
+          <Route path="/user/:id" render={() => <UserAccount />} />
           <Route path="/" exact render={() => <NavBar />} />
         </Switch>
       </Router>

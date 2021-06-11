@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+//Fetch User Info from Backend
+
 const User = () => {
   const [users, setUser] = useState([])
 

@@ -20,10 +20,20 @@ import Link from "@material-ui/core/Link";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./MenuBarList";
-import { useStyles } from './Component_Style/NavBar';
-
+import { useStyles } from "./Component_Style/NavBar";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  // Redirect,
+} from "react-router-dom";
+import User from "./User";
+import Quiz from "./Quiz";
+import UserAccount from "./UserAccount";
 
 export default function NavBar() {
+
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -94,12 +104,25 @@ export default function NavBar() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
+          <Grid item xs={12}>
+              <Switch>
+                <Route
+                  path="/quiz/:id"
+                  render={() => (
+                    <div>
+                      <Quiz />
+                      {/* <Quiz />  //Frontend Quiz Fetch// OUTDATED// */}
+                      {/* <h1>{message}</h1> */}
+                      {/* <button>Fetch Data</button> <User /> */}
+                    </div>
+                  )}
+                />
+                <Route path="/user/:id" render={() => <UserAccount />} />
+                <Route path="/" exact render={() => <Main />} />
+              </Switch>
+          </Grid>
 
-            <Grid item xs={12}>
-              <Paper className={classes.paper}><Main /></Paper>
-            </Grid>
-        
-          <Box pt={4}></Box>
+          <Box pt={4}>{/* QuizApp@2021 */}</Box>
         </Container>
       </main>
     </div>

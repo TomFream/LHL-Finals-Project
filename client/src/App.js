@@ -13,21 +13,20 @@ import {
 // import Quiz from "./components/Quiz";
 // import UserAccount from "./components/UserAccount";
 import NavBar from "./components/NavBar";
-import { userContext } from "./components/hooks/userContext"
-import LoginForm from "./components/LoginForm";
+// import { userContext } from "./components/hooks/userContext"
+import { UserProvider } from "./components/UserContext";
 
 const App = () => {
   // const [message, setMessage] = useState("Click the button to load data!");
-  const [ user, setUser ] = useState({});
+  // const [ user, setUser ] = useState({});
   // console.log("answers & questions", answers, questions);
-  console.log("user context value:", user)
+  // console.log("user context value:", user)
   return (
     <div className="App">
       <Router>
-        <userContext.Provider value={user}>
+        <UserProvider>
           <NavBar /> {/* Moved Route Logic Into NavBar Component */}
-          { (user.name) ? <p>Hello, {user.name}</p> : <LoginForm setUser={setUser} /> }
-        </userContext.Provider>
+        </UserProvider>
         {/* <Switch>
           <Route
             path="/quiz/:id"

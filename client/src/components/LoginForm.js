@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Button, TextField } from '@material-ui/core';
+import { UserContext } from './UserContext';
 // import axios from 'axios';
 // import useUserObj from './hooks/useUserObj';
 
 const LoginForm = (props) => {
   
-  // const [ user, setUser ] = useUserObj();
+  const [ user, setUser ] = useContext(UserContext)
   const [ state, setState ] = React.useState({ name: '', password: '' });
   // const [ switcher, setSwitcher ] = React.useState(true);
   
@@ -19,11 +20,11 @@ const LoginForm = (props) => {
 
   useEffect(() => {
     // setUser(prev => prev.name = state.name);
-  }, [props.setUser])
+  }, [setUser])
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.setUser(prev => prev.name = state.name);
+    setUser(prev => prev.name = state.name);
     // setterFunction(switcher);
   }
   

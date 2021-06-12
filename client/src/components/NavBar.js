@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useContext } from "react";
 import Main from "./Main";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -22,9 +22,9 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./MenuBarList";
 import { useStyles } from './Component_Style/NavBar';
 
-// import LoginForm from "./LoginForm";
-// import { userContext } from "./hooks/userContext";
-import useUserObj from "./hooks/useUserObj";
+import LoginForm from "./LoginForm";
+import { UserContext } from "./UserContext";
+// import useUserObj from "./hooks/useUserObj";
 
 import {
   BrowserRouter as Router,
@@ -42,7 +42,8 @@ import Results from "./results";
 //Note: QuizTable + Score + Playlist --> UserAccount --> NavBar --> App.js
 
 export default function NavBar() {
-  const [ user, setUser ] = useUserObj();
+  const [ user, setUser ] = useContext(UserContext);
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -85,7 +86,7 @@ export default function NavBar() {
             >
             QuizApp
           </Typography>
-          {/* { (user.name) ? <p>{user.name}</p> : <LoginForm setUser={setUser} /> } */}
+          { (user.name) ? <p>{user.name}</p> : <LoginForm setUser={setUser} /> }
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />

@@ -21,11 +21,13 @@ class Api::PlaylistsController < ApplicationController
   def show
     @playlist = Playlist.find_by(name: params[:playlist_name]).playlist_questions
     
-    # @questions_ids = @playlist.map{|q|
-    #   Question.find_by_id(q.question_id)
-    # }
+    @question_ids = [] 
+    @playlist.each do |question| 
+      @question_ids.push(question.question_id)
+    end
 
-    @playlist_questions = Question.where(id: [4,5,6,7,8,9,10])
+
+    @playlist_questions = Question.where(id: @question_ids)
     @playlist_answers = @playlist_questions.map{|question|
       answerArr = []
       AnswerOption.where(question_id: question.id).each do |a|
@@ -35,6 +37,7 @@ class Api::PlaylistsController < ApplicationController
     }
     render :json => {
       questions: @playlist_questions,
+      # questions: @question_ids,
       answers: @playlist_answers
     }
   end

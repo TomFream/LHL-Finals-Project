@@ -72,7 +72,7 @@ export default function Playlist() {
                 <TableCell>{"temp"}</TableCell>
                 <TableCell>
                   <Link to={{
-                    pathname: `/quiz/${row.name}`,
+                    pathname: `playlists/quiz/${row.name}`,
                     state: {
                       is_playlist: true
                     }

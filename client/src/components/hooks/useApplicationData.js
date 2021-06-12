@@ -30,7 +30,7 @@ function getPlaylistQuizData() {
 
   useEffect(() => {
     axios
-    .get(`/api/playlists/${params.id}`)
+    .get(`/api/playlists/${params.playlist_name}`)
     .then((response) => {
       console.log("API response: ", response)
       setQuestions(response.data.questions)

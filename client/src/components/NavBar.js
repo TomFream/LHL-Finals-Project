@@ -31,8 +31,8 @@ import User from "./User";
 import Quiz from "./Quiz";
 import UserAccount from "./UserAccount";
 import Results from "./results";
-import Playlist from "./Playlist"
-
+import Playlist from "./Playlist";
+import PlaylistQuiz from "./PlaylistQuiz";
 //NOTE: Main --> NavBar  --> App.js
 //Note: QuizTable + Score --> Quiz --> NavBar --> App.js
 //Note: QuizTable + Score + Playlist --> UserAccount --> NavBar --> App.js
@@ -122,6 +122,7 @@ export default function NavBar() {
                   )}
                 />
                 <Route path="/results" render={() => <Results />} />
+                <Route path="/playlists/quiz/:playlist_name" render={() => <PlaylistQuiz />} />
                 <Route path="/playlists" render={() => <Playlist />} />
                 <Route path="/user/:id" render={() => <UserAccount />} />
                 <Route path="/" exact render={() => <Main />} />

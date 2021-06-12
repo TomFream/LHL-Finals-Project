@@ -4,24 +4,6 @@ import axios from 'axios';
 
 const LoginForm = (props) => {
   
-  const [ state, setState ] = useState({
-    name: "",
-    password: ""
-  });
-
-  // const [ user, setUser ] = useState({});
-
-  // useEffect(() => {
-  //   axios.get(`http://localhost:8080/valid-user/${{name: state.name}}`)
-  //   .then(response => {
-  //     if (response.data) {
-  //       // this.redirect()
-  //       console.log(response.data)
-  //       setUser({...response.data})
-  //     }
-  //   })
-  //   .catch(error => console.log('api errors:', error))
-  // }, [])
 
   const handleSubmit = (event) => {
     event.preventDefault();

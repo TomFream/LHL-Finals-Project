@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 export const mainListItems = (
   <div>
-    <Link to="/user/1" style={{ textDecoration: "none", color: "#000000DE"}}>
+    <Link to="/user/1" style={{ textDecoration: "none", color: "#000000DE" }}>
       <ListItem button>
         <ListItemIcon>
           <AccountBoxOutlinedIcon />

@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 export const mainListItems = (
   <div>
-    <Link to="/user/1" style={{ textDecoration: "none", color: "white" }}>
+    <Link to="/user/1" style={{ textDecoration: "none", color: "#000000DE"}}>
       <ListItem button>
         <ListItemIcon>
           <AccountBoxOutlinedIcon />
@@ -48,19 +48,19 @@ export const mainListItems = (
 export const secondaryListItems = (
   <div>
     <ListSubheader inset>Popular</ListSubheader>
-    <Link to="/quiz/1" style={{ textDecoration: "none", color: "white" }}>
+    <Link to="/quiz/1" style={{ textDecoration: "none", color: "#000000DE" }}>
       <ListItem button>
         <ListItemIcon></ListItemIcon>
         <ListItemText primary="JavaScript" />
       </ListItem>
     </Link>
-    <Link to="/quiz/2" style={{ textDecoration: "none", color: "white" }}>
+    <Link to="/quiz/2" style={{ textDecoration: "none", color: "#000000DE" }}>
       <ListItem button>
         <ListItemIcon></ListItemIcon>
         <ListItemText primary="HTML" />
       </ListItem>
     </Link>
-    <Link to="/quiz/3" style={{ textDecoration: "none", color: "white" }}>
+    <Link to="/quiz/3" style={{ textDecoration: "none", color: "#000000DE" }}>
       <ListItem button>
         <ListItemIcon></ListItemIcon>
         <ListItemText primary="SQL" />

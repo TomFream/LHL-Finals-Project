@@ -7,7 +7,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Component_Style/Title';
-
+import {useEffect, useState} from 'react';
+import axios from 'axios';
+import { Button } from '@material-ui/core';
 
 //Note: QuizTable + Score + Playlist --> UserAccount --> NavBar --> App.js
 
@@ -16,13 +18,13 @@ function createData(id, category, date, score) {
   return { id, category, date, score};
 }
 
-const rows = [
-  createData(0, 'JavaScript', '11 Jun, 2021', '100%'),
-  createData(1, 'HTML', '11 Jun, 2021', '90%'),
-  createData(2, 'SQL', '11 Jun, 2021', '80%'),
-  createData(3, 'JavaScript', '11 Jun, 2021', '95%'),
-  createData(4, 'JavaScript', '11 Jun, 2021','85%'),
-];
+// const rows = [
+//   // createData(0, 'JavaScript', '11 Jun, 2021', '100%'),
+//   // createData(1, 'HTML', '11 Jun, 2021', '90%'),
+//   // createData(2, 'SQL', '11 Jun, 2021', '80%'),
+//   // createData(3, 'JavaScript', '11 Jun, 2021', '95%'),
+//   // createData(4, 'JavaScript', '11 Jun, 2021','85%'),
+// ];
 
 function preventDefault(event) {
   event.preventDefault();
@@ -36,26 +38,47 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Playlist() {
   const classes = useStyles();
+  const [playlists, setPlaylists] = useState(null);
+
+  useEffect(() => {
+    axios  
+    .get("/api/playlists")
+    .then((response) => {
+      console.log("Playlist api response: ", response.data.playlists)
+      setPlaylists(response.data.playlists)
+      console.log("playlist state: ", playlists)
+    })
+    .catch((err) => {
+      console.log("api error: ", err)
+    })
+  }, [])
+
   return (
     <React.Fragment>
-      <Title>Playlist</Title>
+      <Title>Playlists</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Category</TableCell>
+            <TableCell>Playlist</TableCell>
             <TableCell>Date</TableCell>
-            <TableCell>Score</TableCell>
+            <TableCell>Last Score</TableCell>
+            <TableCell></TableCell> 
           </TableRow>
         </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell align="left">{row.category}</TableCell>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.score}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+        {playlists && (
+          <TableBody>
+            {playlists.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell align="left">{row.name}</TableCell>
+                <TableCell>{row.created_at}</TableCell>
+                <TableCell>{"temp"}</TableCell>
+                <TableCell>
+                  <Button>Take</Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        )}
       </Table>
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>

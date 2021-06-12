@@ -3,15 +3,16 @@ Rails.application.routes.draw do
   namespace :api do # /api/data
     get '/tests/:id', to: 'tests#index'   #call test controller index method
     
-    get '/data/playlist/:playlist_name', to: 'playlists#index'
-    resources :playlists
-    # resources :answers
-    resources :quiz   #related model??//TODO
-    resources :questions, except: [:destroy, :create, :update]
-    resources :categories, except: [:destroy, :create, :update]
-    resources :users
-    resources :answer_options, except: [:destroy, :create, :update]
+    get '/playlists', to: 'playlists#index'
   end
+  #   resources :playlists
+  #   # resources :answers
+  #   resources :quiz   #related model??//TODO
+  #   resources :questions, except: [:destroy, :create, :update]
+  #   resources :categories, except: [:destroy, :create, :update]
+  #   resources :users
+  #   resources :answer_options, except: [:destroy, :create, :update]
+  # end
 
   
   get '*path', to: "static_pages#fallback_index_html", constraints: ->(request) do

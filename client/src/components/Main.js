@@ -139,6 +139,11 @@ export default function QuizApp() {
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
+          <Link to={"/playlists"}>
+            <Card className={classes.card}> 
+              <h3> Test! </h3>
+            </Card>
+          </Link>
           <Grid container spacing={6}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={6} onClick={() => console.log("Clicked!", card.name)}>

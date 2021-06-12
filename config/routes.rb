@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do # /api/data
     get '/tests/:id', to: 'tests#index'   #call test controller index method
     
+    get '/playlists/:playlist_name', to: 'playlists#show'
     get '/playlists', to: 'playlists#index'
   end
   #   resources :playlists

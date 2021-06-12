@@ -1,6 +1,6 @@
 import React from "react";
 import QuizTable from "./QuizTable";
-import useQuizData from "./hooks/useQuizData";
+import { getQuizData } from "./hooks/useApplicationData";
 import clsx from "clsx";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -14,7 +14,7 @@ import { SchoolRounded } from "@material-ui/icons";
 //Note: QuizTable + Score + Playlist --> UserAccount --> NavBar --> App.js
 
 export default function UserAccount() {
-  const { questions, answers } = useQuizData(); ///
+  const { questions, answers } = getQuizData(); ///
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 

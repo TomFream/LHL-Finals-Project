@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from '@material-ui/core/Link';
+import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -44,9 +44,7 @@ export default function Playlist() {
     axios  
     .get("/api/playlists")
     .then((response) => {
-      console.log("Playlist api response: ", response.data.playlists)
       setPlaylists(response.data.playlists)
-      console.log("playlist state: ", playlists)
     })
     .catch((err) => {
       console.log("api error: ", err)
@@ -60,7 +58,7 @@ export default function Playlist() {
         <TableHead>
           <TableRow>
             <TableCell>Playlist</TableCell>
-            <TableCell>Date</TableCell>
+            <TableCell>Date Created</TableCell>
             <TableCell>Last Score</TableCell>
             <TableCell></TableCell> 
           </TableRow>
@@ -70,10 +68,17 @@ export default function Playlist() {
             {playlists.map((row) => (
               <TableRow key={row.id}>
                 <TableCell align="left">{row.name}</TableCell>
-                <TableCell>{row.created_at}</TableCell>
+                <TableCell>{row.created_at.split('T')[0]}</TableCell>
                 <TableCell>{"temp"}</TableCell>
                 <TableCell>
-                  <Button>Take</Button>
+                  <Link to={{
+                    pathname: `/quiz/${row.name}`,
+                    state: {
+                      is_playlist: true
+                    }
+                  }}>
+                    <Button variant="outlined" color="primary">Test</Button>
+                  </Link>
                 </TableCell>
               </TableRow>
             ))}

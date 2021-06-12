@@ -1,17 +1,20 @@
 import React from "react";
 import QuizTable from "./QuizTable";
-import useQuizData from "./hooks/useQuizData";
+import {getQuizData, getPlaylistQuizData} from "./hooks/useApplicationData";
 import clsx from "clsx";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { useStyles } from "./Component_Style/NavBar";
 import Score from "./Score";
+import { useLocation } from "react-router-dom";
 
 //Note: QuizTable + Score --> Quiz --> NavBar --> App.js
 
 export default function Quiz() {
-  const { questions, answers } = useQuizData();
-
+  const location = useLocation();
+  console.log("Props: ", location.state)
+  const { questions, answers } = location.state.is_playlist ? getPlaylistQuizData() : getQuizData();
+  console.log("Questions/answers: ", questions, answers)
   const classes = useStyles();
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);

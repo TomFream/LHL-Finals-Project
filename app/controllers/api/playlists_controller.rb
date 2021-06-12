@@ -17,10 +17,27 @@ class Api::PlaylistsController < ApplicationController
     }
   end
 
-#   # GET /playlists/1
-#   def show
-#     render json: @playlist
-#   end
+  # GET /playlists/1
+  def show
+    @playlist = Playlist.find_by(name: params[:playlist_name]).playlist_questions
+    
+    # @questions_ids = @playlist.map{|q|
+    #   Question.find_by_id(q.question_id)
+    # }
+
+    @playlist_questions = Question.where(id: [4,5,6,7,8,9,10])
+    @playlist_answers = @playlist_questions.map{|question|
+      answerArr = []
+      AnswerOption.where(question_id: question.id).each do |a|
+        answerArr.push(a)
+      end
+      answerArr.shuffle
+    }
+    render :json => {
+      questions: @playlist_questions,
+      answers: @playlist_answers
+    }
+  end
 
 #   # POST /playlists
 #   def create

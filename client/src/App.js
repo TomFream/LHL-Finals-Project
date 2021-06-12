@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 // import axios from "axios";
 import "./App.css";
 import {
@@ -19,7 +19,7 @@ const App = () => {
   // const [message, setMessage] = useState("Click the button to load data!");
   const [ user, setUser ] = useState({});
   // console.log("answers & questions", answers, questions);
-  
+  console.log("user context value:", user)
   return (
     <div className="App">
       <Router>

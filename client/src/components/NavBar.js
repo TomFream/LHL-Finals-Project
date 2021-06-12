@@ -23,7 +23,8 @@ import { mainListItems, secondaryListItems } from "./MenuBarList";
 import { useStyles } from './Component_Style/NavBar';
 
 import LoginForm from "./LoginForm";
-import { userContext } from "./hooks/userContext";
+// import { userContext } from "./hooks/userContext";
+import useUserObj from "./hooks/useUserObj";
 
 import {
   BrowserRouter as Router,
@@ -41,6 +42,7 @@ import Results from "./results";
 //Note: QuizTable + Score + Playlist --> UserAccount --> NavBar --> App.js
 
 export default function NavBar() {
+  const [ user, setUser ] = useUserObj();
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -83,9 +85,7 @@ export default function NavBar() {
             >
             QuizApp
           </Typography>
-          <userContext.Consumer>
-            { (value) => (value.name) ? <p>{value.name}</p> : <LoginForm user={value} /> }
-          </userContext.Consumer>
+          {/* { (user.name) ? <p>{user.name}</p> : <LoginForm setUser={setUser} /> } */}
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />

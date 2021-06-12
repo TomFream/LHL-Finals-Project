@@ -14,6 +14,7 @@ import {
 // import UserAccount from "./components/UserAccount";
 import NavBar from "./components/NavBar";
 import { userContext } from "./components/hooks/userContext"
+import LoginForm from "./components/LoginForm";
 
 const App = () => {
   // const [message, setMessage] = useState("Click the button to load data!");
@@ -25,6 +26,7 @@ const App = () => {
       <Router>
         <userContext.Provider value={user}>
           <NavBar /> {/* Moved Route Logic Into NavBar Component */}
+          { (user.name) ? <p>Hello, {user.name}</p> : <LoginForm setUser={setUser} /> }
         </userContext.Provider>
         {/* <Switch>
           <Route

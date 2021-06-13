@@ -16,7 +16,8 @@ const UserQuizStatsGeneral = () => {
           ["Incorrect", 3]
         ]}
         options={{
-          title: "Your Performance"
+          title: "Your Performance",
+          is3D: true,
         }}
       />
     

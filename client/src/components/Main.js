@@ -18,6 +18,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 
 import { UserContext } from './UserContext';
 import LoginForm from "./LoginForm";
+import UserQuizStatsGeneral from "./UserQuizStatsGeneral";
 
 
 //NOTE: Main's parent --> NavBar  --> App.js
@@ -113,7 +114,7 @@ export default function QuizApp() {
             <div className={classes.heroButtons}>
               {user.name ? 
                 <Grid item>
-                  <h3>Imagine pie charts that can carousel into graph charts</h3>
+                  <UserQuizStatsGeneral />
                   <Grid container spacing={3} justify="center">
                     <Grid item>
                       <Link

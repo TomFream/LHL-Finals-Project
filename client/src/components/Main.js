@@ -111,19 +111,25 @@ export default function QuizApp() {
             </Typography>}
             {user.name ? <h2>Here are some cool stats.</h2> : <LoginForm /> }
             <div className={classes.heroButtons}>
-              {user.name ? <h3>Imagine pie charts that can carousel into graph charts</h3> :<Grid container spacing={3} justify="center">
+              {user.name ? 
                 <Grid item>
-                  {/* Quiz Link */}
-                  <Link
-                    to="/quiz"
-                    style={{ textDecoration: "none", color: "blue" }}
-                  >
-                    <Button variant="outlined" color="secondary">
-                      QUIZ GAME
-                    </Button>
-                  </Link>
+                  <h3>Imagine pie charts that can carousel into graph charts</h3>
+                  <Grid container spacing={3} justify="center">
+                    <Grid item>
+                      <Link
+                        to="/quiz"
+                        style={{ textDecoration: "none", color: "blue" }}
+                      >
+                        <Button variant="outlined" color="secondary">
+                          QUIZ GAME
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item>
+                      <Button onClick={() => {setUser({name: ""})}} color="primary" variant="outlinedS">Logout</Button>
+                    </Grid>
                 </Grid>
-              </Grid>}
+              </Grid> : <></> }
             </div>
           </Container>
         </div>

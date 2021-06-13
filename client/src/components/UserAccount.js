@@ -15,7 +15,7 @@ import Notes from "./Notes";
 //Note: QuizTable + Score + Playlist --> UserAccount --> NavBar --> App.js
 
 export default function UserAccount() {
-  const { questions, answers } = useQuizData(); ///
+  const { questions, answers, score, setScore } = useQuizData(); ///
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
@@ -31,14 +31,14 @@ export default function UserAccount() {
         <Grid item xs={12} md={8} lg={9}>
           {/* <Paper className={fixedHeightPaper}> */}
           {questions && answers && (
-            <QuizTable questions={questions} answers={answers} />
+            <QuizTable questions={questions} answers={answers} score={score} setScore={setScore}/>
           )}
           {/* </Paper> */}
         </Grid>
         {/* Score */}
         <Grid item xs={12} md={4} lg={3}>
           <Paper className={fixedHeightPaper}>
-            <Score />
+            <Score score={score} questions={questions} />
           </Paper>
         </Grid>
         {/* Playlist */}

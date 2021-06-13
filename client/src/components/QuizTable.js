@@ -54,12 +54,15 @@ const useStyles = makeStyles((theme) => ({
 export default function QuizTable(props) {
   const classes = useStyles();
   const theme = useTheme();
+  const { score, setScore } = props;
+
+  console.log("QuizTalbe setScore", setScore);
 
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState("");
   const [activeStep, setActiveStep] = React.useState(0);
-  const [score, setScore] = React.useState(0);
+  // const [score, setScore] = React.useState(0);
   const [incorrectAnswers, setIncorrectAnswers] = React.useState({});
 
   const handleRadioChange = (event) => {
@@ -96,16 +99,22 @@ export default function QuizTable(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    console.log("VALUE", value);
+    console.log("CorrectAnswer11111", correctOptionObj.answer_option);
+
     if (!value) {
       setHelperText("Please select an answer.");
       setError(true);
     }
 
+
     if (value === correctOptionObj.answer_option) {
       setHelperText("You got it!");
       setError(false);
-      let newScore = score;
-      setScore((newScore += 1));
+      let newScore = score + 1;
+      console.log("newScore", newScore);
+      setScore(newScore);
+      
     }
 
     if (value && value !== correctOptionObj.answer_option) {
@@ -122,6 +131,7 @@ export default function QuizTable(props) {
       console.log("incorrectAnswers object: ", incorrectAnswers);
     }
   };
+
 
   return (
     <>

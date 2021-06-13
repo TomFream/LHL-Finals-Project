@@ -6,11 +6,12 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { useStyles } from "./Component_Style/NavBar";
 import Score from "./Score";
+import { SortRounded } from "@material-ui/icons";
 
 //Note: QuizTable + Score --> Quiz --> NavBar --> App.js
 
 export default function Quiz() {
-  const { questions, answers } = useQuizData();
+  const { questions, answers, score, setScore } = useQuizData();
 
   const classes = useStyles();
 
@@ -22,14 +23,14 @@ export default function Quiz() {
         <Grid item xs={12} md={8} lg={9}>
           {/* <Paper className={fixedHeightPaper}> */}
           {questions && answers && (
-            <QuizTable questions={questions} answers={answers} />
+            <QuizTable questions={questions} answers={answers} score={score} setScore={setScore} />
           )}
           {/* </Paper> */}
         </Grid>
         {/*Score*/}
         <Grid item xs={12} md={4} lg={3}>
           <Paper className={fixedHeightPaper}>
-            <Score />
+          <Score score={score} questions={questions} />
           </Paper>
         </Grid>
       </Grid>

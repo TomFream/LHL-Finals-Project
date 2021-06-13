@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Typography from "@material-ui/core/Typography";
+import useQuizData from "./hooks/useQuizData";
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -24,9 +25,18 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Score() {
+export default function Score(props) {
   const classes = useStyles();
+  const { score, questions } = props;
  
+console.log("questions", questions);
+
+  console.log("ScoreBoard-score", score);
+
+  const numQuestions = questions? questions.length || 1 : 1;    /*if question.length is falsy assign value 1*/
+  const scoreDisplay = ((score/numQuestions) * 100).toFixed(2);
+
+
   return (
     <div className={classes.root}>
       <Typography component="h1" variant="h6" color="inherit">
@@ -34,7 +44,7 @@ export default function Score() {
       </Typography>
       {/* <ADD COMPONENT WE WANT /> */}
       {/* number of questions answered correctly / total number of questions*/}
-      <BorderLinearProgress variant="determinate" value={50} />
+      <BorderLinearProgress variant="determinate" value={scoreDisplay} />
     </div>
   );
 }

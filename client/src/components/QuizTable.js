@@ -18,7 +18,6 @@ import MobileStepper from "@material-ui/core/MobileStepper";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 //Note: QuizTable + Score --> Quiz --> NavBar --> App.js
@@ -72,7 +71,6 @@ export default function QuizTable(props) {
   const questions = props.questions;
   const answerOptions = props.answers;
 
-
   const numQuestions = questions.length;
 
   const correctOptionObj = answerOptions[activeStep].find((option) => {
@@ -107,7 +105,7 @@ export default function QuizTable(props) {
       setHelperText("You got it!");
       setError(false);
       let newScore = score;
-      setScore(newScore += 1);
+      setScore((newScore += 1));
     }
 
     if (value && value !== correctOptionObj.answer_option) {
@@ -115,109 +113,115 @@ export default function QuizTable(props) {
       setError(true);
 
       const question_id = questions[activeStep].id;
-    
-      setIncorrectAnswers((prev) => ({ 
+
+      setIncorrectAnswers((prev) => ({
         ...prev,
-        [question_id]: value
+        [question_id]: value,
       }));
 
-      console.log("incorrectAnswers object: ", incorrectAnswers)
+      console.log("incorrectAnswers object: ", incorrectAnswers);
     }
   };
 
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <form className={classes.form} onSubmit={handleSubmit}>
-          {" "}
-          {/*Show Error Msgs*/}{" "}
-          <FormControl
-            component="fieldset"
-            error={error}
-            className={classes.formControl}
-          >
-            <FormLabel className={classes.label}>
-              <Typography align="left" style={{ fontSize: "20px" }}>
-                {questions[activeStep].question}
-              </Typography>
-            </FormLabel>
-            <RadioGroup
-              aria-label="quiz"
-              name="quiz"
-              value={value}
-              onChange={handleRadioChange}
+    <>
+      <Card className={classes.root}>
+        <CardContent>
+          <form className={classes.form} onSubmit={handleSubmit}>
+            {" "}
+            {/*Show Error Msgs*/}{" "}
+            <FormControl
+              component="fieldset"
+              error={error}
+              className={classes.formControl}
             >
-              {answerOptions[activeStep].map((answer) => (
-                <FormControlLabel
-                  className={classes.label}
-                  value={`${answer.answer_option}`}
-                  control={<Radio />}
-                  label={`${answer.answer_option}`}
-                />
-              ))}
-            </RadioGroup>
-            <FormHelperText style={{ fontSize: "15px" }}>
-              {helperText}
-            </FormHelperText>
-            <div>
-              <Button
-                type="submit"
-                variant="outlined"
-                color="primary"
-                className={classes.button}
+              <FormLabel className={classes.label}>
+                <Typography align="left" style={{ fontSize: "20px" }}>
+                  {questions[activeStep].question}
+                </Typography>
+              </FormLabel>
+              <RadioGroup
+                aria-label="quiz"
+                name="quiz"
+                value={value}
+                onChange={handleRadioChange}
               >
-                Check Answer
-              </Button>
-            </div>
-            <MobileStepper
-              style={{
-                backgroundColor: "lavender",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              steps={numQuestions}
-              position="static"
-              variant="text"
-              activeStep={activeStep}
-              nextButton={
+                {answerOptions[activeStep].map((answer) => (
+                  <FormControlLabel
+                    className={classes.label}
+                    value={`${answer.answer_option}`}
+                    control={<Radio />}
+                    label={`${answer.answer_option}`}
+                  />
+                ))}
+              </RadioGroup>
+              <FormHelperText style={{ fontSize: "15px" }}>
+                {helperText}
+              </FormHelperText>
+              <div>
                 <Button
-                  size="small"
-                  onClick={handleNext}
-                  disabled={activeStep === numQuestions - 1}
+                  type="submit"
+                  variant="outlined"
+                  color="primary"
+                  className={classes.button}
                 >
-                  {theme.direction === "rtl" ? (
-                    <KeyboardArrowLeft />
-                  ) : (
-                    <KeyboardArrowRight />
-                  )}
+                  Check Answer
                 </Button>
-              }
-              backButton={
-                <Button
-                  size="small"
-                  onClick={handleBack}
-                  disabled={activeStep === 0}
-                >
-                  {theme.direction === "rtl" ? (
-                    <KeyboardArrowRight />
-                  ) : (
-                    <KeyboardArrowLeft />
-                  )}
-                </Button>
-              }
-            />
-            <Link to={{
-              pathname:'/results',
-              state:{
-                questions: questions,
-                answers: answerOptions,
-                score: `${score}/${questions.length}`,
-                incorrectAnswers: incorrectAnswers
-              }
-              }}>Results</Link>
-          </FormControl>
-        </form>
-      </CardContent>
-    </Card>
+              </div>
+              <MobileStepper
+                style={{
+                  backgroundColor: "lavender",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                steps={numQuestions}
+                position="static"
+                variant="text"
+                activeStep={activeStep}
+                nextButton={
+                  <Button
+                    size="small"
+                    onClick={handleNext}
+                    disabled={activeStep === numQuestions - 1}
+                  >
+                    {theme.direction === "rtl" ? (
+                      <KeyboardArrowLeft />
+                    ) : (
+                      <KeyboardArrowRight />
+                    )}
+                  </Button>
+                }
+                backButton={
+                  <Button
+                    size="small"
+                    onClick={handleBack}
+                    disabled={activeStep === 0}
+                  >
+                    {theme.direction === "rtl" ? (
+                      <KeyboardArrowRight />
+                    ) : (
+                      <KeyboardArrowLeft />
+                    )}
+                  </Button>
+                }
+              />
+              <Link
+                to={{
+                  pathname: "/results",
+                  state: {
+                    questions: questions,
+                    answers: answerOptions,
+                    score: `${score}/${questions.length}`,
+                    incorrectAnswers: incorrectAnswers,
+                  },
+                }}
+              >
+                Results
+              </Link>
+            </FormControl>
+          </form>
+        </CardContent>
+      </Card>
+    </>
   );
 }

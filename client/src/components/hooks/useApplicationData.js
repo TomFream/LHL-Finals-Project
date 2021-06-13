@@ -2,12 +2,23 @@ import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
 
+<<<<<<< HEAD:client/src/components/hooks/useApplicationData.js
 
 function getQuizData() {
   const params = useParams()
   const [questions, setQuestions] = useState(null)
   const [answers, setAnswers] = useState(null)
+=======
+export default function useQuizData() {
+  const [questions, setQuestions] = useState(null);
+  const [answers, setAnswers] = useState(null);
+  const [score, setScore] = useState(0);
+  const params = useParams();
+>>>>>>> noteTaking:client/src/components/hooks/useQuizData.js
   
+console.log("params.id", params);
+
+
   useEffect(() => {
     axios
     .get(`/api/tests/${params.id}`)
@@ -18,6 +29,7 @@ function getQuizData() {
     .catch((error) => {
       console.log("ERROR: ", error)
     });
+<<<<<<< HEAD:client/src/components/hooks/useApplicationData.js
   }, [])
   
   return {questions, answers}
@@ -46,3 +58,20 @@ function getPlaylistQuizData() {
 }
 
 export { getQuizData, getPlaylistQuizData }
+=======
+  }, [params.id])
+
+  // useEffect(() => {
+  //   axios
+  //   .get(`/api/data/playlists/test`)
+  //   .then((response) => {
+  //     console.log("API response: ", response)
+  //   })
+  //   .catch((error) => {
+  //     console.log("ERROR: ", error)
+  //   });
+  // }, [])
+  
+  return {questions, answers, score, setScore}
+}
+>>>>>>> noteTaking:client/src/components/hooks/useQuizData.js

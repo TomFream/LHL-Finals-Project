@@ -1,32 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import { UserContext } from './UserContext';
 import { Link } from 'react-router-dom';
 
-const LoginForm = (props) => {
+const LoginForm = () => {
   
   const [ user, setUser ] = useContext(UserContext)
   const [ state, setState ] = React.useState({ name: '', password: '' });
-  // const [ switcher, setSwitcher ] = React.useState(true);
-  
-  // const setterFunction = (boolParam) => {
-  //   if(boolParam) {
-  //     setSwitcher(false);
-  //   } else {
-  //     setSwitcher(true);
-  //   }
-  // }
 
-  // useEffect(() => {
-  //   const userTester = setTimeout(() => {
-  //     console.log("this is user state from user tester:", user);
-  //   }, 3500);
-  //   return () => clearTimeout(userTester);
-  // }, [handleSubmit])
+  useEffect(() => {
+    const userTester = setTimeout(() => {
+      console.log("this is user state from user tester:", user);
+    }, 3500);
+    return () => clearTimeout(userTester);
+  }, [user])
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    setUser(user.name = state.name);
+    setUser({name: state.name});
     console.log(user.name);
   }
   
@@ -36,8 +27,6 @@ const LoginForm = (props) => {
       ...state,
       [event.target.name]: value
     });
-    // setState(prev => prev[event.target.name] = value)
-    // console.log(state.name);
   }
 
   return (

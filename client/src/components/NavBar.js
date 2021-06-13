@@ -28,6 +28,7 @@ import { UserContext } from "./UserContext";
 
 import {
   BrowserRouter as Router,
+  Redirect,
   Route,
   Switch,
   // Redirect,
@@ -86,7 +87,6 @@ export default function NavBar() {
             >
             QuizApp
           </Typography>
-          { (user.name) ? <p>{user.name}</p> : <LoginForm setUser={setUser} /> }
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
@@ -130,6 +130,9 @@ export default function NavBar() {
                 />
                 <Route path="/results" render={() => <Results />} />
                 <Route path="/user/:id" render={() => <UserAccount />} />
+                <Route path="/login">
+                  <LoginForm />
+                </Route>
                 <Route path="/" exact render={() => <Main />} />
               </Switch>
           </Grid>

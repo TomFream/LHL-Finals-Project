@@ -5,6 +5,7 @@ export const UserContext = createContext();
 export function UserProvider({ children }) {
   // const [ user, setUser ] = useState({});
   // const value = [ user, setUser ];
-  const value = useState({});
-  return (<UserProvider value={value}>{children}</UserProvider>);
+  const value = useState({name: ''});
+  
+  return (<UserContext.Provider value={value}>{children}</UserContext.Provider>);
 }

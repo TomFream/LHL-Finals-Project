@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
@@ -15,6 +15,8 @@ import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+
+import { UserContext } from './UserContext';
 
 
 //NOTE: Main's parent --> NavBar  --> App.js
@@ -86,6 +88,7 @@ const cards = [
 ];
 
 export default function QuizApp() {
+  const [user, setUser] = useContext(UserContext);
   const classes = useStyles();
 
   return (
@@ -105,18 +108,28 @@ export default function QuizApp() {
             >
               QuizApp layout
             </Typography>
-            <Typography
+            {user.name ? <Typography>Hello, {user.name}</Typography> : <Typography
               variant="h5"
               align="center"
               color="textSecondary"
               paragraph
-            >
+              >
               Something short and leading about the collection below—its
               contents, the creator, etc. Make it short and sweet, but not too
               short so folks don&apos;t simply skip over it entirely.
-            </Typography>
+            </Typography>}
+              {console.log(user.name)}
             <div className={classes.heroButtons}>
               <Grid container spacing={4} justify="center">
+                <Grid item>
+                  <Link
+                    to="/login"
+                  >
+                    <Button variant="outlined" color="primary">
+                      Login
+                    </Button>
+                  </Link>
+                </Grid>
                 <Grid item>
                   <Button variant="outlined" color="primary">
                     SIGN UP

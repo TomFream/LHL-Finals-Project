@@ -17,6 +17,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
 import { UserContext } from './UserContext';
+import LoginForm from "./LoginForm";
 
 
 //NOTE: Main's parent --> NavBar  --> App.js
@@ -99,42 +100,18 @@ export default function QuizApp() {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="textPrimary"
-              gutterBottom
-            >
-              QuizApp layout
-            </Typography>
-            {user.name ? <Typography>Hello, {user.name}</Typography> : <Typography
+            
+            {user.name ? <h1>Hello, {user.name}.</h1> : <Typography
               variant="h5"
               align="center"
               color="textSecondary"
               paragraph
               >
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
+              Please login or Signup, for free. To access our extra features. Treat yo' self!
             </Typography>}
-              {console.log(user.name)}
+            {user.name ? <h2>Here are some cool stats.</h2> : <LoginForm /> }
             <div className={classes.heroButtons}>
-              <Grid container spacing={4} justify="center">
-                <Grid item>
-                  <Link
-                    to="/login"
-                  >
-                    <Button variant="outlined" color="primary">
-                      Login
-                    </Button>
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    SIGN UP
-                  </Button>
-                </Grid>
+              {user.name ? <h3>Imagine pie charts that can carousel into graph charts</h3> :<Grid container spacing={3} justify="center">
                 <Grid item>
                   {/* Quiz Link */}
                   <Link
@@ -146,7 +123,7 @@ export default function QuizApp() {
                     </Button>
                   </Link>
                 </Grid>
-              </Grid>
+              </Grid>}
             </div>
           </Container>
         </div>

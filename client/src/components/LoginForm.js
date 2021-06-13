@@ -36,37 +36,26 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Grid 
-        container spacing={3}
-        direction="column"
-      >
-        <Grid item xs={12} md={8} lg={9} justify="space-evenly">
-          <Grid>
+    <Grid 
+      container spacing={3}
+      direction="column"
+      alignItems="center"
+    >
+      <form onSubmit={handleSubmit}>
+        <Grid container item xs={12} md={8} lg={9}>
+          
           <TextField id="nameField" label="Name" variant="outlined" margin="dense" name="name" value={state.name} onChange={handleChange} />
-          </Grid>
-          <Grid>
+          
           <TextField type="password" id="passwordField" label="Password" variant="outlined" margin="dense" name="password" value={state.password} onChange={handleChange} />
-          </Grid>
+          
         </Grid>
         <Grid 
           container item xs={12} md={8} lg={9}
-          direction="row"
-          justify="center"
         >
-          <Grid>
           <Button type="submit" variant="contained" color="secondary">Sign In</Button>
-          </Grid>
-          <Grid>
-          <Link to="/" >
-            <Button variant="outlined" color="primary">
-              Homepage
-            </Button>
-          </Link>
-          </Grid>
         </Grid>
-      </Grid>
-    </form>
+      </form>
+    </Grid>
   );
 }
 

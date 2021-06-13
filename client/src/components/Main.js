@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
@@ -15,6 +15,10 @@ import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+
+import { UserContext } from './UserContext';
+import LoginForm from "./LoginForm";
+import UserQuizStatsGeneral from "./UserQuizStatsGeneral";
 
 
 //NOTE: Main's parent --> NavBar  --> App.js
@@ -86,6 +90,7 @@ const cards = [
 ];
 
 export default function QuizApp() {
+  const [user, setUser] = useContext(UserContext);
   const classes = useStyles();
 
   return (
@@ -96,44 +101,36 @@ export default function QuizApp() {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="textPrimary"
-              gutterBottom
-            >
-              QuizApp layout
-            </Typography>
-            <Typography
+            
+            {user.name ? <h1>Hello, {user.name}.</h1> : <Typography
               variant="h5"
               align="center"
               color="textSecondary"
               paragraph
-            >
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
-            </Typography>
+              >
+              Please login or Signup, for free. To access our extra features. Treat yo' self!
+            </Typography>}
+            {user.name ? <h2>Here are some cool stats.</h2> : <LoginForm /> }
             <div className={classes.heroButtons}>
-              <Grid container spacing={4} justify="center">
+              {user.name ? 
                 <Grid item>
-                  <Button variant="outlined" color="primary">
-                    SIGN UP
-                  </Button>
+                  <UserQuizStatsGeneral />
+                  <Grid container spacing={3} justify="center">
+                    <Grid item>
+                      <Link
+                        to="/quiz"
+                        style={{ textDecoration: "none", color: "blue" }}
+                      >
+                        <Button variant="outlined" color="secondary">
+                          QUIZ GAME
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item>
+                      <Button onClick={() => {setUser({name: ""})}} color="primary" variant="outlinedS">Logout</Button>
+                    </Grid>
                 </Grid>
-                <Grid item>
-                  {/* Quiz Link */}
-                  <Link
-                    to="/quiz"
-                    style={{ textDecoration: "none", color: "blue" }}
-                  >
-                    <Button variant="outlined" color="secondary">
-                      QUIZ GAME
-                    </Button>
-                  </Link>
-                </Grid>
-              </Grid>
+              </Grid> : <></> }
             </div>
           </Container>
         </div>

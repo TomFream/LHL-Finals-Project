@@ -13,6 +13,16 @@ class Api::UsersController < ApplicationController
     render json: @user
   end
 
+  # def is_a_user
+  #   @user = User.find_by(name: params[:name])
+    
+  #   if @user.empty?
+  #     render json: @user
+  #   else
+  #     render json: @user
+  #   end
+  # end
+
   # POST /users
   def create
     @user = User.new(user_params)
@@ -46,6 +56,6 @@ class Api::UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.fetch(:user, {})
+      params.fetch(:user).permit(:name, :id)
     end
 end

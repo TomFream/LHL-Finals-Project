@@ -138,11 +138,6 @@ export default function QuizApp() {
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
-          <Link to={"/playlists"}>
-            <Card className={classes.card}>
-              <h3> Test! </h3>
-            </Card>
-          </Link>
           <Grid container spacing={6}>
             {cards.map((card) => (
               <Grid
@@ -153,7 +148,7 @@ export default function QuizApp() {
                 md={6}
                 onClick={() => console.log("Clicked!", card.name)}
               >
-                <Link to={`/quiz/${card.id}`}>
+                <Link to={`/quiz/${card.id}`} style={{ textDecoration: 'none' }}>
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}

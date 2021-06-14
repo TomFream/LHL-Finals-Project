@@ -70,3 +70,5 @@ sql_seed_data.each do |d|
 end
 
 Playlist.create(name: "Interview Prep", user_id: 1)
+Playlist.create(name: "SQL Review", user_id: 1)
+Playlist.create(name: "Front-end Languages", user_id: 1)

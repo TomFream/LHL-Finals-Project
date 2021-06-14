@@ -1,21 +1,21 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Title from './Component_Style/Title';
-import {useEffect, useState} from 'react';
-import axios from 'axios';
-import { Button } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Title from "./Component_Style/Title";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Button } from "@material-ui/core";
 
 //Note: QuizTable + Score + Playlist --> UserAccount --> NavBar --> App.js
 
 // Generate Playlist
 function createData(id, category, date, score) {
-  return { id, category, date, score};
+  return { id, category, date, score };
 }
 
 // const rows = [
@@ -41,15 +41,15 @@ export default function Playlist() {
   const [playlists, setPlaylists] = useState(null);
 
   useEffect(() => {
-    axios  
-    .get("/api/playlists")
-    .then((response) => {
-      setPlaylists(response.data.playlists)
-    })
-    .catch((err) => {
-      console.log("api error: ", err)
-    })
-  }, [])
+    axios
+      .get("/api/playlists")
+      .then((response) => {
+        setPlaylists(response.data.playlists);
+      })
+      .catch((err) => {
+        console.log("api error: ", err);
+      });
+  }, []);
 
   return (
     <React.Fragment>
@@ -60,7 +60,7 @@ export default function Playlist() {
             <TableCell>Playlist</TableCell>
             <TableCell>Date Created</TableCell>
             <TableCell>Last Score</TableCell>
-            <TableCell></TableCell> 
+            <TableCell></TableCell>
           </TableRow>
         </TableHead>
         {playlists && (
@@ -68,16 +68,21 @@ export default function Playlist() {
             {playlists.map((row) => (
               <TableRow key={row.id}>
                 <TableCell align="left">{row.name}</TableCell>
-                <TableCell>{row.created_at.split('T')[0]}</TableCell>
+                <TableCell>{row.created_at.split("T")[0]}</TableCell>
                 <TableCell>{"temp"}</TableCell>
                 <TableCell>
-                  <Link to={{
-                    pathname: `playlists/quiz/${row.name}`,
-                    state: {
-                      is_playlist: true
-                    }
-                  }}>
-                    <Button variant="outlined" color="primary">Test</Button>
+                  <Link
+                    to={{
+                      pathname: `playlists/quiz/${row.name}`,
+                      state: {
+                        is_playlist: true,
+                      },
+                    }}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <Button variant="outlined" color="primary">
+                      Test
+                    </Button>
                   </Link>
                 </TableCell>
               </TableRow>

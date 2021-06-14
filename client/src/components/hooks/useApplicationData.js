@@ -21,23 +21,6 @@ console.log("params.id", params);
     .catch((error) => {
       console.log("ERROR: ", error)
     });
-<<<<<<< HEAD:client/src/components/hooks/useQuizData.js
-  }, [params.id])
-
-  // useEffect(() => {
-  //   axios
-  //   .get(`/api/data/playlists/test`)
-  //   .then((response) => {
-  //     console.log("API response: ", response)
-  //   })
-  //   .catch((error) => {
-  //     console.log("ERROR: ", error)
-  //   });
-  // }, [])
-  
-  return {questions, answers, score, setScore}
-}
-=======
   }, [])
   
   return {questions, answers}
@@ -66,4 +49,3 @@ function getPlaylistQuizData() {
 }
 
 export { getQuizData, getPlaylistQuizData }
->>>>>>> master:client/src/components/hooks/useApplicationData.js

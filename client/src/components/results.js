@@ -11,6 +11,7 @@ import Title from './Component_Style/Title';
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Score from "./Score";
+import UserQuizStatsGeneral from "./UserQuizStatsGeneral";
 
 
 function preventDefault(event) {
@@ -42,12 +43,15 @@ export default function Results(props) {
   });
   
   // console.log("Results/correctAnswer", answers, correctAnswersArr);
+  console.log("ketchup", location.state);
+
 
   return (
     <React.Fragment>
       <Title>Results</Title>
       <h2>Score: {location.state.score}</h2>
       <hr></hr>
+      <UserQuizStatsGeneral />
       <Table size="small">
         <TableHead>
           <TableRow>

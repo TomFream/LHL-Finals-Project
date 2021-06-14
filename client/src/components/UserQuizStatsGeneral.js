@@ -4,9 +4,8 @@ import { Chart } from 'react-google-charts';
 
 const UserQuizStatsGeneral = () => {
   return (
-    
       <Chart
-        width={'500px'}
+        width={'100%'}
         heigh={'350px'}
         chartType="PieChart"
         loader={<h2>Loading...</h2>}

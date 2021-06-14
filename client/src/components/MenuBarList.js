@@ -11,6 +11,7 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import AccountBoxOutlinedIcon from "@material-ui/icons/AccountBoxOutlined";
 import FiberNewIcon from "@material-ui/icons/FiberNew";
 import { Link } from "react-router-dom";
+import LocalPlayIcon from '@material-ui/icons/LocalPlay';
 
 export const mainListItems = (
   <div>
@@ -28,6 +29,14 @@ export const mainListItems = (
           <AccountBoxOutlinedIcon />
         </ListItemIcon>
         <ListItemText primary="MyAccount" />
+      </ListItem>
+    </Link>
+    <Link to="/playlists" style={{ textDecoration: "none", color: "#000000DE" }}>
+      <ListItem button>
+        <ListItemIcon>
+          <LocalPlayIcon />
+        </ListItemIcon>
+        <ListItemText primary="Playlists" />
       </ListItem>
     </Link>
     <ListItem button>

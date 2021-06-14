@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -7,19 +6,13 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-// import Link from "@material-ui/core/Link";
 import { Link } from "react-router-dom";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-
-import { UserContext } from './UserContext';
+import { UserContext } from "./UserContext";
 import LoginForm from "./LoginForm";
 import UserQuizStatsGeneral from "./UserQuizStatsGeneral";
-
 
 //NOTE: Main's parent --> NavBar  --> App.js
 
@@ -101,18 +94,22 @@ export default function QuizApp() {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
-            
-            {user.name ? <h1>Hello, {user.name}.</h1> : <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              paragraph
+            {user.name ? (
+              <h1>Hello, {user.name}.</h1>
+            ) : (
+              <Typography
+                variant="h5"
+                align="center"
+                color="textSecondary"
+                paragraph
               >
-              Please login or Signup, for free. To access our extra features. Treat yo' self!
-            </Typography>}
-            {user.name ? <h2>Here are some cool stats.</h2> : <LoginForm /> }
+                Please login or Signup, for free. To access our extra features.
+                Treat yo' self!
+              </Typography>
+            )}
+            {user.name ? <h2>Here are some cool stats.</h2> : <LoginForm />}
             <div className={classes.heroButtons}>
-              {user.name ? 
+              {user.name ? (
                 <Grid item>
                   <UserQuizStatsGeneral />
                   <Grid container spacing={3} justify="center">
@@ -127,23 +124,41 @@ export default function QuizApp() {
                       </Link>
                     </Grid>
                     <Grid item>
-                      <Button onClick={() => {setUser({name: ""})}} color="primary" variant="outlinedS">Logout</Button>
+                      <Button
+                        onClick={() => {
+                          setUser({ name: "" });
+                        }}
+                        color="primary"
+                        variant="outlinedS"
+                      >
+                        Logout
+                      </Button>
                     </Grid>
+                  </Grid>
                 </Grid>
-              </Grid> : <></> }
+              ) : (
+                <></>
+              )}
             </div>
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Link to={"/playlists"}>
-            <Card className={classes.card}> 
+            <Card className={classes.card}>
               <h3> Test! </h3>
             </Card>
           </Link>
           <Grid container spacing={6}>
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={6} onClick={() => console.log("Clicked!", card.name)}>
+              <Grid
+                item
+                key={card}
+                xs={12}
+                sm={6}
+                md={6}
+                onClick={() => console.log("Clicked!", card.name)}
+              >
                 <Link to={`/quiz/${card.id}`}>
                   <Card className={classes.card}>
                     <CardMedia
@@ -155,10 +170,6 @@ export default function QuizApp() {
                       <Typography gutterBottom variant="h5" component="h2">
                         {card.name}
                       </Typography>
-                      {/* <Typography>
-                        This is a media card. You can use this section to describe
-                        the content.
-                      </Typography> */}
                     </CardContent>
                     <CardActions>
                       <Button size="md" color={"white"}>

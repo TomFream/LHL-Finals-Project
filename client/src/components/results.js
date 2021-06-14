@@ -10,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Title from './Component_Style/Title';
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Cancel';
+import Score from "./Score";
 
 
 function preventDefault(event) {
@@ -45,6 +46,7 @@ export default function Results(props) {
   return (
     <React.Fragment>
       <Title>Results</Title>
+      <h2>Score: {location.state.score}</h2>
       <hr></hr>
       <Table size="small">
         <TableHead>

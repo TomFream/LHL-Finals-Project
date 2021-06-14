@@ -103,13 +103,10 @@ export default function QuizApp() {
                 color="textSecondary"
                 paragraph
               >
-                Please login or Signup, for free. To access our extra features.
-                Treat yo' self!
-              </Typography>
-            )}
-            {user.name ? <h2>Here are some cool stats.</h2> : <LoginForm />}
+              Please login or Signup, for free. 
+            </Typography>)}
+            
             <div className={classes.heroButtons}>
-              {user.name ? (
                 <Grid item>
                   <UserQuizStatsGeneral />
                   <Grid container spacing={3} justify="center">
@@ -136,9 +133,6 @@ export default function QuizApp() {
                     </Grid>
                   </Grid>
                 </Grid>
-              ) : (
-                <></>
-              )}
             </div>
           </Container>
         </div>

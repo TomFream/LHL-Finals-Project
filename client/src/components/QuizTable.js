@@ -14,6 +14,8 @@ import MobileStepper from "@material-ui/core/MobileStepper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import { Link } from "react-router-dom";
+import AddButton from "./AddButton";
+// import Popover from "@material-ui/core/Popover";
 
 //Note: QuizTable + Score --> Quiz --> NavBar --> App.js
 
@@ -120,14 +122,11 @@ export default function QuizTable(props) {
     }
   };
 
-
   return (
     <>
       <Card className={classes.root}>
         <CardContent>
           <form className={classes.form} onSubmit={handleSubmit}>
-            {" "}
-            {/*Show Error Msgs*/}{" "}
             <FormControl
               component="fieldset"
               error={error}
@@ -216,6 +215,7 @@ export default function QuizTable(props) {
               >
                 Results
               </Link>
+              <AddButton question_id={questions[activeStep].id}/> {/*Show Error Msgs*/}{" "}
             </FormControl>
           </form>
         </CardContent>

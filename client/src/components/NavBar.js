@@ -21,9 +21,9 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./MenuBarList";
 import { useStyles } from './Component_Style/NavBar';
-import { Button } from "@material-ui/core";
-import Menu from "@material-ui/icons/Menu";
-import ArrowDropDownSharpIcon from '@material-ui/icons/ArrowDropDownSharp';
+import LoginDropDown from './LoginDropDown';
+
+
 import LoginForm from "./LoginForm";
 import { UserContext } from "./UserContext";
 // import useUserObj from "./hooks/useUserObj";
@@ -47,7 +47,16 @@ import PlaylistQuiz from "./PlaylistQuiz";
 
 export default function NavBar() {
   const [ user, setUser ] = useContext(UserContext);
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   // I don't know why we need 2 functions
@@ -82,19 +91,8 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           {/* <Typography variant="h6" color="inherit" noWrap> */}
-            <IconButton className={classes.title}>
-              <Typography
-                component="h1"
-                variant="h6"
-                color="textPrimary"
-                noWrap
-                >
-                QuizApp
-              </Typography>
-              <ArrowDropDownSharpIcon />
-            </IconButton>
-            <Menu>
-            </Menu>
+              <Typography className={classes.title} variant={"h5"}>QuizApp</Typography>
+              <LoginDropDown />
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />

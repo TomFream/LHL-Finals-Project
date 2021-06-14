@@ -218,6 +218,7 @@ export default function QuizTable(props) {
                         answers: answerOptions,
                         score: `${score}/${questions.length}`,
                         incorrectAnswers: incorrectAnswers,
+                        correctSelectedAnswers: correctSelectedAnswers,
                       },
                     }}
                     style={{ textDecoration: 'none' }}

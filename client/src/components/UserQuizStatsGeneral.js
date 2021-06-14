@@ -2,7 +2,12 @@ import * as React from 'react';
 import { Chart } from 'react-google-charts';
 // import { Container } from '@material-ui/core';
 
-const UserQuizStatsGeneral = () => {
+const UserQuizStatsGeneral = (props) => {
+  console.log("UserQuizStatsGeneral", props.score);
+
+  const correct = eval(props.score);
+  const incorrect = 1 - correct;
+
   return (
       <Chart
         width={'100%'}
@@ -11,8 +16,8 @@ const UserQuizStatsGeneral = () => {
         loader={<h2>Loading...</h2>}
         data={[
           ['Type of Answers', 'Number of Answers'],
-          ["Correct", 17],
-          ["Incorrect", 3]
+          ["Correct", correct],
+          ["Incorrect", incorrect]
         ]}
         options={{
           title: "Your Performance",

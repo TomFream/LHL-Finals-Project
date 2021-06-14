@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function Results(props) {
   const location = useLocation();
   const classes = useStyles();
@@ -51,7 +50,7 @@ export default function Results(props) {
       <Title>Results</Title>
       <h2>Score: {location.state.score}</h2>
       <hr></hr>
-      <UserQuizStatsGeneral />
+      <UserQuizStatsGeneral score={location.state.score} />
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -65,7 +64,7 @@ export default function Results(props) {
             <TableRow key={row.id}>
               <TableCell align="left">{row.question}</TableCell>
               <TableCell align="left">{answersArr[i]}</TableCell>
-              <TableCell align="center">{location.state.incorrectAnswers[row.id] ? <CancelIcon /> : <CheckIcon />}</TableCell>
+              <TableCell align="center">{location.state.incorrectAnswers[row.id] ? <CancelIcon /> : location.state.correctSelectedAnswers[row.id] ? <CheckIcon /> : <p>incomplete</p>}</TableCell>
             </TableRow>
           ))}
         </TableBody>

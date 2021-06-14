@@ -21,7 +21,9 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./MenuBarList";
 import { useStyles } from './Component_Style/NavBar';
-
+import { Button } from "@material-ui/core";
+import Menu from "@material-ui/icons/Menu";
+import ArrowDropDownSharpIcon from '@material-ui/icons/ArrowDropDownSharp';
 import LoginForm from "./LoginForm";
 import { UserContext } from "./UserContext";
 // import useUserObj from "./hooks/useUserObj";
@@ -48,6 +50,7 @@ export default function NavBar() {
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  // I don't know why we need 2 functions
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -79,15 +82,19 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           {/* <Typography variant="h6" color="inherit" noWrap> */}
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-            >
-            QuizApp
-          </Typography>
+          <IconButton className={classes.title}>
+
+              <Typography
+                component="h1"
+                variant="h6"
+                color="textPrimary"
+                noWrap
+                >
+                QuizApp
+              </Typography>
+              <ArrowDropDownSharpIcon />
+
+          </IconButton>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
@@ -120,15 +127,7 @@ export default function NavBar() {
               <Switch>
                 <Route
                   path="/quiz/:id"
-                  render={() => (
-                    <div>
-                      <Quiz />
-                      {/* <Quiz />  //Frontend Quiz Fetch// OUTDATED// */}
-                      {/* <h1>{message}</h1> */}
-                      {/* <button>Fetch Data</button> <User /> */}
-                    </div>
-                  )}
-                />
+                  render={() => (<div><Quiz /></div> )} />
                 <Route path="/results" render={() => <Results />} />
                 <Route path="/playlists/quiz/:playlist_name" render={() => <PlaylistQuiz />} />
                 <Route path="/playlists" render={() => <Playlist />} />

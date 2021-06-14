@@ -82,8 +82,7 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           {/* <Typography variant="h6" color="inherit" noWrap> */}
-          <IconButton className={classes.title}>
-
+            <IconButton className={classes.title}>
               <Typography
                 component="h1"
                 variant="h6"
@@ -93,8 +92,9 @@ export default function NavBar() {
                 QuizApp
               </Typography>
               <ArrowDropDownSharpIcon />
-
-          </IconButton>
+            </IconButton>
+            <Menu>
+            </Menu>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />

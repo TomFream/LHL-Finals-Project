@@ -60,41 +60,7 @@ export default function NavBar() {
 
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
-        position="absolute"
-        style={{ background: "#2B2C3B" }}
-        className={clsx(classes.appBar, open && classes.appBarShift)}
-        >
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            className={clsx(
-              classes.menuButton,
-              open && classes.menuButtonHidden
-              )}
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              >
-            <MenuIcon />
-          </IconButton>
-          {/* <Typography variant="h6" color="inherit" noWrap> */}
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-            >
-            QuizApp
-          </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+      
       <Drawer
         variant="permanent"
         classes={{

@@ -29,6 +29,7 @@ function getPlaylistQuizData() {
   const params = useParams()
   const [questions, setQuestions] = useState(null)
   const [answers, setAnswers] = useState(null)
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     axios
@@ -43,7 +44,7 @@ function getPlaylistQuizData() {
     });
   }, [])
  
-  return {questions, answers}
+  return {questions, answers, score, setScore}
 }
 
 export { getQuizData, getPlaylistQuizData }

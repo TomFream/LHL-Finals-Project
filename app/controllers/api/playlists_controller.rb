@@ -3,14 +3,6 @@ class Api::PlaylistsController < ApplicationController
 
   # GET /playlists
   def index
-    # @playlist = Playlist.find_by(name: params[:playlist_name]).playlsit_questions
-    
-    # @questions_ids = [] 
-    # @playlist.each do |q|
-    #   @question_ids.push(p.question_id)
-    # }
-
-    # @questions = Question.where(id: => @question_ids)
     @playlists = Playlist.all
     render :json => {
       playlists: @playlists
@@ -26,7 +18,6 @@ class Api::PlaylistsController < ApplicationController
       @question_ids.push(question.question_id)
     end
 
-
     @playlist_questions = Question.where(id: @question_ids)
     @playlist_answers = @playlist_questions.map{|question|
       answerArr = []
@@ -35,32 +26,35 @@ class Api::PlaylistsController < ApplicationController
       end
       answerArr.shuffle
     }
+
     render :json => {
       questions: @playlist_questions,
-      # questions: @question_ids,
       answers: @playlist_answers
     }
   end
 
-#   # POST /playlists
-#   def create
-#     @playlist = Playlist.new(playlist_params)
+  # POST /playlists
+  def create
+    @playlist = Playlist.new(playlist_params)
 
-#     if @playlist.save
-#       render json: @playlist, status: :created, location: @playlist
-#     else
-#       render json: @playlist.errors, status: :unprocessable_entity
-#     end
-#   end
+    if @playlist.save
+      render json: @playlist, status: :created, location: @playlist
+    else
+      render json: @playlist.errors, status: :unprocessable_entity
+    end
+  end
 
 #   # PATCH/PUT /playlists/1
-#   def update
-#     if @playlist.update(playlist_params)
-#       render json: @playlist
-#     else
-#       render json: @playlist.errors, status: :unprocessable_entity
-#     end
-#   end
+  def update
+    # if @playlist.update(playlist_params)
+    #   render json: @playlist
+    # else
+    #   render json: @playlist.errors, status: :unprocessable_entity
+    # end
+    @add_question = PlaylistQuestion.create(playlist_id: params[:playlist], question_id: params[:question])
+
+    render json: "Thanks for sending a POST request with cURL! Payload: #{params[:question]}"
+  end
 
 #   # DELETE /playlists/1
 #   def destroy

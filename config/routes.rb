@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     
     get '/playlists/:playlist_name', to: 'playlists#show'
     get '/playlists', to: 'playlists#index'
+    post '/playlists/update', to: 'playlists#update'
   end
   #   resources :playlists
   #   # resources :answers

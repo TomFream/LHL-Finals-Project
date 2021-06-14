@@ -19,6 +19,8 @@ import Paper from "@material-ui/core/Paper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import { Link } from "react-router-dom";
+import AddButton from "./AddButton";
+// import Popover from "@material-ui/core/Popover";
 
 //Note: QuizTable + Score --> Quiz --> NavBar --> App.js
 
@@ -107,14 +109,12 @@ export default function QuizTable(props) {
       setError(true);
     }
 
-
     if (value === correctOptionObj.answer_option) {
       setHelperText("You got it!");
       setError(false);
       let newScore = score + 1;
       console.log("newScore", newScore);
       setScore(newScore);
-      
     }
 
     if (value && value !== correctOptionObj.answer_option) {
@@ -132,14 +132,11 @@ export default function QuizTable(props) {
     }
   };
 
-
   return (
     <>
       <Card className={classes.root}>
         <CardContent>
           <form className={classes.form} onSubmit={handleSubmit}>
-            {" "}
-            {/*Show Error Msgs*/}{" "}
             <FormControl
               component="fieldset"
               error={error}
@@ -228,6 +225,7 @@ export default function QuizTable(props) {
               >
                 Results
               </Link>
+              <AddButton question_id={questions[activeStep].id}/> {/*Show Error Msgs*/}{" "}
             </FormControl>
           </form>
         </CardContent>

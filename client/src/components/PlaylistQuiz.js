@@ -12,9 +12,9 @@ import { useLocation } from "react-router-dom";
 
 export default function PlaylistQuiz() {
   const location = useLocation();
-  console.log("Props: ", location.state)
 
-  const { questions, answers } = getPlaylistQuizData();
+  // const { questions, answers } = getPlaylistQuizData();
+  const { questions, answers, score, setScore } = getPlaylistQuizData();
   console.log("Questions/answers: ", questions, answers)
   const classes = useStyles();
 
@@ -26,7 +26,7 @@ export default function PlaylistQuiz() {
         <Grid item xs={12} md={8} lg={9}>
           {/* <Paper className={fixedHeightPaper}> */}
           {questions && answers && (
-            <QuizTable questions={questions} answers={answers} is_playlist={false}/>
+            <QuizTable questions={questions} answers={answers} score={score} setScore={setScore}/>
           )}
           {/* </Paper> */}
         </Grid>

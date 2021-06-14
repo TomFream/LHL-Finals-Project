@@ -3,14 +3,6 @@ class Api::PlaylistsController < ApplicationController
 
   # GET /playlists
   def index
-    # @playlist = Playlist.find_by(name: params[:playlist_name]).playlsit_questions
-    
-    # @questions_ids = [] 
-    # @playlist.each do |q|
-    #   @question_ids.push(p.question_id)
-    # }
-
-    # @questions = Question.where(id: => @question_ids)
     @playlists = Playlist.all
     render :json => {
       playlists: @playlists
@@ -26,7 +18,6 @@ class Api::PlaylistsController < ApplicationController
       @question_ids.push(question.question_id)
     end
 
-
     @playlist_questions = Question.where(id: @question_ids)
     @playlist_answers = @playlist_questions.map{|question|
       answerArr = []
@@ -35,9 +26,9 @@ class Api::PlaylistsController < ApplicationController
       end
       answerArr.shuffle
     }
+
     render :json => {
       questions: @playlist_questions,
-      # questions: @question_ids,
       answers: @playlist_answers
     }
   end

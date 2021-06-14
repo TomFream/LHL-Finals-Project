@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 // import axios from "axios";
 import "./App.css";
 import {
@@ -13,16 +13,20 @@ import {
 // import Quiz from "./components/Quiz";
 // import UserAccount from "./components/UserAccount";
 import NavBar from "./components/NavBar";
+// import { userContext } from "./components/hooks/userContext"
+import { UserProvider } from "./components/UserContext";
 
 const App = () => {
   // const [message, setMessage] = useState("Click the button to load data!");
-
+  // const [ user, setUser ] = useState({});
   // console.log("answers & questions", answers, questions);
-
+  // console.log("user context value:", user)
   return (
     <div className="App">
       <Router>
-        <NavBar /> {/* Moved Route Logic Into NavBar Component */}
+        <UserProvider>
+          <NavBar /> {/* Moved Route Logic Into NavBar Component */}
+        </UserProvider>
         {/* <Switch>
           <Route
             path="/quiz/:id"

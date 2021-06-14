@@ -17,11 +17,11 @@ console.log("params.id", params);
     .then((response) => {
       setQuestions(response.data.questions)
       setAnswers(response.data.answers)
-      console.log("API response: ", response)
     })
     .catch((error) => {
       console.log("ERROR: ", error)
     });
+<<<<<<< HEAD:client/src/components/hooks/useQuizData.js
   }, [params.id])
 
   // useEffect(() => {
@@ -37,3 +37,33 @@ console.log("params.id", params);
   
   return {questions, answers, score, setScore}
 }
+=======
+  }, [])
+  
+  return {questions, answers}
+}
+
+function getPlaylistQuizData() {
+  const params = useParams()
+  const [questions, setQuestions] = useState(null)
+  const [answers, setAnswers] = useState(null)
+
+  useEffect(() => {
+    axios
+    .get(`/api/playlists/${params.playlist_name}`)
+    .then((response) => {
+      console.log("API response: ", response)
+      setQuestions(response.data.questions)
+      setAnswers(response.data.answers)
+    })
+    .catch((error) => {
+      console.log("ERROR: ", error)
+    });
+  }, [])
+ 
+  return {questions, answers}
+
+}
+
+export { getQuizData, getPlaylistQuizData }
+>>>>>>> master:client/src/components/hooks/useApplicationData.js

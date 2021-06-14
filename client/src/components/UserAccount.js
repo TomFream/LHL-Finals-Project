@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import QuizTable from "./QuizTable";
-import useQuizData from "./hooks/useQuizData";
+import { getQuizData } from "./hooks/useApplicationData";
 import clsx from "clsx";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useContext } from "react";
 import Main from "./Main";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,9 +20,15 @@ import Link from "@material-ui/core/Link";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./MenuBarList";
-import { useStyles } from "./Component_Style/NavBar";
+import { useStyles } from './Component_Style/NavBar';
+
+import LoginForm from "./LoginForm";
+import { UserContext } from "./UserContext";
+// import useUserObj from "./hooks/useUserObj";
+
 import {
   BrowserRouter as Router,
+  Redirect,
   Route,
   Switch,
   // Redirect,
@@ -31,12 +37,15 @@ import User from "./User";
 import Quiz from "./Quiz";
 import UserAccount from "./UserAccount";
 import Results from "./results";
-
+import Playlist from "./Playlist";
+import PlaylistQuiz from "./PlaylistQuiz";
 //NOTE: Main --> NavBar  --> App.js
 //Note: QuizTable + Score --> Quiz --> NavBar --> App.js
 //Note: QuizTable + Score + Playlist --> UserAccount --> NavBar --> App.js
 
 export default function NavBar() {
+  const [ user, setUser ] = useContext(UserContext);
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -48,13 +57,14 @@ export default function NavBar() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
+
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="absolute"
         style={{ background: "#2B2C3B" }}
         className={clsx(classes.appBar, open && classes.appBarShift)}
-      >
+        >
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -62,10 +72,10 @@ export default function NavBar() {
             className={clsx(
               classes.menuButton,
               open && classes.menuButtonHidden
-            )}
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-          >
+              )}
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              >
             <MenuIcon />
           </IconButton>
           {/* <Typography variant="h6" color="inherit" noWrap> */}
@@ -75,10 +85,9 @@ export default function NavBar() {
             color="inherit"
             noWrap
             className={classes.title}
-          >
+            >
             QuizApp
           </Typography>
-
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
@@ -121,7 +130,12 @@ export default function NavBar() {
                   )}
                 />
                 <Route path="/results" render={() => <Results />} />
+                <Route path="/playlists/quiz/:playlist_name" render={() => <PlaylistQuiz />} />
+                <Route path="/playlists" render={() => <Playlist />} />
                 <Route path="/user/:id" render={() => <UserAccount />} />
+                <Route path="/login">
+                  <LoginForm />
+                </Route>
                 <Route path="/" exact render={() => <Main />} />
               </Switch>
           </Grid>

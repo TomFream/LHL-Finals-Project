@@ -33,25 +33,28 @@ class Api::PlaylistsController < ApplicationController
     }
   end
 
-#   # POST /playlists
-#   def create
-#     @playlist = Playlist.new(playlist_params)
+  # POST /playlists
+  def create
+    @playlist = Playlist.new(playlist_params)
 
-#     if @playlist.save
-#       render json: @playlist, status: :created, location: @playlist
-#     else
-#       render json: @playlist.errors, status: :unprocessable_entity
-#     end
-#   end
+    if @playlist.save
+      render json: @playlist, status: :created, location: @playlist
+    else
+      render json: @playlist.errors, status: :unprocessable_entity
+    end
+  end
 
 #   # PATCH/PUT /playlists/1
-#   def update
-#     if @playlist.update(playlist_params)
-#       render json: @playlist
-#     else
-#       render json: @playlist.errors, status: :unprocessable_entity
-#     end
-#   end
+  def update
+    # if @playlist.update(playlist_params)
+    #   render json: @playlist
+    # else
+    #   render json: @playlist.errors, status: :unprocessable_entity
+    # end
+    @add_question = PlaylistQuestion.create(playlist_id: params[:playlist], question_id: params[:question])
+
+    render json: "Thanks for sending a POST request with cURL! Payload: #{params[:question]}"
+  end
 
 #   # DELETE /playlists/1
 #   def destroy

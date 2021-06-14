@@ -12,7 +12,7 @@ import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import LoginForm from "./LoginForm";
-import UserQuizStatsGeneral from "./UserQuizStatsGeneral";
+
 
 //NOTE: Main's parent --> NavBar  --> App.js
 
@@ -108,7 +108,6 @@ export default function QuizApp() {
             
             <div className={classes.heroButtons}>
                 <Grid item>
-                  <UserQuizStatsGeneral />
                   <Grid container spacing={3} justify="center">
                     <Grid item>
                       <Link

@@ -11,6 +11,7 @@ import Title from './Component_Style/Title';
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Score from "./Score";
+import UserQuizStatsGeneral from "./UserQuizStatsGeneral";
 
 
 function preventDefault(event) {
@@ -22,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
   },
 }));
-
 
 export default function Results(props) {
   const location = useLocation();
@@ -42,12 +42,15 @@ export default function Results(props) {
   });
   
   // console.log("Results/correctAnswer", answers, correctAnswersArr);
+  console.log("ketchup", location.state);
+
 
   return (
     <React.Fragment>
       <Title>Results</Title>
       <h2>Score: {location.state.score}</h2>
       <hr></hr>
+      <UserQuizStatsGeneral score={location.state.score} />
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -61,7 +64,7 @@ export default function Results(props) {
             <TableRow key={row.id}>
               <TableCell align="left">{row.question}</TableCell>
               <TableCell align="left">{answersArr[i]}</TableCell>
-              <TableCell align="center">{location.state.incorrectAnswers[row.id] ? <CancelIcon /> : <CheckIcon />}</TableCell>
+              <TableCell align="center">{location.state.incorrectAnswers[row.id] ? <CancelIcon /> : location.state.correctSelectedAnswers[row.id] ? <CheckIcon /> : <p>incomplete</p>}</TableCell>
             </TableRow>
           ))}
         </TableBody>

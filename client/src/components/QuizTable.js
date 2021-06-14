@@ -60,6 +60,7 @@ export default function QuizTable(props) {
   const [helperText, setHelperText] = useState("");
   const [activeStep, setActiveStep] = useState(0);
   const [incorrectAnswers, setIncorrectAnswers] = useState({});
+  const [correctSelectedAnswers, setCorrectSelectedAnswers] = useState({});
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
@@ -94,6 +95,7 @@ export default function QuizTable(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const question_id = questions[activeStep].id;
 
     if (!value) {
       setHelperText("Please select an answer.");
@@ -106,13 +108,16 @@ export default function QuizTable(props) {
       let newScore = score + 1;
       // console.log("newScore", newScore);
       setScore(newScore);
+      setCorrectSelectedAnswers((prev) => ({
+        ...prev,
+        [question_id]: value,
+      }));
     }
 
     if (value && value !== correctOptionObj.answer_option) {
       setHelperText("Sorry, wrong answer!");
       setError(true);
 
-      const question_id = questions[activeStep].id;
 
       setIncorrectAnswers((prev) => ({
         ...prev,

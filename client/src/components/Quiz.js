@@ -11,9 +11,9 @@ import { SortRounded } from "@material-ui/icons";
 //Note: QuizTable + Score --> Quiz --> NavBar --> App.js
 
 export default function Quiz() {
-  const { questions, answers, score, setScore } = useQuizData();
+  const { questions, answers, score, setScore } = getQuizData();
 
-  const { questions, answers } = getQuizData();
+  // const { questions, answers } = getQuizData();
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 

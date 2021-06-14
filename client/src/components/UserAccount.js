@@ -17,7 +17,7 @@ import Notes from "./Notes";
 //Note: QuizTable + Score + Playlist --> UserAccount --> NavBar --> App.js
 
 export default function UserAccount() {
-  const { questions, answers, score, setScore } = useQuizData(); ///
+  const { questions, answers, score, setScore } = getQuizData(); ///
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 

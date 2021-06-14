@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Typography from "@material-ui/core/Typography";
-import useQuizData from "./hooks/useQuizData";
+import {getQuizData} from "./hooks/useApplicationData";
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {

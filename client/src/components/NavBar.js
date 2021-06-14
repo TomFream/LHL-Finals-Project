@@ -48,22 +48,24 @@ export default function NavBar() {
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const handleDrawer = () => {
-    open ? setOpen(false) : setOpen(true)
+  const handleDrawerOpen = () => {
+    setOpen(true);
   };
-
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
 
     <div className={classes.root}>
       <CssBaseline />
-      {/* <AppBar
+      <AppBar
         position="absolute"
         style={{ background: "#2B2C3B" }}
         className={clsx(classes.appBar, open && classes.appBarShift)}
-        > */}
-        {/* <Toolbar className={classes.toolbar}>
+        >
+        <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
             color="inherit"
@@ -76,7 +78,7 @@ export default function NavBar() {
               >
             <MenuIcon />
           </IconButton>
-          
+          {/* <Typography variant="h6" color="inherit" noWrap> */}
           <Typography
             component="h1"
             variant="h6"
@@ -91,19 +93,17 @@ export default function NavBar() {
               <NotificationsIcon />
             </Badge>
           </IconButton>
-        </Toolbar> */}
-      {/* </AppBar> */}
-      
+        </Toolbar>
+      </AppBar>
       <Drawer
         variant="permanent"
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
         }}
         open={open}
-        
       >
         <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawer}>
+          <IconButton onClick={handleDrawerClose}>
             <ChevronLeftIcon />
           </IconButton>
         </div>

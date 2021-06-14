@@ -110,9 +110,8 @@ export default function QuizApp() {
               >
               Please login or Signup, for free. To access our extra features. Treat yo' self!
             </Typography>}
-            {user.name ? <h2>Here are some cool stats.</h2> : <LoginForm /> }
+            
             <div className={classes.heroButtons}>
-              {user.name ? 
                 <Grid item>
                   <UserQuizStatsGeneral />
                   <Grid container spacing={3} justify="center">
@@ -130,7 +129,7 @@ export default function QuizApp() {
                       <Button onClick={() => {setUser({name: ""})}} color="primary" variant="outlinedS">Logout</Button>
                     </Grid>
                 </Grid>
-              </Grid> : <></> }
+              </Grid>
             </div>
           </Container>
         </div>

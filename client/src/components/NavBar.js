@@ -48,18 +48,51 @@ export default function NavBar() {
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  const handleDrawer = () => {
+    open ? setOpen(false) : setOpen(true)
   };
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
 
     <div className={classes.root}>
       <CssBaseline />
+      {/* <AppBar
+        position="absolute"
+        style={{ background: "#2B2C3B" }}
+        className={clsx(classes.appBar, open && classes.appBarShift)}
+        > */}
+        {/* <Toolbar className={classes.toolbar}>
+          <IconButton
+            edge="start"
+            color="inherit"
+            className={clsx(
+              classes.menuButton,
+              open && classes.menuButtonHidden
+              )}
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              >
+            <MenuIcon />
+          </IconButton>
+          
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+            className={classes.title}
+            >
+            QuizApp
+          </Typography>
+          <IconButton color="inherit">
+            <Badge badgeContent={4} color="secondary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+        </Toolbar> */}
+      {/* </AppBar> */}
       
       <Drawer
         variant="permanent"
@@ -67,9 +100,10 @@ export default function NavBar() {
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
         }}
         open={open}
+        
       >
         <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawer}>
             <ChevronLeftIcon />
           </IconButton>
         </div>

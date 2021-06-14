@@ -10,8 +10,6 @@ import Score from "./Score";
 import Playlist from "./Playlist";
 import Create from "./Create";
 import Notes from "./Notes";
-
-
 // import { mainListItems, secondaryListItems } from "./UserAccountMenuBarList";  //TODO
 
 //Note: QuizTable + Score + Playlist --> UserAccount --> NavBar --> App.js
@@ -24,7 +22,14 @@ export default function UserAccount() {
   const [notes, setNotes] = useState([]);
 
   const notesSubmit = (input) => setNotes([...notes, input]);
-  console.log('notes', notes)
+
+  const onDestroy = (index) => {
+    setNotes([...notes.filter((element, i) => {
+      if (i !== index ) {
+        return element
+      }
+    })]);
+  }
 
   return (
     <Container maxWidth="lg" className={classes.container}>
@@ -51,8 +56,8 @@ export default function UserAccount() {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <Notes notes={notes} />
-            <Create setNotes={notesSubmit} />
+            <Notes notes={notes} onDestroy={onDestroy}/>
+            <Create setNotes={notesSubmit}/>
           </Paper>
         </Grid>
       </Grid>

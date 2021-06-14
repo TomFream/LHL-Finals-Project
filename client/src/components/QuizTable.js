@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -10,12 +9,8 @@ import FormLabel from "@material-ui/core/FormLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import IconButton from "@material-ui/core/IconButton";
-import Switch from "@material-ui/core/Switch";
 import MobileStepper from "@material-ui/core/MobileStepper";
-import Paper from "@material-ui/core/Paper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import { Link } from "react-router-dom";
@@ -55,15 +50,13 @@ export default function QuizTable(props) {
   const classes = useStyles();
   const theme = useTheme();
   const { score, setScore } = props;
+  // console.log("QuizTalbe setScore", setScore);
 
-  console.log("QuizTalbe setScore", setScore);
-
-  const [value, setValue] = React.useState("");
-  const [error, setError] = React.useState(false);
-  const [helperText, setHelperText] = React.useState("");
-  const [activeStep, setActiveStep] = React.useState(0);
-  // const [score, setScore] = React.useState(0);
-  const [incorrectAnswers, setIncorrectAnswers] = React.useState({});
+  const [value, setValue] = useState("");
+  const [error, setError] = useState(false);
+  const [helperText, setHelperText] = useState("");
+  const [activeStep, setActiveStep] = useState(0);
+  const [incorrectAnswers, setIncorrectAnswers] = useState({});
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
@@ -73,6 +66,7 @@ export default function QuizTable(props) {
 
   const questions = props.questions;
   const answerOptions = props.answers;
+  // console.log("AnswerOptions", answerOptions);
 
   const numQuestions = questions.length;
 
@@ -81,8 +75,7 @@ export default function QuizTable(props) {
       return option;
     }
   });
-
-  console.log("correctAnswer", correctOptionObj.answer_option);
+  // console.log("correctAnswer", correctOptionObj.answer_option);
 
   const handleNext = () => {
     setActiveStep((preActiveStep) => preActiveStep + 1);
@@ -99,22 +92,17 @@ export default function QuizTable(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log("VALUE", value);
-    console.log("CorrectAnswer11111", correctOptionObj.answer_option);
-
     if (!value) {
       setHelperText("Please select an answer.");
       setError(true);
     }
 
-
     if (value === correctOptionObj.answer_option) {
       setHelperText("You got it!");
       setError(false);
       let newScore = score + 1;
-      console.log("newScore", newScore);
+      // console.log("newScore", newScore);
       setScore(newScore);
-      
     }
 
     if (value && value !== correctOptionObj.answer_option) {

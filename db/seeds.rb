@@ -17,7 +17,6 @@ Category.create(name: "MySQL")
 
 # HTML category seed data
 htmlFile = File.open(File.join(Rails.root, 'db', 'htmlData.json'))
-# htmlFile = File.open("/Users/tom/Documents/lighthouse/final/LHL-Finals-Project/db/htmlData.json")
 htmlData = htmlFile.read
 html_seed_data = JSON.parse(htmlData) 
 
@@ -36,7 +35,6 @@ end
 
 # JavaScript category seed data
 jsFile = File.open(File.join(Rails.root, 'db', 'jsData.json'))
-# jsFile = File.open("/Users/tom/Documents/lighthouse/final/LHL-Finals-Project/db/jsData.json")
 jsData = jsFile.read
 js_seed_data = JSON.parse(jsData) 
 
@@ -55,7 +53,6 @@ end
 
 # SQL category seed data
 sqlFile = File.open(File.join(Rails.root, 'db', 'sqlData.json'))
-# sqlFile = File.open("/Users/tom/Documents/lighthouse/final/LHL-Finals-Project/db/sqlData.json")
 sqlData = sqlFile.read
 sql_seed_data = JSON.parse(sqlData) 
 
@@ -71,3 +68,5 @@ sql_seed_data.each do |d|
     end
   end
 end
+
+Playlist.create(name: "Interview Prep", user_id: 1)

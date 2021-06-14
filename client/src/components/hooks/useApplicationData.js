@@ -2,12 +2,14 @@ import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
 
-
-function getQuizData() {
-  const params = useParams()
-  const [questions, setQuestions] = useState(null)
-  const [answers, setAnswers] = useState(null)
+export default function getQuizData() {
+  const [questions, setQuestions] = useState(null);
+  const [answers, setAnswers] = useState(null);
+  const [score, setScore] = useState(0);
+  const params = useParams();
   
+console.log("params.id", params);
+
   useEffect(() => {
     axios
     .get(`/api/tests/${params.id}`)
@@ -18,9 +20,9 @@ function getQuizData() {
     .catch((error) => {
       console.log("ERROR: ", error)
     });
-  }, [])
+  }, [params.id])
   
-  return {questions, answers}
+  return {questions, answers, score, setScore}
 }
 
 function getPlaylistQuizData() {
@@ -42,7 +44,6 @@ function getPlaylistQuizData() {
   }, [])
  
   return {questions, answers}
-
 }
 
 export { getQuizData, getPlaylistQuizData }

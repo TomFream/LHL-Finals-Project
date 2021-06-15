@@ -12,7 +12,7 @@ import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import LoginForm from "./LoginForm";
-import UserQuizStatsGeneral from "./UserQuizStatsGeneral";
+
 
 //NOTE: Main's parent --> NavBar  --> App.js
 
@@ -108,7 +108,6 @@ export default function QuizApp() {
             
             <div className={classes.heroButtons}>
                 <Grid item>
-                  <UserQuizStatsGeneral />
                   <Grid container spacing={3} justify="center">
                     <Grid item>
                       <Link
@@ -138,11 +137,6 @@ export default function QuizApp() {
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
-          <Link to={"/playlists"}>
-            <Card className={classes.card}>
-              <h3> Test! </h3>
-            </Card>
-          </Link>
           <Grid container spacing={6}>
             {cards.map((card) => (
               <Grid
@@ -153,7 +147,7 @@ export default function QuizApp() {
                 md={6}
                 onClick={() => console.log("Clicked!", card.name)}
               >
-                <Link to={`/quiz/${card.id}`}>
+                <Link to={`/quiz/${card.id}`} style={{ textDecoration: 'none' }}>
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}

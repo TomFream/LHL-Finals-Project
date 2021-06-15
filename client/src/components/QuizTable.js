@@ -15,6 +15,7 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import { Link } from "react-router-dom";
 import AddButton from "./AddButton";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 // import Popover from "@material-ui/core/Popover";
 
 //Note: QuizTable + Score --> Quiz --> NavBar --> App.js
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "lavender",
     // width: "1000px",
     maxWidth: "950px",
-    minHeight: "400px",
+    minHeight: "100px",
     flexGrow: 5,
   },
   formControl: {
@@ -59,6 +60,7 @@ export default function QuizTable(props) {
   const [helperText, setHelperText] = useState("");
   const [activeStep, setActiveStep] = useState(0);
   const [incorrectAnswers, setIncorrectAnswers] = useState({});
+  const [correctSelectedAnswers, setCorrectSelectedAnswers] = useState({});
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
@@ -93,6 +95,7 @@ export default function QuizTable(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const question_id = questions[activeStep].id;
 
     if (!value) {
       setHelperText("Please select an answer.");
@@ -105,13 +108,16 @@ export default function QuizTable(props) {
       let newScore = score + 1;
       // console.log("newScore", newScore);
       setScore(newScore);
+      setCorrectSelectedAnswers((prev) => ({
+        ...prev,
+        [question_id]: value,
+      }));
     }
 
     if (value && value !== correctOptionObj.answer_option) {
       setHelperText("Sorry, wrong answer!");
       setError(true);
 
-      const question_id = questions[activeStep].id;
 
       setIncorrectAnswers((prev) => ({
         ...prev,
@@ -202,20 +208,29 @@ export default function QuizTable(props) {
                   </Button>
                 }
               />
-              <Link
-                to={{
-                  pathname: "/results",
-                  state: {
-                    questions: questions,
-                    answers: answerOptions,
-                    score: `${score}/${questions.length}`,
-                    incorrectAnswers: incorrectAnswers,
-                  },
-                }}
-              >
-                Results
-              </Link>
-              <AddButton question_id={questions[activeStep].id}/> {/*Show Error Msgs*/}{" "}
+              <div className={classes.root}>
+                <ButtonGroup color="primary" aria-label="outlined primary button group">
+                  <Link
+                    to={{
+                      pathname: "/results",
+                      state: {
+                        questions: questions,
+                        answers: answerOptions,
+                        score: `${score}/${questions.length}`,
+                        incorrectAnswers: incorrectAnswers,
+                        correctSelectedAnswers: correctSelectedAnswers,
+                      },
+                    }}
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <Button variant="outlined" color="primary">
+                      Results
+                    </Button>
+                  </Link>
+                  <AddButton question_id={questions[activeStep].id} />{" "}
+                  {/*Show Error Msgs*/}{" "}
+                </ButtonGroup>
+              </div>
             </FormControl>
           </form>
         </CardContent>

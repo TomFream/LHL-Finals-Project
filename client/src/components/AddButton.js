@@ -43,7 +43,7 @@ export default function AddButton(props) {
     setAnchorEl(null);
   };
 
-  const handleAdd = (playlist_id, question_id) => {
+  const handleAdd = (evt, playlist_id, question_id) => {
     axios 
       .post('/api/playlists/update',{
         playlist: playlist_id,
@@ -51,7 +51,8 @@ export default function AddButton(props) {
       })
       .then((response) => {
         console.log("Response: ", response)
-        setQuestionAdded(true);
+        // setQuestionAdded(true);
+        // evt.target.style.visibility = 'hidden';
       })
       .catch((error) => {
         console.log("Error: ", error)
@@ -65,8 +66,8 @@ export default function AddButton(props) {
   return (
     <div>
       <Button
-        aria-describedby={id}
-        variant="contained"
+        // aria-describedby={id}
+        variant="outlined"
         color="primary"
         onClick={handleClick}
       >
@@ -104,7 +105,7 @@ export default function AddButton(props) {
                       <TableCell align="left">{row.name}</TableCell>
                       <TableCell>{row.created_at.split("T")[0]}</TableCell>
                       <TableCell>
-                        <Button variant="outlined" color="primary" disabled={questionAdded} onClick={() => (handleAdd(row.id, question_id))}>
+                        <Button variant="outlined" color="primary" keyId={row.id} onClick={() => (handleAdd(row.id, question_id))}>
                           Add
                         </Button>
                       </TableCell>

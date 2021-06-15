@@ -13,7 +13,6 @@ import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import LoginForm from "./LoginForm";
 
-
 //NOTE: Main's parent --> NavBar  --> App.js
 
 function Copyright() {
@@ -103,35 +102,35 @@ export default function QuizApp() {
                 color="textSecondary"
                 paragraph
               >
-              Please login or Signup, for free. 
-            </Typography>)}
-            
+                Please login or Signup, for free.
+              </Typography>
+            )}
             <div className={classes.heroButtons}>
-                <Grid item>
-                  <Grid container spacing={3} justify="center">
-                    <Grid item>
-                      <Link
-                        to="/quiz"
-                        style={{ textDecoration: "none", color: "blue" }}
-                      >
-                        <Button variant="outlined" color="secondary">
-                          QUIZ GAME
-                        </Button>
-                      </Link>
-                    </Grid>
-                    <Grid item>
-                      <Button
-                        onClick={() => {
-                          setUser({ name: "" });
-                        }}
-                        color="primary"
-                        variant="outlinedS"
-                      >
-                        Logout
+              <Grid item>
+                <Grid container spacing={3} justify="center">
+                  <Grid item>
+                    <Link
+                      to="/quiz"
+                      style={{ textDecoration: "none", color: "blue" }}
+                    >
+                      <Button variant="outlined" color="secondary">
+                        QUIZ GAME
                       </Button>
-                    </Grid>
+                    </Link>
+                  </Grid>
+                  <Grid item>
+                    <Button
+                      onClick={() => {
+                        setUser({ name: "" });
+                      }}
+                      color="primary"
+                      variant="outlinedS"
+                    >
+                      Logout
+                    </Button>
                   </Grid>
                 </Grid>
+              </Grid>
             </div>
           </Container>
         </div>
@@ -147,7 +146,10 @@ export default function QuizApp() {
                 md={6}
                 onClick={() => console.log("Clicked!", card.name)}
               >
-                <Link to={`/quiz/${card.id}`} style={{ textDecoration: 'none' }}>
+                <Link
+                  to={`/quiz/${card.id}`}
+                  style={{ textDecoration: "none" }}
+                >
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}

@@ -16,6 +16,7 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import { Link } from "react-router-dom";
 import AddButton from "./AddButton";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
+import { useParams } from "react-router-dom";
 // import Popover from "@material-ui/core/Popover";
 
 //Note: QuizTable + Score --> Quiz --> NavBar --> App.js
@@ -52,8 +53,8 @@ const useStyles = makeStyles((theme) => ({
 export default function QuizTable(props) {
   const classes = useStyles();
   const theme = useTheme();
+  const params = useParams();
   const { score, setScore } = props;
-  // console.log("QuizTalbe setScore", setScore);
 
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
@@ -118,7 +119,6 @@ export default function QuizTable(props) {
       setHelperText("Sorry, wrong answer!");
       setError(true);
 
-
       setIncorrectAnswers((prev) => ({
         ...prev,
         [question_id]: value,
@@ -130,6 +130,9 @@ export default function QuizTable(props) {
 
   return (
     <>
+      {(params.id == 1 && <h1>JavaScript</h1>)}
+      {(params.id == 2 && <h1>HTML</h1>)}
+      {params.id == 3 && <h1>SQL</h1>}
       <Card className={classes.root}>
         <CardContent>
           <form className={classes.form} onSubmit={handleSubmit}>
@@ -209,7 +212,10 @@ export default function QuizTable(props) {
                 }
               />
               <div className={classes.root}>
-                <ButtonGroup color="primary" aria-label="outlined primary button group">
+                <ButtonGroup
+                  color="primary"
+                  aria-label="outlined primary button group"
+                >
                   <Link
                     to={{
                       pathname: "/results",
@@ -221,7 +227,7 @@ export default function QuizTable(props) {
                         correctSelectedAnswers: correctSelectedAnswers,
                       },
                     }}
-                    style={{ textDecoration: 'none' }}
+                    style={{ textDecoration: "none" }}
                   >
                     <Button variant="outlined" color="primary">
                       Results

@@ -11,6 +11,9 @@ import Title from "./Component_Style/Title";
 import Table from "@material-ui/core/Table";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Snackbar from "@material-ui/core/Snackbar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -22,7 +25,8 @@ export default function AddButton(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [playlists, setPlaylists] = useState(null);
-  const [questionAdded, setQuestionAdded] = useState(false);
+  // const [questionAdded, setQuestionAdded] = useState(false);
+  const [alertOpen, setAlertOpen] = React.useState(false);
 
   useEffect(() => {
     axios
@@ -43,6 +47,14 @@ export default function AddButton(props) {
     setAnchorEl(null);
   };
 
+  const handleAlertClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setAlertOpen(false);
+  };
+
   const handleAdd = (playlist_id, question_id) => {
     axios
       .post("/api/playlists/update", {
@@ -50,7 +62,8 @@ export default function AddButton(props) {
         question: question_id,
       })
       .then((response) => {
-        console.log("Axios response: ", response)
+        console.log("Axios response: ", response);
+        setAlertOpen(true);
       })
       .catch((error) => {
         console.log("Axios Error: ", error);
@@ -115,6 +128,28 @@ export default function AddButton(props) {
           </React.Fragment>
         </Typography>
       </Popover>
+      <Snackbar
+        // anchorOrigin={{
+        //   // vertical: "top",
+        //   // horizontal: "left",
+        // }}
+        open={alertOpen}
+        autoHideDuration={6000}
+        onClose={handleAlertClose}
+        message="Question Added!"
+        action={
+          <React.Fragment>
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleAlertClose}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
     </div>
   );
 }

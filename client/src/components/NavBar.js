@@ -86,7 +86,7 @@ export default function NavBar() {
             noWrap
             className={classes.title}
             >
-            QuizApp
+            <img src={"/quizstack_logo3.png"} alt="logo" width="180" height="40"/>
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">

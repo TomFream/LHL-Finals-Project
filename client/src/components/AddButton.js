@@ -43,13 +43,15 @@ export default function AddButton(props) {
     setAnchorEl(null);
   };
 
-  const handleAdd = (evt, playlist_id, question_id) => {
+  const handleAdd = (playlist_id, question_id) => {
     axios
       .post("/api/playlists/update", {
         playlist: playlist_id,
         question: question_id,
       })
-      .then((response) => {})
+      .then((response) => {
+        console.log("Axios response: ", response)
+      })
       .catch((error) => {
         console.log("Axios Error: ", error);
       });

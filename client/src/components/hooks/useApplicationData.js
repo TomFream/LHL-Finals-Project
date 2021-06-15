@@ -35,7 +35,7 @@ function getPlaylistQuizData() {
     axios
       .get(`/api/playlists/${params.playlist_name}`)
       .then((response) => {
-        console.log("API response: ", response);
+        console.log("API response: ", response.data);
         setQuestions(response.data.questions);
         setAnswers(response.data.answers);
       })

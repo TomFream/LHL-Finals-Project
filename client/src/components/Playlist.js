@@ -29,7 +29,9 @@ export default function Playlist() {
     axios
       .get("/api/playlists")
       .then((response) => {
+        console.log("Playlist API response: ", response)
         setPlaylists(response.data.playlists);
+
       })
       .catch((err) => {
         console.log("api error: ", err);

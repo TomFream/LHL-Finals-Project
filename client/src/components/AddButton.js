@@ -44,20 +44,16 @@ export default function AddButton(props) {
   };
 
   const handleAdd = (evt, playlist_id, question_id) => {
-    axios 
-      .post('/api/playlists/update',{
+    axios
+      .post("/api/playlists/update", {
         playlist: playlist_id,
-        question: question_id
+        question: question_id,
       })
-      .then((response) => {
-        console.log("Response: ", response)
-        // setQuestionAdded(true);
-        // evt.target.style.visibility = 'hidden';
-      })
+      .then((response) => {})
       .catch((error) => {
-        console.log("Error: ", error)
+        console.log("Axios Error: ", error);
       });
-  }
+  };
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
@@ -65,12 +61,7 @@ export default function AddButton(props) {
 
   return (
     <div>
-      <Button
-        // aria-describedby={id}
-        variant="outlined"
-        color="primary"
-        onClick={handleClick}
-      >
+      <Button variant="outlined" color="primary" onClick={handleClick}>
         Add To Playlist
       </Button>
       <Popover
@@ -105,7 +96,12 @@ export default function AddButton(props) {
                       <TableCell align="left">{row.name}</TableCell>
                       <TableCell>{row.created_at.split("T")[0]}</TableCell>
                       <TableCell>
-                        <Button variant="outlined" color="primary" keyId={row.id} onClick={() => (handleAdd(row.id, question_id))}>
+                        <Button
+                          variant="outlined"
+                          color="primary"
+                          keyId={row.id}
+                          onClick={() => handleAdd(row.id, question_id)}
+                        >
                           Add
                         </Button>
                       </TableCell>

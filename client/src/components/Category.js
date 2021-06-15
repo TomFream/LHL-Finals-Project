@@ -5,17 +5,13 @@ const Category = (props) => {
   const [test, setTest] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        `/api/category/${props.id}`
-      )
-      .then((result) => {
-        console.log("Quiz API", result.data);
-        const testNew = result.data;
-        setTest(() => ({
-          testNew,
-        }));
-      });
+    axios.get(`/api/category/${props.id}`).then((result) => {
+      console.log("Quiz API", result.data);
+      const testNew = result.data;
+      setTest(() => ({
+        testNew,
+      }));
+    });
   }, []);
 
   console.log("test", test);

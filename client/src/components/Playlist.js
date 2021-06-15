@@ -11,21 +11,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@material-ui/core";
 
-//Note: QuizTable + Score + Playlist --> UserAccount --> NavBar --> App.js
-
-// Generate Playlist
-function createData(id, category, date, score) {
-  return { id, category, date, score };
-}
-
-// const rows = [
-//   // createData(0, 'JavaScript', '11 Jun, 2021', '100%'),
-//   // createData(1, 'HTML', '11 Jun, 2021', '90%'),
-//   // createData(2, 'SQL', '11 Jun, 2021', '80%'),
-//   // createData(3, 'JavaScript', '11 Jun, 2021', '95%'),
-//   // createData(4, 'JavaScript', '11 Jun, 2021','85%'),
-// ];
-
 function preventDefault(event) {
   event.preventDefault();
 }

@@ -56,7 +56,7 @@ export default function Playlist() {
               <TableRow key={row.id}>
                 <TableCell align="left">{row.name}</TableCell>
                 <TableCell>{row.created_at.split("T")[0]}</TableCell>
-                <TableCell>{`${Math.floor(Math.random() * 100)}%`}</TableCell>
+                <TableCell>{`${Math.floor(Math.random() * (100 - 50) + 50)}%`}</TableCell>
                 <TableCell>
                   <Link
                     to={{

@@ -56,7 +56,7 @@ export default function Playlist() {
               <TableRow key={row.id}>
                 <TableCell align="left">{row.name}</TableCell>
                 <TableCell>{row.created_at.split("T")[0]}</TableCell>
-                <TableCell>{"temp"}</TableCell>
+                <TableCell>{`${Math.floor(Math.random() * 100)}%`}</TableCell>
                 <TableCell>
                   <Link
                     to={{
@@ -79,7 +79,7 @@ export default function Playlist() {
       </Table>
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
-          See more playlist
+          Create a Playlist
         </Link>
       </div>
     </React.Fragment>

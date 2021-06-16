@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
   },
   cardGrid: {
-    paddingTop: theme.spacing(0),
+    paddingTop: theme.spacing(6),
     paddingBottom: theme.spacing(8),
   },
   card: {

@@ -121,7 +121,7 @@ export default function NavBar() {
       
 
       <main className={classes.content}>
-      <Hero style={{ width: "auto" }} />
+      {/* <Hero style={{ width: "auto" }} /> */}
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid item xs={12}>
@@ -150,7 +150,7 @@ export default function NavBar() {
                 {/* <Box> */}
                 {/* </Box> */}
                 {/* </Typography> */}
-                <Route path="/" exact render={() => <Main />} />
+                <Route path="/" exact render={() => <><Hero /><Main /></>} />
               </Container>
             </Switch>
           </Grid>

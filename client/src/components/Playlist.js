@@ -40,8 +40,9 @@ export default function Playlist() {
 
   return (
     <React.Fragment>
+      <div>
       <Title>Playlists</Title>
-      <Table size="small">
+      <Table size="medium">
         <TableHead>
           <TableRow>
             <TableCell>Playlist</TableCell>
@@ -81,6 +82,7 @@ export default function Playlist() {
         <Link color="primary" href="#" onClick={preventDefault}>
           See more playlist
         </Link>
+      </div>
       </div>
     </React.Fragment>
   );

@@ -15,45 +15,45 @@ import LocalPlayIcon from '@material-ui/icons/LocalPlay';
 
 export const mainListItems = (
   <div>
-    <Link to="/" style={{ textDecoration: "none", color: "#000000DE" }}>
+    <Link to="/" style={{ textDecoration: "none", color: "lavender" }}>
       <ListItem button>
-        <ListItemIcon>
+        <ListItemIcon style={{color: 'lavender',}}>
           <DashboardIcon />
         </ListItemIcon>
         <ListItemText primary="Main" />
       </ListItem>
     </Link>
-    <Link to="/user/1" style={{ textDecoration: "none", color: "#000000DE" }}>
+    <Link to="/user/1" style={{ textDecoration: "none", color: "lavender" }}>
       <ListItem button>
-        <ListItemIcon>
+        <ListItemIcon style={{color: 'lavender',}}>
           <AccountBoxOutlinedIcon />
         </ListItemIcon>
         <ListItemText primary="MyAccount" />
       </ListItem>
     </Link>
-    <Link to="/playlists" style={{ textDecoration: "none", color: "#000000DE" }}>
+    <Link to="/playlists" style={{ textDecoration: "none", color: "lavender" }}>
       <ListItem button>
-        <ListItemIcon>
+        <ListItemIcon style={{color: 'lavender',}}>
           <LocalPlayIcon />
         </ListItemIcon>
         <ListItemText primary="Playlists" />
       </ListItem>
     </Link>
     <ListItem button>
-      <ListItemIcon>
+      <ListItemIcon style={{color: 'lavender',}}>
         <PeopleIcon />
       </ListItemIcon>
       <ListItemText primary="Share" />
     </ListItem>
     <ListItem button>
-      <ListItemIcon>
+      <ListItemIcon style={{color: 'lavender',}}>
         <FiberNewIcon />
       </ListItemIcon>
       <ListItemText primary="New" />
     </ListItem>
     <ListItem button></ListItem>
     <ListItem button>
-      <ListItemIcon>
+      <ListItemIcon style={{color: 'lavender',}}>
         <LayersIcon />
       </ListItemIcon>
       <ListItemText primary="Categories" />
@@ -62,21 +62,21 @@ export const mainListItems = (
 );
 
 export const secondaryListItems = (
-  <div>
-    <ListSubheader inset>Popular</ListSubheader>
-    <Link to="/quiz/1" style={{ textDecoration: "none", color: "#000000DE" }}>
+  <div style={{color: 'lavender',}}>
+    <ListSubheader style={{color: 'lavender',}} inset>Popular</ListSubheader>
+    <Link to="/quiz/1" style={{ textDecoration: "none", color: "lavender" }}>
       <ListItem button>
         <ListItemIcon></ListItemIcon>
         <ListItemText primary="JavaScript" />
       </ListItem>
     </Link>
-    <Link to="/quiz/2" style={{ textDecoration: "none", color: "#000000DE" }}>
+    <Link to="/quiz/2" style={{ textDecoration: "none", color: "lavender" }}>
       <ListItem button>
         <ListItemIcon></ListItemIcon>
         <ListItemText primary="HTML" />
       </ListItem>
     </Link>
-    <Link to="/quiz/3" style={{ textDecoration: "none", color: "#000000DE" }}>
+    <Link to="/quiz/3" style={{ textDecoration: "none", color: "lavender" }}>
       <ListItem button>
         <ListItemIcon></ListItemIcon>
         <ListItemText primary="SQL" />
@@ -100,3 +100,4 @@ export const secondaryListItems = (
     </ListItem>
   </div>
 );
+// style={{ textDecoration: "none", color: "#000000DE" }

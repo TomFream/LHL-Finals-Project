@@ -20,7 +20,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://quizapp.com/">
-        Quiz App
+        QuizStack
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
   },
   cardGrid: {
-    paddingTop: theme.spacing(8),
+    paddingTop: theme.spacing(6),
     paddingBottom: theme.spacing(8),
   },
   card: {
@@ -90,9 +90,8 @@ export default function QuizApp() {
       <CssBaseline />
 
       <main>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <Container maxWidth="sm">
+
+          {/* <Container maxWidth="sm">
             {user.name ? (
               <h1>Hello, {user.name}.</h1>
             ) : (
@@ -132,8 +131,8 @@ export default function QuizApp() {
                 </Grid>
               </Grid>
             </div>
-          </Container>
-        </div>
+          </Container> */}
+        
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={6}>
@@ -177,9 +176,9 @@ export default function QuizApp() {
         </Container>
       </main>
       {/* Footer */}
-      <footer className={classes.footer}>
+      <footer className={classes.footer} style={{backgroundColor: '#A3A3B0'}}>
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
+          QuizStack.ca
         </Typography>
         <Typography
           variant="subtitle1"
@@ -187,7 +186,6 @@ export default function QuizApp() {
           color="textSecondary"
           component="p"
         >
-          Something here to give the footer a purpose!
         </Typography>
         <Copyright />
       </footer>

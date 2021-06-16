@@ -31,3 +31,11 @@
     transform: rotate(360deg);
   }
 }
+
+/* .sc-bdnxRM {
+  background-size: auto !important;
+} */
+
+.color {
+  color: hsla(240, 8%, 66%, 0.7)
+}

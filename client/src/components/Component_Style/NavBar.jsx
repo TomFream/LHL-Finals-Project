@@ -88,6 +88,14 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
+  userInfoBox: {
+    height: 210,
+  },
+  userTextInfoText: {
+    marginLeft: 10,
+    marginTop: 5,
+    textAlign: 'left',
+  }
 }));
 
 

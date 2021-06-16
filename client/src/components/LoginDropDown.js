@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    flexGrow: 0
+    
   }
 }));
 
@@ -51,7 +51,6 @@ export default function LoginDropDown() {
       </Button>
       <Popover
         id={id}
-        className={classes.loginBox}
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
@@ -63,8 +62,8 @@ export default function LoginDropDown() {
           vertical: "top",
           horizontal: "center",
         }}
+        container={<LoginForm />}
         >
-        <LoginForm />
       </Popover>
     </Container>
     

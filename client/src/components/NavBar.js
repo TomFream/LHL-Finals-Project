@@ -88,6 +88,7 @@ export default function NavBar() {
             >
             <img src={"/quizstack_logo3.png"} alt="logo" width="180" height="40"/>
           </Typography>
+          <Typography variant={"h5"}>Hi, {user.name}</Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />

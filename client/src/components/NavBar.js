@@ -21,6 +21,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./MenuBarList";
 import { useStyles } from './Component_Style/NavBar';
+import Hero from './Hero';
 
 import LoginForm from "./LoginForm";
 import { UserContext } from "./UserContext";
@@ -57,14 +58,13 @@ export default function NavBar() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
-
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="absolute"
         style={{ background: "#2B2C3B" }}
         className={clsx(classes.appBar, open && classes.appBarShift)}
-        >
+      >
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -72,10 +72,10 @@ export default function NavBar() {
             className={clsx(
               classes.menuButton,
               open && classes.menuButtonHidden
-              )}
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              >
+            )}
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+          >
             <MenuIcon />
           </IconButton>
           {/* <Typography variant="h6" color="inherit" noWrap> */}
@@ -85,8 +85,13 @@ export default function NavBar() {
             color="inherit"
             noWrap
             className={classes.title}
-            >
-            <img src={"/quizstack_logo3.png"} alt="logo" width="180" height="40"/>
+          >
+            <img
+              src={"/quizstack_logo3.png"}
+              alt="logo"
+              width="180"
+              height="40"
+            />
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
@@ -104,7 +109,7 @@ export default function NavBar() {
       >
         <div className={classes.toolbarIcon}>
           <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
+            <ChevronLeftIcon style={{color: 'lavender',}} />
           </IconButton>
         </div>
         <Divider />
@@ -112,35 +117,43 @@ export default function NavBar() {
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
+      
 
       <main className={classes.content}>
+      <Hero style={{ width: "auto" }} />
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid item xs={12}>
-              <Switch>
-                <Route
-                  path="/quiz/:id"
-                  render={() => (
-                    <div>
-                      <Quiz />
-                      {/* <Quiz />  //Frontend Quiz Fetch// OUTDATED// */}
-                      {/* <h1>{message}</h1> */}
-                      {/* <button>Fetch Data</button> <User /> */}
-                    </div>
-                  )}
-                />
-                <Route path="/results" render={() => <Results />} />
-                <Route path="/playlists/quiz/:playlist_name" render={() => <PlaylistQuiz />} />
-                <Route path="/playlists" render={() => <Playlist />} />
-                <Route path="/user/:id" render={() => <UserAccount />} />
-                <Route path="/login">
-                  <LoginForm />
-                </Route>
-                <Route path="/" exact render={() => <Main />} />
-              </Switch>
-          </Grid>
+            <Switch>
+              <Route
+                path="/quiz/:id"
+                render={() => (
+                  <div>
+                    <Quiz />
+                  </div>
+                )}
+              />
+              <Route path="/results" render={() => <Results />} />
+              <Route
+                path="/playlists/quiz/:playlist_name"
+                render={() => <PlaylistQuiz />}
+              />
+              <Route path="/playlists" render={() => <Playlist />} />
+              <Route path="/user/:id" render={() => <UserAccount />} />
+              <Route path="/login">
+                <LoginForm />
+              </Route>
 
-          <Box pt={4}>{/* QuizApp@2021 */}</Box>
+              {/* <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom> */}
+              <Container maxWidth="xlg">
+                {/* <Box> */}
+                {/* </Box> */}
+                {/* </Typography> */}
+                <Route path="/" exact render={() => <Main />} />
+              </Container>
+            </Switch>
+          </Grid>
+          {/* <Box pt={4}>QuizApp@2021</Box> */}
         </Container>
       </main>
     </div>

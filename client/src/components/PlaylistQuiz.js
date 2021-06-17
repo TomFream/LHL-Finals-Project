@@ -33,7 +33,7 @@ export default function PlaylistQuiz() {
         {/*Score*/}
         <Grid item xs={12} md={4} lg={3}>
           <Paper className={fixedHeightPaper}>
-            <Score />
+            <Score score={score} questions={questions}/>
           </Paper>
         </Grid>
       </Grid>

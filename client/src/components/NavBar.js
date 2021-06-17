@@ -95,7 +95,7 @@ export default function NavBar() {
           </Typography>
           <Typography variant={"h5"}>Hi, {user.name}</Typography>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
+            <Badge color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>

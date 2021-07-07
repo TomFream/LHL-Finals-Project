@@ -7,15 +7,6 @@ Rails.application.routes.draw do
     get '/playlists', to: 'playlists#index'
     post '/playlists/update', to: 'playlists#update'
   end
-  #   resources :playlists
-  #   # resources :answers
-  #   resources :quiz   #related model??//TODO
-  #   resources :questions, except: [:destroy, :create, :update]
-  #   resources :categories, except: [:destroy, :create, :update]
-  #   resources :users
-  #   resources :answer_options, except: [:destroy, :create, :update]
-  # end
-
   
   get '*path', to: "static_pages#fallback_index_html", constraints: ->(request) do
     !request.xhr? && request.format.html?

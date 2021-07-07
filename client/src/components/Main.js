@@ -73,10 +73,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const cards = [
-  { name: "JavaScript", id: 1, image: "../../js2.png" },
-  { name: "React", image: "../../react.png" },
-  { name: "SQL", id: 3, image: "../../sql.png" },
-  { name: "HTML", id: 2, image: "../../html.png" },
+  { name: "JavaScript", id: 1, image: "../../js2.png", canClick: true },
+  { name: "React", id: 4, image: "../../react.png", canClick: false },
+  { name: "SQL", id: 3, image: "../../sql.png", canClick: true },
+  { name: "HTML", id: 2, image: "../../html.png", canClick: true },
 ];
 
 export default function QuizApp() {
@@ -140,11 +140,11 @@ export default function QuizApp() {
                 xs={12}
                 sm={6}
                 md={6}
-                onClick={() => console.log("Clicked!", card.name)}
               >
                 <Link
                   to={`/quiz/${card.id}`}
-                  style={{ textDecoration: "none" }}
+                  // style={{ textDecoration: "none" }}
+                  style={card.canClick ? {textDecoration: "none"} : {pointerEvents: "none", textDecoration: "none"}}
                 >
                   <Card className={classes.card}>
                     <CardMedia
@@ -158,9 +158,6 @@ export default function QuizApp() {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size="md" color={"white"}>
-                        Share
-                      </Button>
                       <Button size="md" color={"white"}>
                         Start Quiz
                       </Button>

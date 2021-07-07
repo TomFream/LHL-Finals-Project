@@ -1,18 +1,16 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Title from './Component_Style/Title';
-import CheckIcon from '@material-ui/icons/Check';
-import CancelIcon from '@material-ui/icons/Cancel';
-import Score from "./Score";
+import Link from "@material-ui/core/Link";
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Title from "./Component_Style/Title";
+import CheckIcon from "@material-ui/icons/Check";
+import CancelIcon from "@material-ui/icons/Cancel";
 import UserQuizStatsGeneral from "./UserQuizStatsGeneral";
-
 
 function preventDefault(event) {
   event.preventDefault();
@@ -32,18 +30,17 @@ export default function Results(props) {
   const questions = location.state.questions;
 
   const answersArr = [];
-    const correctAnswersArr = location.state.answers.forEach(arr => {
-    arr.find(correct => {
+  const correctAnswersArr = location.state.answers.forEach((arr) => {
+    arr.find((correct) => {
       if (correct.is_correct === true) {
         // console.log("correctAnswersArr", correct.answer_option);
-         answersArr.push(correct.answer_option)
+        answersArr.push(correct.answer_option);
       }
-    })
+    });
   });
-  
+
   // console.log("Results/correctAnswer", answers, correctAnswersArr);
   console.log("ketchup", location.state);
-
 
   return (
     <React.Fragment>
@@ -64,7 +61,15 @@ export default function Results(props) {
             <TableRow key={row.id}>
               <TableCell align="left">{row.question}</TableCell>
               <TableCell align="left">{answersArr[i]}</TableCell>
-              <TableCell align="center">{location.state.incorrectAnswers[row.id] ? <CancelIcon /> : location.state.correctSelectedAnswers[row.id] ? <CheckIcon /> : <p>incomplete</p>}</TableCell>
+              <TableCell align="center">
+                {location.state.incorrectAnswers[row.id] ? (
+                  <CancelIcon />
+                ) : location.state.correctSelectedAnswers[row.id] ? (
+                  <CheckIcon />
+                ) : (
+                  <p>incomplete</p>
+                )}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

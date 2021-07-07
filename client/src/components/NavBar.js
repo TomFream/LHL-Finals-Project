@@ -1,4 +1,4 @@
-import React,{ useContext } from "react";
+import React, { useContext } from "react";
 import Main from "./Main";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,8 +20,8 @@ import Link from "@material-ui/core/Link";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./MenuBarList";
-import { useStyles } from './Component_Style/NavBar';
-import Hero from './Hero';
+import { useStyles } from "./Component_Style/NavBar";
+import Hero from "./Hero";
 
 import LoginForm from "./LoginForm";
 import { UserContext } from "./UserContext";
@@ -45,7 +45,7 @@ import PlaylistQuiz from "./PlaylistQuiz";
 //Note: QuizTable + Score + Playlist --> UserAccount --> NavBar --> App.js
 
 export default function NavBar() {
-  const [ user, setUser ] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
@@ -55,7 +55,6 @@ export default function NavBar() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>
@@ -110,7 +109,7 @@ export default function NavBar() {
       >
         <div className={classes.toolbarIcon}>
           <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon style={{color: 'lavender',}} />
+            <ChevronLeftIcon style={{ color: "lavender" }} />
           </IconButton>
         </div>
         <Divider />
@@ -118,10 +117,9 @@ export default function NavBar() {
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
-      
 
       <main className={classes.content}>
-      {/* <Hero style={{ width: "auto" }} /> */}
+        {/* <Hero style={{ width: "auto" }} /> */}
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid item xs={12}>
@@ -150,7 +148,16 @@ export default function NavBar() {
                 {/* <Box> */}
                 {/* </Box> */}
                 {/* </Typography> */}
-                <Route path="/" exact render={() => <><Hero /><Main /></>} />
+                <Route
+                  path="/"
+                  exact
+                  render={() => (
+                    <>
+                      <Hero />
+                      <Main />
+                    </>
+                  )}
+                />
               </Container>
             </Switch>
           </Grid>

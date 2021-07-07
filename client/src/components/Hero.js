@@ -4,28 +4,18 @@ import LazyHero from "react-lazy-hero";
 const Hero = (props) => {
   return (
     <div>
-      <LazyHero
-        imageSrc="../../galaxy.jpg"
-        isFixed="false"
-        opacity="0"
-        height="60%"
-        width="100%"
-        // children="<Logo/>"
-        // className=""
-        // color="#fff"
-        // imageSrc=""
-        isCentered="true"
-        // minHeight="75vh"
-        parallaxOffset="100"
-        // style={overflow:"hidden"}
-        // transitionDuration="600"
-        // transitionTimingFuction="ease-in-out"
-      >
-        <h1 style={{ color: "lavender" }}>Lookout 10xer's, we're turning it up to 11.</h1>
-        {/* <Particles style={{width: '500px'}}/> */}
+      <LazyHero>
+        <img src={"laptop2.gif"} alt="logo" width="60%" height="60%" />
+        <h1 style={{ color: "#2B2C3B" }}>
+          <img src={"logo_small2.png"} alt="logo" width="5%" height="5%" />{" "}
+          Welcome to QuizStack
+        </h1>
+        <h3 style={{ color: "#2B2C3B" }}>
+          {" "}
+          The quiz app by developers, for developers. Hop in and get ready to
+          nail that next big interview.
+        </h3>
       </LazyHero>
-
-      {/* ... */}
     </div>
   );
 };

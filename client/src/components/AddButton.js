@@ -25,7 +25,6 @@ export default function AddButton(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [playlists, setPlaylists] = useState(null);
-  // const [questionAdded, setQuestionAdded] = useState(false);
   const [alertOpen, setAlertOpen] = React.useState(false);
 
   useEffect(() => {

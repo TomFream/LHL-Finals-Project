@@ -22,7 +22,7 @@ const App = () => {
   // console.log("answers & questions", answers, questions);
   // console.log("user context value:", user)
   return (
-    <div className="App" style={{ backgroundColor: "#A3A3B0" }}>
+    <div className="App" style={{ backgroundColor: "white" }}>
       <Router>
         <UserProvider>
           <NavBar /> {/* Moved Route Logic Into NavBar Component */}

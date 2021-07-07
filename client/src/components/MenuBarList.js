@@ -100,4 +100,3 @@ export const secondaryListItems = (
     </ListItem>
   </div>
 );
-// style={{ textDecoration: "none", color: "#000000DE" }

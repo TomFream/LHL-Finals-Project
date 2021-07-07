@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { useStyles } from "./Component_Style/NavBar";
 import Score from "./Score";
-import { useLocation } from "react-router-dom";
 
 //Note: QuizTable + Score --> Quiz --> NavBar --> App.js
 

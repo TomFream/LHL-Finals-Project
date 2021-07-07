@@ -3,16 +3,10 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PeopleIcon from "@material-ui/icons/People";
-import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
-import AssignmentIcon from "@material-ui/icons/Assignment";
 import AccountBoxOutlinedIcon from "@material-ui/icons/AccountBoxOutlined";
 import FiberNewIcon from "@material-ui/icons/FiberNew";
-// import BookmarksOutlinedIcon from '@material-ui/icons/BookmarksOutlined';
-// import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined'; //liked
 
 export const mainListItems = (
   <div>
@@ -34,12 +28,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="New" />
     </ListItem>
-    <ListItem button>
-      {/* <ListItemIcon> */}
-      {/* <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" /> */}
-    </ListItem>
+    <ListItem button></ListItem>
     <ListItem button>
       <ListItemIcon>
         <LayersIcon />

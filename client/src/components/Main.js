@@ -87,64 +87,18 @@ export default function QuizApp() {
       <CssBaseline />
 
       <main>
-
-          {/* <Container maxWidth="sm">
-            {user.name ? (
-              <h1>Hello, {user.name}.</h1>
-            ) : (
-              <Typography
-                variant="h5"
-                align="center"
-                color="textSecondary"
-                paragraph
-              >
-                Please login or Signup, for free.
-              </Typography>
-            )}
-            <div className={classes.heroButtons}>
-              <Grid item>
-                <Grid container spacing={3} justify="center">
-                  <Grid item>
-                    <Link
-                      to="/quiz"
-                      style={{ textDecoration: "none", color: "blue" }}
-                    >
-                      <Button variant="outlined" color="secondary">
-                        QUIZ GAME
-                      </Button>
-                    </Link>
-                  </Grid>
-                  <Grid item>
-                    <Button
-                      onClick={() => {
-                        setUser({ name: "" });
-                      }}
-                      color="primary"
-                      variant="outlinedS"
-                    >
-                      Logout
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </div>
-          </Container> */}
-        
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={6}>
             {cards.map((card) => (
-              <Grid
-                item
-                key={card}
-                xs={12}
-                sm={6}
-                md={6}
-              >
+              <Grid item key={card} xs={12} sm={6} md={6}>
                 <Link
                   to={`/quiz/${card.id}`}
-                  // style={{ textDecoration: "none" }}
-                  style={card.canClick ? {textDecoration: "none"} : {pointerEvents: "none", textDecoration: "none"}}
+                  style={
+                    card.canClick
+                      ? { textDecoration: "none" }
+                      : { pointerEvents: "none", textDecoration: "none" }
+                  }
                 >
                   <Card className={classes.card}>
                     <CardMedia
@@ -170,7 +124,7 @@ export default function QuizApp() {
         </Container>
       </main>
       {/* Footer */}
-      <footer className={classes.footer} style={{backgroundColor: '#A3A3B0'}}>
+      <footer className={classes.footer} style={{ backgroundColor: "#A3A3B0" }}>
         <Typography variant="h6" align="center" gutterBottom>
           QuizStack.ca
         </Typography>
@@ -179,8 +133,7 @@ export default function QuizApp() {
           align="center"
           color="textSecondary"
           component="p"
-        >
-        </Typography>
+        ></Typography>
         <Copyright />
       </footer>
       {/* End footer */}

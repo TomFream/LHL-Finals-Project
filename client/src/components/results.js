@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
@@ -38,9 +38,6 @@ export default function Results(props) {
       }
     });
   });
-
-  // console.log("Results/correctAnswer", answers, correctAnswersArr);
-  console.log("ketchup", location.state);
 
   return (
     <React.Fragment>

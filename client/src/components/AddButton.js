@@ -128,10 +128,6 @@ export default function AddButton(props) {
         </Typography>
       </Popover>
       <Snackbar
-        // anchorOrigin={{
-        //   // vertical: "top",
-        //   // horizontal: "left",
-        // }}
         open={alertOpen}
         autoHideDuration={6000}
         onClose={handleAlertClose}

@@ -17,14 +17,12 @@ import { Link } from "react-router-dom";
 import AddButton from "./AddButton";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { useParams } from "react-router-dom";
-// import Popover from "@material-ui/core/Popover";
 
 //Note: QuizTable + Score --> Quiz --> NavBar --> App.js
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "lavender",
-    // width: "1000px",
     maxWidth: "950px",
     minHeight: "100px",
     flexGrow: 5,
@@ -71,7 +69,6 @@ export default function QuizTable(props) {
 
   const questions = props.questions;
   const answerOptions = props.answers;
-  // console.log("AnswerOptions", answerOptions);
 
   const numQuestions = questions.length;
 
@@ -80,7 +77,6 @@ export default function QuizTable(props) {
       return option;
     }
   });
-  // console.log("correctAnswer", correctOptionObj.answer_option);
 
   const handleNext = () => {
     setActiveStep((preActiveStep) => preActiveStep + 1);
@@ -107,7 +103,6 @@ export default function QuizTable(props) {
       setHelperText("You got it!");
       setError(false);
       let newScore = score + 1;
-      // console.log("newScore", newScore);
       setScore(newScore);
       setCorrectSelectedAnswers((prev) => ({
         ...prev,
@@ -130,8 +125,8 @@ export default function QuizTable(props) {
 
   return (
     <>
-      {(params.id == 1 && <h1>JavaScript</h1>)}
-      {(params.id == 2 && <h1>HTML</h1>)}
+      {params.id == 1 && <h1>JavaScript</h1>}
+      {params.id == 2 && <h1>HTML</h1>}
       {params.id == 3 && <h1>SQL</h1>}
       <Card className={classes.root}>
         <CardContent>
